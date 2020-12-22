@@ -9,6 +9,7 @@ local Item      = require("src.entities.item")
 local Inventory    = require("src.systems.inventory")
 local InventoryGUI = require("src.systems.inventoryGUI")
 local World    = require("src.systems.world")
+
 -- local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
 local Objective = require("src.systems.objective")
 
@@ -154,6 +155,5 @@ end
 function Basement:leave()
     World.clearEntities()
 end
-
 
 return Basement

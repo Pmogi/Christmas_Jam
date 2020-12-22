@@ -1,10 +1,12 @@
 -- Lib
 GameState       = require("lib.gamestate")
 local Timer     = require("lib.timer")
+local Camera    = require("lib.camera")
 
 -- Module
 local Assets = require("src/assets")
 local Objective = require("src.systems.objective")
+
 
 
 -- -- States
@@ -21,6 +23,9 @@ local World    = require("src.systems.world")
 
 function love.load()    
     GameState.registerEvents{'draw', 'update', 'init', 'enter', 'exit'}
+
+    camera = Camera(love.graphics.getWidth()/2, love.graphics.getHeight()/2)
+
     GameState.switch(Menu)
     love.graphics.setFont(Assets.getAsset("font"))
 end

@@ -8,12 +8,17 @@ function World.addEntity(entity)
 end
 
 function World.draw()
+    
+    -- Camera 
+    --camera:attach()
+    
     for i,entity in pairs(entityList) do 
         if entity.drawable then
             entity:draw()
         end
     end
     
+    --camera:detach()
 end
 
 function World.update(dt)

@@ -64,6 +64,7 @@ function InventoryGUI.draw()
         
         --end
     end
+    
     gui:draw()
     
 end

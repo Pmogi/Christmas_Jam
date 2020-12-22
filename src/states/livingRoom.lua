@@ -7,15 +7,15 @@ local SpeechBox = require("src.systems.speechbox")
 local Item      = require("src.entities.item")
 local Inventory    = require("src.systems.inventory")
 local InventoryGUI = require("src.systems.inventoryGUI")
+
 local World    = require("src.systems.world")
+
 local Objective = require("src.systems.objective")
 local Win  = require("src.states.win")
 
 --local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
 
 local Bathroom   = require("src.states.bathroom")
-
-
 
 local LivingRoom = {}
 
@@ -46,7 +46,6 @@ function LivingRoom:enter()
         else
             SpeechBox.startSpeech('"What a cozy looking couch..."')
         end
-        
         Assets.getAsset("Touch"):play()
         return true
      end))
@@ -135,7 +134,6 @@ function LivingRoom:enter()
     function()
         if Objective.wonState() then
             Assets.getAsset("FanFare"):play()
-            
         end
     return true
     end))

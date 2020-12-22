@@ -5,10 +5,18 @@ local assets = {}
 -- font
 assets["font"] = love.graphics.newFont("assets/fontstuck.ttf")
 
+graphics = love.graphics
+
+
+-- Kitchen images
+assets["kitchenBG"] = graphics.newImage("assets/image/kitchen/kitchenbg.png")
+
+
+
 -------- Images
 --- Living Room
 
-graphics = love.graphics
+
 
 assets["endScreen"] = love.graphics.newImage("assets/endingscreen.png")
 

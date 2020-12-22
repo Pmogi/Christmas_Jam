@@ -10,7 +10,7 @@ end
 function World.draw()
     
     -- Camera 
-    --camera:attach()
+    --
     
     for i,entity in pairs(entityList) do 
         if entity.drawable then

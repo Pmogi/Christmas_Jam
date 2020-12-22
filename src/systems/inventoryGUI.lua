@@ -18,6 +18,7 @@ local InventoryGUI = {}
 InventoryGUI.w = 25
 InventoryGUI.h = 25
 InventoryGUI.alpha = 1
+
 local drawItems = false
 
 function InventoryGUI.update(dt) 
@@ -69,6 +70,8 @@ function InventoryGUI.draw()
     
 end
 
+
+-- Maybe not hardcode this and have a stack of items
 function GUI()
     if Inventory.checkInventory("Eraser") then
          if gui:ImageButton(Assets.getAsset("Eraser"), { hovered = Assets.getAsset("EraserGlow")  }, 10, 96).hit then 

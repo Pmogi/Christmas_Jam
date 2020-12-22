@@ -12,11 +12,17 @@ local Objective = require("src.systems.objective")
 -- -- States
 local Menu       = require("src.states.mainMenu")
 LivingRoom = require("src.states.livingRoom")
+
 local Bathroom   = require("src.states.bathroom")
 Basement   = require("src.states.basement")
 local Calender   = require("src.states.calendar")
 
+-- 
+Kitchen = require("src.states.kitchen")
+
 local World    = require("src.systems.world")
+
+
 
 
 -- Test Harness
@@ -26,7 +32,7 @@ function love.load()
 
     camera = Camera(love.graphics.getWidth()/2, love.graphics.getHeight()/2)
 
-    GameState.switch(Menu)
+    GameState.switch(Kitchen) -- NOTE: changed to switch to the kitchen state
     love.graphics.setFont(Assets.getAsset("font"))
 end
 

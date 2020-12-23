@@ -9,7 +9,8 @@ function DrawGrid.drawGrid()
     for i=1,7 do 
         love.graphics.line(0, i*100, love.graphics.getWidth(), i*100)
     end
-
+    x, y = love.mouse.getPosition()
+    love.graphics.print("\nx:".. x .. ", y:" .. y,x,y)
     love.graphics.setColor(1, 1, 1)
 end
 

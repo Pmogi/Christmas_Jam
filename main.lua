@@ -4,7 +4,7 @@ local Timer     = require("lib.timer")
 local Camera    = require("lib.camera")
 
 -- Module
-local Assets = require("src/assets")
+local Assets = require("src.assets")
 local Objective = require("src.systems.objective")
 
 
@@ -21,8 +21,6 @@ local Calender   = require("src.states.calendar")
 Kitchen = require("src.states.kitchen")
 
 local World    = require("src.systems.world")
-
-
 
 
 -- Test Harness

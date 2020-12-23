@@ -22,30 +22,51 @@ local itemsInRoom  = {}
 function Kitchen:init()
 -- set initial state from Kitchen to world
     self.background = Assets.getAsset("kitchenBG")
+    
+    kitchenState["atticDoor"] = false
+    kitchenState["cabinet"]   = false
+    kitchenState["fridge"]    = false
 
-
+    itemsInRoom["sugar"]      = true
+    itemsInRoom["rasins"]     = true
+    itemsInRoom["oats"]       = true
 
 end
 
 
 function Kitchen:enter()
--- add sensor entities
+    -- add sensor entities
+    
+    World.addEntity(Sensor(500, 575 , 100, 100, function()
+        SpeechBox.startSpeech('"Didn' .. "'t " .. 'I tell Bill to clean up?"' )
+        Assets.getAsset("Touch"):play()
+        return true
+    end))
+
 
 
 end
 
 function Kitchen:update(dt)
-
+    InventoryGUI.update(dt)
+    SpeechBox.update(dt)
+    World.update(dt)
 end
 
 function Kitchen:leave()
--- Clear entities from the world on leaving
-
+    -- Clear entities from the world on leaving room gamestate
+    World.clearEntities()
 end
 
 function Kitchen:draw()
     camera:attach()
     love.graphics.draw(self.background, 0 , 0)
+
+    InventoryGUI.draw()
+    World.draw() -- draw entities    
+    SpeechBox.draw()
+
+    
 
     camera:detach()
 end

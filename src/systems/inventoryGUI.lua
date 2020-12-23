@@ -44,7 +44,7 @@ end
 
 function InventoryGUI.draw()
     -- active item box
-    love.graphics.rectangle("fill", 10, 10, 74, 74) -- CHANGE needs to be based on the on the window size
+    love.graphics.rectangle("fill", 10, 10, 74, 74) -- CHANGE needs to be based on the on the window width/height
     if  (Inventory.getActiveItem()) then
         love.graphics.draw(Assets.getAsset(Inventory.getActiveItem()), 10, 10)
     end

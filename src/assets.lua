@@ -10,6 +10,11 @@ graphics = love.graphics
 
 -- Kitchen images
 assets["kitchenBG"] = graphics.newImage("assets/image/kitchen/kitchenbg.png")
+assets["kitchenAtticDoor1"] = graphics.newImage("assets/image/kitchen/kitchenatticdoor1.png") -- closed state
+assets["kitchenAtticDoor2"] = graphics.newImage("assets/image/kitchen/kitchenatticdoor2.png")
+
+
+
 
 
 

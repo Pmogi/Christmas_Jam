@@ -10,7 +10,7 @@ local Inventory    = require("src.systems.inventory")
 local InventoryGUI = require("src.systems.inventoryGUI")
 local World    = require("src.systems.world")
 local Objective = require("src.systems.objective")
-local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
+--local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
 
 
 local Kitchen = {}
@@ -38,7 +38,7 @@ function Kitchen:enter()
     -- add sensor entities
     
     World.addEntity(Sensor(500, 575 , 100, 100, function()
-        SpeechBox.startSpeech('"Didn' .. "'t " .. 'I tell Bill to clean up?"' )
+        SpeechBox.startSpeech('I meant," said Ipslore bitterly, "what is there in this world that truly makes living worthwhile?" Death thought about it. CATS, he said eventually. CATS ARE NICE.”' )
         Assets.getAsset("Touch"):play()
         return true
     end))
@@ -65,11 +65,9 @@ function Kitchen:draw()
     InventoryGUI.draw()
     World.draw() -- draw entities    
     SpeechBox.draw()
-
-    
-
     camera:detach()
-    DrawGrid.drawGrid()
+
+    -- DrawGrid.drawGrid()
 end
 
 

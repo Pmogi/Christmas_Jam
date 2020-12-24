@@ -49,17 +49,17 @@ function Kitchen:enter()
             function()
                 if not roomState["atticDoor"] and Inventory.getActiveItem() == "Hook" then
                     roomState["atticDoor"] = true
-                else if not roomState["atticDoor"] then
+                elseif not roomState["atticDoor"] then
                     -- play "hmmm" sound
                     SpeechBox.startSpeech("I wonder if there's a way to get up there...")
                 else
                     --change gameState to attic room
-                    
+                    SpeechBox.startSpeech("Add going to attic")
                 end
                 
                 return true
             end
-                ))
+            ))
     
     -- Cabinet and Sugar
     World.addEntity(Sensor(500, 200, 800, 100,
@@ -85,8 +85,32 @@ function Kitchen:enter()
                     end ),
                     false, false)
     
+    -- Fridge and thing inside it
+    World.addEntity(Sensor(850, 300, 800, 100,
+                    function() 
+                        -- opening cabinet
+                        if not roomState["fridge"] then
+                            roomState["fridge"] = true
+                            -- play open sound
 
+                            -- add sugar
+                            World.addEntity(Sensor(643, 210, 150, 150,
+                                function()    
+                                    SpeechBox.startSpeech("You got a jar of sugar.")
+                                    -- grab sound
+                                    --Inventory.addToInventory(Item("Sugar", Assets.getAsset("Sugar")))
+                                    itemsInRoom["sugar"] = false
+                                    return false
+                                end,
+                            Assets.getAsset("Sugar"), true))
+                        end
+                    
+                    return false
+                    end ),
+                    false, false)
 
+    
+    
     -- Go to living room
 
 
@@ -118,11 +142,17 @@ function Kitchen:draw()
     end
 
     if not roomState["cabinet"] then
-        love.graphics.draw(Assets.getAsset("kitchencabinet1"), 500, 175)
+        love.graphics.draw(Assets.getAsset("kitchencabinet1"), 450, 175)
     else
-        love.graphics.draw(Assets.getAsset("kitchencabinet2"), 500, 175)
+        love.graphics.draw(Assets.getAsset("kitchencabinet2"), 450, 175)
     end
 
+    if not roomState["fridge"] then
+        love.graphics.draw(Assets.getAsset("kitchenFridge1"), 825, 200)
+    else
+        love.graphics.draw(Assets.getAsset("kitchenFridge2"), 825, 200)
+    end
+    
 
 
 

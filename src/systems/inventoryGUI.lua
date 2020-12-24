@@ -15,8 +15,8 @@ local gui = Suit.new()
 
 local InventoryGUI = {}
 
-InventoryGUI.w = 25
-InventoryGUI.h = 25
+InventoryGUI.w = 36
+InventoryGUI.h = 36
 InventoryGUI.alpha = 1
 
 local drawItems = false
@@ -53,6 +53,9 @@ function InventoryGUI.draw()
     if DRAW_TAB then
         love.graphics.setColor(0.5, 0.5, 0.5, InventoryGUI.alpha)
         love.graphics.rectangle("fill", 0, love.graphics.getHeight()/8, InventoryGUI.w , InventoryGUI.h)
+        
+        love.graphics.draw(Assets.getAsset("UI_backpack"), 0, love.graphics.getHeight()/8+2) -- draw backpack thing
+        
         love.graphics.setColor(1, 1, 1)
     
     elseif EXPAND_MENU then
@@ -144,8 +147,8 @@ function checkCursorPosition()
         DRAW_TAB = true
         EXPAND_MENU = false
         drawItems = false
-        Timer.tween(0.25, InventoryGUI, {w = 25})
-        Timer.tween(0.25, InventoryGUI, {h = 25})
+        Timer.tween(0.25, InventoryGUI, {w = 32})
+        Timer.tween(0.25, InventoryGUI, {h = 32})
         Timer.tween(0.25, InventoryGUI, {alpha = 1})
     end
 end

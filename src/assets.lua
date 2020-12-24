@@ -2,10 +2,14 @@ local Assets = {}
 
 local assets = {}
 
+graphics = love.graphics
+
 -- font
 assets["font"] = love.graphics.newFont("assets/fontstuck.ttf")
 
-graphics = love.graphics
+assets["UI_backpack"] = graphics.newImage("assets/image/UI/backpack.png")
+
+
 
 
 -- Kitchen images
@@ -16,8 +20,13 @@ assets["kitchenAtticDoor2"] = graphics.newImage("assets/image/kitchen/kitchenatt
 assets["kitchencabinet1"] = graphics.newImage("assets/image/kitchen/kitchencabinet1.png")
 assets["kitchencabinet2"] = graphics.newImage("assets/image/kitchen/kitchencabinet2.png")
 
+assets["kitchenFridge1"]  = graphics.newImage("assets/image/kitchen/kitchenfridge1.png")
+assets["kitchenFridge2"]  = graphics.newImage("assets/image/kitchen/kitchenfridge2.png")
+
+
 -- Items
 assets["Sugar"] = graphics.newImage("assets/image/kitchen/itemsugar.png")
+
 -- assets[""]
 
 

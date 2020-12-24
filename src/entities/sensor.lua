@@ -12,7 +12,8 @@ local activateCoolDown = false
 function Sensor:new(x, y, w, h, func, img, drawable)
     self.img = img or nil -- image is not required, for item pick ups
     self.x = x
-    self.y = y 
+    self.y = y
+    self.mouseHover = false
     
     -- if there's an image, use the width and height of that instead
     if img then
@@ -43,19 +44,27 @@ function Sensor:update( dt )
     local xPos = love.mouse.getX()
     local yPos = love.mouse.getY()
 
-    if (xPos > self.x) and (xPos < self.x + self.w) and (yPos > self.y) and (yPos < self.y + self.h) and love.mouse.isDown(1) and not activateCoolDown then
-        
+    if (xPos > self.x) and (xPos < self.x + self.w) and (yPos > self.y) and (yPos < self.y + self.h) then
         -- NOTE!!!!!:
         -- FUNKY, but it's how I remove sensors in the world.
         -- If attached function returns true, it persists through a user click.
         -- otherwise, alive is set to false, and the sensor gets cleaned by garbo collector in World.
-
-        self.alive = self.attatchedFunction()
-        
-        -- one touch, delay next by half second
-        activateCoolDown = true
-        Timer.after(0.5, function() activateCoolDown = false end)
+           
+            if love.mouse.isDown(1) and not activateCoolDown then
+                    self.alive = self.attatchedFunction()
+                    
+                    -- one touch, delay next by a half second
+                    activateCoolDown = true
+                    Timer.after(0.5, function() activateCoolDown = false
+                    end)
+            else
+                    love.mouse.setCursor(cursorHighlighted)
+                    self.mouseHover = true
+            end
+    else if self.mouseHover then
+            love.mouse.setCursor(cursorNormal)
+            self.mouseHover = false
+            end
     end
-end
-
+ end
 return Sensor

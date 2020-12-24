@@ -44,6 +44,12 @@ function Sensor:update( dt )
     local yPos = love.mouse.getY()
 
     if (xPos > self.x) and (xPos < self.x + self.w) and (yPos > self.y) and (yPos < self.y + self.h) and love.mouse.isDown(1) and not activateCoolDown then
+        
+        -- NOTE!!!!!:
+        -- FUNKY, but it's how I remove sensors in the world.
+        -- If attached function returns true, it persists through a user click.
+        -- otherwise, alive is set to false, and the sensor gets cleaned by garbo collector in World.
+
         self.alive = self.attatchedFunction()
         
         -- one touch, delay next by half second

@@ -23,7 +23,7 @@ function Kitchen:init()
 -- set initial state from Kitchen to world
     self.background = Assets.getAsset("kitchenBG")
     
-    roomState["atticDoor"] = true
+    roomState["atticDoor"] = false
     roomState["cabinet"]   = false
     roomState["fridge"]    = false
 
@@ -47,9 +47,11 @@ function Kitchen:enter()
     -- Attic Door sensor
     World.addEntity(Sensor(200, 0, 300, 100, 
             function()
-                if not roomState["atticDoor"] then
-                    SpeechBox.startSpeech("I wonder if there's a way to get up there.")
-                    Assets.getAsset("Touch"):play()
+                if not roomState["atticDoor"] and Inventory.getActiveItem() == "Hook" then
+                    roomState["atticDoor"] = true
+                else if not roomState["atticDoor"] then
+                    -- play "hmmm" sound
+                    SpeechBox.startSpeech("I wonder if there's a way to get up there...")
                 else
                     --change gameState to attic room
                     
@@ -78,11 +80,17 @@ function Kitchen:enter()
                                 end,
                             Assets.getAsset("Sugar"), true))
                         end
-
+                    
                     return false
                     end ),
-                    false, true)
+                    false, false)
+    
 
+
+    -- Go to living room
+
+
+    -- Go to backyard
     
 
 end

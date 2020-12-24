@@ -58,17 +58,32 @@ function Kitchen:enter()
                 return true
             end
                 ))
-
+    
+    -- Cabinet and Sugar
     World.addEntity(Sensor(500, 200, 800, 100,
                     function() 
                         -- opening cabinet
                         if not roomState["cabinet"] then
                             roomState["cabinet"] = true
                             -- play open sound
+
+                            -- add sugar
+                            World.addEntity(Sensor(643, 210, 150, 150,
+                                function()    
+                                    SpeechBox.startSpeech("You got a jar of sugar.")
+                                    -- grab sound
+                                    --Inventory.addToInventory(Item("Sugar", Assets.getAsset("Sugar")))
+                                    itemsInRoom["sugar"] = false
+                                    return false
+                                end,
+                            Assets.getAsset("Sugar"), true))
                         end
 
-                        return false
-                    end ))
+                    return false
+                    end ),
+                    false, true)
+
+    
 
 end
 

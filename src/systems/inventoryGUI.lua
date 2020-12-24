@@ -131,7 +131,7 @@ function checkCursorPosition()
     local xPos = love.mouse.getX()
     local yPos = love.mouse.getY()
 
-    if DRAW_TAB and xPos > 0 and xPos < 25 and yPos > love.graphics.getHeight()/8 and yPos < (love.graphics.getHeight()/8)+25 then
+    if DRAW_TAB and xPos > 1 and xPos < 25 and yPos > love.graphics.getHeight()/8 and yPos < (love.graphics.getHeight()/8)+25 then
         DRAW_TAB = false
         EXPAND_MENU = true
         Timer.tween(0.25, InventoryGUI, {w = 200})
@@ -140,7 +140,7 @@ function checkCursorPosition()
         Timer.after(0.25, function() drawItems = true end)
 
     -- check if mouse is within bounds of menu
-    elseif EXPAND_MENU and not (xPos > 0 and xPos < 200 and yPos > love.graphics.getHeight()/8 and yPos < (love.graphics.getHeight()/8)+300) then
+    elseif EXPAND_MENU and not (xPos > 1 and xPos < 200 and yPos > love.graphics.getHeight()/8 and yPos < (love.graphics.getHeight()/8)+300) then
         DRAW_TAB = true
         EXPAND_MENU = false
         drawItems = false

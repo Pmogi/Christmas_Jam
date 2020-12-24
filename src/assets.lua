@@ -16,7 +16,9 @@ assets["kitchenAtticDoor2"] = graphics.newImage("assets/image/kitchen/kitchenatt
 assets["kitchencabinet1"] = graphics.newImage("assets/image/kitchen/kitchencabinet1.png")
 assets["kitchencabinet2"] = graphics.newImage("assets/image/kitchen/kitchencabinet2.png")
 
-
+-- Items
+assets["Sugar"] = graphics.newImage("assets/image/kitchen/itemsugar.png")
+-- assets[""]
 
 
 

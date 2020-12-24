@@ -12,6 +12,7 @@ assets["UI_backpack"] = graphics.newImage("assets/image/UI/backpack.png")
 
 
 
+
 -- Kitchen images
 assets["kitchenBG"] = graphics.newImage("assets/image/kitchen/kitchenbg.png")
 assets["kitchenAtticDoor1"] = graphics.newImage("assets/image/kitchen/kitchenatticdoor1.png") -- closed state
@@ -23,10 +24,21 @@ assets["kitchencabinet2"] = graphics.newImage("assets/image/kitchen/kitchencabin
 assets["kitchenFridge1"]  = graphics.newImage("assets/image/kitchen/kitchenfridge1.png")
 assets["kitchenFridge2"]  = graphics.newImage("assets/image/kitchen/kitchenfridge2.png")
 
+assets["kitchenCookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook.png")
+
+
+
+
+-- Attic images
+local a = "assets/image/attic/"
+assets["atticBG"] = graphics.newImage(a .. "atticbg.png")
+
+
+
 
 -- Items
-assets["Sugar"] = graphics.newImage("assets/image/kitchen/itemsugar.png")
-
+assets["sugar"]  = graphics.newImage("assets/image/kitchen/itemsugar.png")
+assets["rasins"] = graphics.newImage("assets/image/kitchen/itemrasins.png")
 -- assets[""]
 
 

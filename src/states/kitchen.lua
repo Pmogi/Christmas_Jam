@@ -27,9 +27,9 @@ function Kitchen:init()
     roomState["cabinet"]   = false
     roomState["fridge"]    = false
 
-    roomState["sugar"]      = true
-    roomState["rasins"]     = true
-    roomState["oats"]       = true
+    itemsInRoom["sugar"]      = true
+    itemsInRoom["rasins"]     = true
+    itemsInRoom["oats"]       = true
 
 end
 
@@ -62,7 +62,7 @@ function Kitchen:enter()
             ))
     
     -- Cabinet and Sugar
-    World.addEntity(Sensor(500, 200, 800, 100,
+    World.addEntity(Sensor(550, 200, 100, 100,
                     function() 
                         -- opening cabinet
                         if not roomState["cabinet"] then
@@ -70,15 +70,15 @@ function Kitchen:enter()
                             -- play open sound
 
                             -- add sugar
-                            World.addEntity(Sensor(643, 210, 150, 150,
+                            World.addEntity(Sensor(610, 210, 150, 150,
                                 function()    
                                     SpeechBox.startSpeech("You got a jar of sugar.")
                                     -- grab sound
-                                    --Inventory.addToInventory(Item("Sugar", Assets.getAsset("Sugar")))
+                                    --Inventory.addToInventory(Item("sugar", Assets.getAsset("Sugar")))
                                     itemsInRoom["sugar"] = false
                                     return false
                                 end,
-                            Assets.getAsset("Sugar"), true))
+                            Assets.getAsset("sugar"), true))
                         end
                     
                     return false
@@ -94,22 +94,29 @@ function Kitchen:enter()
                             -- play open sound
 
                             -- add sugar
-                            World.addEntity(Sensor(643, 210, 150, 150,
+                            World.addEntity(Sensor(925, 275 , 50, 50,
                                 function()    
-                                    SpeechBox.startSpeech("You got a jar of sugar.")
+                                    SpeechBox.startSpeech("You got a box of rasins, gross...")
                                     -- grab sound
-                                    --Inventory.addToInventory(Item("Sugar", Assets.getAsset("Sugar")))
-                                    itemsInRoom["sugar"] = false
+                                    --Inventory.addToInventory(Item("rasins", Assets.getAsset("Sugar")))
+                                    itemsInRoom["rasins"] = false
                                     return false
                                 end,
-                            Assets.getAsset("Sugar"), true))
+                            Assets.getAsset("rasins"), true))
                         end
                     
                     return false
                     end ),
                     false, false)
 
-    
+    -- Go to recipe page
+    World.addEntity(Sensor(150, 425, 100, 100,
+                    function()
+                        
+
+
+                        return true
+                    end, Assets.getAsset("kitchenCookbook"), true))
     
     -- Go to living room
 

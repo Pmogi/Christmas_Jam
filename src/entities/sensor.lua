@@ -55,8 +55,7 @@ function Sensor:update( dt )
                     
                     -- one touch, delay next by a half second
                     activateCoolDown = true
-                    Timer.after(0.5, function() activateCoolDown = false
-                    end)
+                    Timer.after(0.5, function() activateCoolDown = false end)
             else
                     love.mouse.setCursor(cursorHighlighted)
                     self.mouseHover = true

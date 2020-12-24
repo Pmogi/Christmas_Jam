@@ -73,6 +73,7 @@ end
 
 -- Maybe not hardcode this and have a stack of items
 function GUI()
+    --[[
     if Inventory.checkInventory("Eraser") then
          if gui:ImageButton(Assets.getAsset("Eraser"), { hovered = Assets.getAsset("EraserGlow")  }, 10, 96).hit then 
             Assets.getAsset("Grab"):play()
@@ -122,7 +123,7 @@ function GUI()
             Inventory.setActiveItem("HelpBook")
         end
     end
-
+]]
 end
 
 

@@ -10,12 +10,12 @@ local Inventory    = require("src.systems.inventory")
 local InventoryGUI = require("src.systems.inventoryGUI")
 local World    = require("src.systems.world")
 local Objective = require("src.systems.objective")
---local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
+local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
 
 
 local Kitchen = {}
 
-local kitchenState = {}
+local roomState = {}
 
 local itemsInRoom  = {}
 
@@ -23,13 +23,13 @@ function Kitchen:init()
 -- set initial state from Kitchen to world
     self.background = Assets.getAsset("kitchenBG")
     
-    kitchenState["atticDoor"] = false
-    kitchenState["cabinet"]   = false
-    kitchenState["fridge"]    = false
+    roomState["atticDoor"] = true
+    roomState["cabinet"]   = false
+    roomState["fridge"]    = false
 
-    itemsInRoom["sugar"]      = true
-    itemsInRoom["rasins"]     = true
-    itemsInRoom["oats"]       = true
+    roomState["sugar"]      = true
+    roomState["rasins"]     = true
+    roomState["oats"]       = true
 
 end
 
@@ -37,13 +37,38 @@ end
 function Kitchen:enter()
     -- add sensor entities
     
-    World.addEntity(Sensor(500, 575 , 100, 100, function()
-        SpeechBox.startSpeech('I meant," said Ipslore bitterly, "what is there in this world that truly makes living worthwhile?" Death thought about it. CATS, he said eventually. CATS ARE NICE.”' )
-        Assets.getAsset("Touch"):play()
+    World.addEntity(Sensor(200, 200 , 300, 200, 
+        function()
+            SpeechBox.startSpeech("It's beginning to look a lot like Christmas." )
+            Assets.getAsset("Touch"):play()
         return true
     end))
 
+    -- Attic Door sensor
+    World.addEntity(Sensor(200, 0, 300, 100, 
+            function()
+                if not roomState["atticDoor"] then
+                    SpeechBox.startSpeech("I wonder if there's a way to get up there.")
+                    Assets.getAsset("Touch"):play()
+                else
+                    --change gameState to attic room
+                    
+                end
+                
+                return true
+            end
+                ))
 
+    World.addEntity(Sensor(500, 200, 800, 100,
+                    function() 
+                        -- opening cabinet
+                        if not roomState["cabinet"] then
+                            roomState["cabinet"] = true
+                            -- play open sound
+                        end
+
+                        return false
+                    end ))
 
 end
 
@@ -62,12 +87,28 @@ function Kitchen:draw()
     camera:attach()
     love.graphics.draw(self.background, 0 , 0)
 
+    -- Draw states
+    if not roomState["atticDoor"] then
+        love.graphics.draw(Assets.getAsset("kitchenAtticDoor1"), 200, 0)
+    else
+        love.graphics.draw(Assets.getAsset("kitchenAtticDoor2"), 200, 0)
+    end
+
+    if not roomState["cabinet"] then
+        love.graphics.draw(Assets.getAsset("kitchencabinet1"), 500, 175)
+    else
+        love.graphics.draw(Assets.getAsset("kitchencabinet2"), 500, 175)
+    end
+
+
+
+
     InventoryGUI.draw()
     World.draw() -- draw entities    
     SpeechBox.draw()
     camera:detach()
 
-    -- DrawGrid.drawGrid()
+    DrawGrid.drawGrid()
 end
 
 

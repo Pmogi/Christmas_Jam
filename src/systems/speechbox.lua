@@ -41,7 +41,7 @@ function SpeechBox.draw()
         -- draw the text
         love.graphics.setColor(0, 0, 0, 1)
         -- Finds the amount of wrappings there are in the text given 600 pixels of width
-        local width, wrappedText = Assets.getAsset("font"):getWrap(speechText, 600)
+        local width, wrappedText = Assets.getAsset("font"):getWrap(speechText, 725)
         
         for i, str in ipairs(wrappedText) do
             -- iterates down by 12 pixels every wrapping (i*12)
@@ -61,7 +61,7 @@ function SpeechBox.update(dt)
         -- raise the height of the box with respect to time, and then print the text, after 5 seconds drop box
         Timer.tween(0.25, SpeechBox, {speechBoxHeight = 75})
         Timer.after(0.25, function() drawSpeech = true  end)
-        Timer.after(speechBoxLength, function()  Timer.tween(0.25, SpeechBox, {speechBoxHeight = 0})  Timer.after(0.25, function() drawSpeech = false textBoxCooldown = false end)  end  )
+        Timer.after(speechBoxLength, function()  Timer.tween(0.25, SpeechBox, {speechBoxHeight = 0})   drawSpeech = false textBoxCooldown = false  end  )
         drawBox = false
         textBoxCooldown = true
     end

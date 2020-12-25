@@ -13,7 +13,7 @@ local Objective = require("src.systems.objective")
 -- 
 Kitchen = require("src.states.kitchen")
 Attic   = require("src.states.attic")
-
+Bedroom = require("src.states.bedroom")
 
 local World    = require("src.systems.world")
 
@@ -26,7 +26,7 @@ function love.load()
 
     camera = Camera(love.graphics.getWidth()/2, love.graphics.getHeight()/2)
 
-    GameState.switch(Kitchen) -- Switching state
+    GameState.switch(Bedroom) -- Switching state
     -- love.graphics.setFont(Assets.getAsset("font"))
 
     cursorNormal = love.mouse.newCursor("assets/image/cursor/cursorNormal.png", 0, 0)

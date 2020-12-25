@@ -34,6 +34,13 @@ local a = "assets/image/attic/"
 assets["atticBG"] = graphics.newImage(a .. "atticbg.png")
 
 
+-- Bedroom assets
+local b = "assets/image/bedroom/"
+assets["bedroomBG"]    = graphics.newImage(b .. "bedroombg.png")
+
+assets["grannyFrames"] = {graphics.newImage(b .. "bedroombedandlady1.png"),
+                          graphics.newImage(b .. "bedroombedandlady2.png") }
+
 
 
 -- Items

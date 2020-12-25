@@ -76,57 +76,56 @@ end
 
 -- Maybe not hardcode this and have a stack of items
 function GUI()
-    --[[
-    if Inventory.checkInventory("Eraser") then
-         if gui:ImageButton(Assets.getAsset("Eraser"), { hovered = Assets.getAsset("EraserGlow")  }, 10, 96).hit then 
+
+    if Inventory.checkInventory("sugar") then
+         if gui:ImageButton(Assets.getAsset("sugar"), { hovered = Assets.getAsset("sugar")  }, 10, 96).hit then 
             Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("Eraser")
+            Inventory.setActiveItem("sugar")
          end
     end
     
-    if Inventory.checkInventory("Duck") then    
-        if gui:ImageButton(Assets.getAsset("Duck"), { hovered = Assets.getAsset("DuckGlow")  }, 10, 170).hit then 
+    if Inventory.checkInventory("raisins") then    
+        if gui:ImageButton(Assets.getAsset("raisins"), { hovered = Assets.getAsset("raisins")  }, 10, 200).hit then 
             Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("Duck")
+            Inventory.setActiveItem("raisins")
         end
     end
 
-    if Inventory.checkInventory("Glue") then    
-        if gui:ImageButton(Assets.getAsset("Glue"), { hovered = Assets.getAsset("GlueGlow")  }, 10, 244).hit then 
+    if Inventory.checkInventory("oatmeal") then    
+        if gui:ImageButton(Assets.getAsset("oatmeal"), { hovered = Assets.getAsset("oatmeal")  }, 10, 244).hit then 
             Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("Glue")
+            Inventory.setActiveItem("oatmeal")
         end
     end
 
-    if Inventory.checkInventory("Blanket") then    
-        if gui:ImageButton(Assets.getAsset("Blanket"), { hovered = Assets.getAsset("BlanketGlow")  }, 10, 318).hit then 
+    if Inventory.checkInventory("cookbook") then    
+        if gui:ImageButton(Assets.getAsset("cookbook"), { hovered = Assets.getAsset("cookbook")  }, 10, 318).hit then 
             Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("Blanket")
+            Inventory.setActiveItem("cookbook")
         end
     end
 
-    if Inventory.checkInventory("Scissors") then    
-        if gui:ImageButton(Assets.getAsset("Scissors"), { hovered = Assets.getAsset("ScissorsGlow")  }, 96, 96).hit then 
+    if Inventory.checkInventory("bowl") then    
+        if gui:ImageButton(Assets.getAsset("bowl"), { hovered = Assets.getAsset("bowl")  }, 96, 96).hit then 
             Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("Scissors")
+            Inventory.setActiveItem("bowl")
         end
     end
 
-    if Inventory.checkInventory("Mustache") then    
-        if gui:ImageButton(Assets.getAsset("Mustache"), { hovered = Assets.getAsset("MustacheGlow")  }, 96, 244).hit then 
+    if Inventory.checkInventory("dentures") then    
+        if gui:ImageButton(Assets.getAsset("dentures"), { hovered = Assets.getAsset("dentures")  }, 96, 244).hit then 
             Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("Mustache")
+            Inventory.setActiveItem("dentures")
         end
     end
 
     
-    if Inventory.checkInventory("HelpBook") then    
-        if gui:ImageButton(Assets.getAsset("HelpBook"), { hovered = Assets.getAsset("HelpBookGlow")  }, 96, 318).hit then 
+    if Inventory.checkInventory("atticHook") then    
+        if gui:ImageButton(Assets.getAsset("atticHook"), { hovered = Assets.getAsset("atticHook") }, 96, 318).hit then 
             Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("HelpBook")
+            Inventory.setActiveItem("atticHook")
         end
     end
-]]
 end
 
 

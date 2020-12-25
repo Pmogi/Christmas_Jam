@@ -37,8 +37,16 @@ assets["atticBG"] = graphics.newImage(a .. "atticbg.png")
 
 
 -- Items
+
+-- Kitchen
 assets["sugar"]  = graphics.newImage("assets/image/kitchen/itemsugar.png")
-assets["rasins"] = graphics.newImage("assets/image/kitchen/itemrasins.png")
+assets["raisins"] = graphics.newImage("assets/image/kitchen/itemraisins.png")
+assets["oatmeal"] = graphics.newImage("assets/image/kitchen/itemoatmeal.png")
+assets["bowl"] = graphics.newImage("assets/image/kitchen/itembowl.png")
+assets["cookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook.png")
+assets["dentures"] = graphics.newImage("assets/image/kitchen/itemdentures.png")
+assets["atticHook"] = graphics.newImage("assets/image/kitchen/itemattichook.png")
+
 -- assets[""]
 
 

@@ -49,9 +49,11 @@ function Kitchen:enter()
             function()
                 if not roomState["atticDoor"] and Inventory.getActiveItem() == "Hook" then
                     roomState["atticDoor"] = true
+                
                 elseif not roomState["atticDoor"] then
                     -- play "hmmm" sound
                     SpeechBox.startSpeech("I wonder if there's a way to get up there...")
+                
                 else
                     --change gameState to attic room
                     SpeechBox.startSpeech("Add going to attic")
@@ -110,10 +112,10 @@ function Kitchen:enter()
                     false, false)
 
     -- Go to recipe page
-    World.addEntity(Sensor(150, 425, 100, 100,
+    World.addEntity(Sensor(150, 425, 0, 0,
                     function()
+                    -- Go to Recipe page
                         
-
 
                         return true
                     end, Assets.getAsset("kitchenCookbook"), true))
@@ -141,7 +143,7 @@ function Kitchen:draw()
     camera:attach()
     love.graphics.draw(self.background, 0 , 0)
 
-    -- Draw states
+    -- Draw base on room state
     if not roomState["atticDoor"] then
         love.graphics.draw(Assets.getAsset("kitchenAtticDoor1"), 200, 0)
     else
@@ -160,6 +162,7 @@ function Kitchen:draw()
         love.graphics.draw(Assets.getAsset("kitchenFridge2"), 825, 200)
     end
     
+
 
 
 

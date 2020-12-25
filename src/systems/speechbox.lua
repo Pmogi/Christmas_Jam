@@ -10,11 +10,11 @@ local drawSpeech = false
 local drawBox    = false
 local textBoxCooldown = false -- to prevent textboxes being made too quickly, reset with timer
 
-local speechBoxLength = 2.5
+local speechBoxLength = 2
 
 local messageQueue = {}
 
-SpeechBox.speechBoxHeightMax = 210
+SpeechBox.speechBoxHeightMax = 75
 SpeechBox.speechBoxHeight     = 0
 
 function SpeechBox.startSpeech(text)
@@ -59,9 +59,11 @@ end
 function SpeechBox.update(dt)
     if drawBox and not textBoxCooldown then
         -- raise the height of the box with respect to time, and then print the text, after 5 seconds drop box
-        Timer.tween(0.25, SpeechBox, {speechBoxHeight = 75})
+        Timer.tween(0.25, SpeechBox, {speechBoxHeight = SpeechBox.speechBoxHeightMax})
         Timer.after(0.25, function() drawSpeech = true  end)
-        Timer.after(speechBoxLength, function()  Timer.tween(0.25, SpeechBox, {speechBoxHeight = 0})   drawSpeech = false textBoxCooldown = false  end  )
+
+        -- after the length of displaying text, stop displaying text and shrink down the boxes
+        Timer.after(speechBoxLength, function()  Timer.tween(0.25, SpeechBox, {speechBoxHeight = 0}) Timer.after(0.25, function() textBoxCooldown = false end)   drawSpeech = false end  )
         drawBox = false
         textBoxCooldown = true
     end

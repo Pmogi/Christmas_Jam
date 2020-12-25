@@ -17,10 +17,8 @@ Attic   = require("src.states.attic")
 
 local World    = require("src.systems.world")
 
-
 -- Test Harness
 -- 
-
 
 function love.load()    
     GameState.registerEvents{'draw', 'update', 'init', 'enter', 'exit'}
@@ -28,8 +26,8 @@ function love.load()
 
     camera = Camera(love.graphics.getWidth()/2, love.graphics.getHeight()/2)
 
-    GameState.switch(Kitchen) -- NOTE: changed to switch to the kitchen state
-    love.graphics.setFont(Assets.getAsset("font"))
+    GameState.switch(Kitchen) -- Switching state
+    -- love.graphics.setFont(Assets.getAsset("font"))
 
     cursorNormal = love.mouse.newCursor("assets/image/cursor/cursorNormal.png", 0, 0)
     cursorHighlighted = love.mouse.newCursor("assets/image/cursor/cursorHighlighted.png", 0, 0)

@@ -62,6 +62,11 @@ assets["candleFrames"] = {graphics.newImage(b .. "bedroomcandleleft.png")  ,
 
 assets["prune"]  = graphics.newImage("assets/image/bedroom/itemprunes.png")
 
+assets["cookies"] = graphics.newImage(b .. "itemcookies.png")
+assets["deco1"]  = graphics.newImage(b .. "itemdecoration1.png") -- pillow
+assets["deco2"]  = graphics.newImage(b .. "itemdecoration2.png") -- wreath
+assets["deco3"]  = graphics.newImage(b .. "itemdecoration3.png") -- tree
+
 
 -- Living Room assets
 local l = "assets/image/livingRoom/"
@@ -75,14 +80,19 @@ assets["recipeBook"] = graphics.newImage("assets/image/recipe/recipePage.png")
 -- Items
 
 -- Kitchen
+
 assets["sugar"]  = graphics.newImage("assets/image/kitchen/itemsugar.png")
 assets["sugaricon"] = graphics.newImage("assets/image/kitchen/itemsugaricon.png")
+
 assets["raisins"] = graphics.newImage("assets/image/kitchen/itemraisins.png")
 assets["raisinsicon"] = graphics.newImage("assets/image/kitchen/itemraisinsicon.png")
+
 assets["oats"] = graphics.newImage("assets/image/kitchen/itemoatmeal.png")
 assets["oatsicon"] = graphics.newImage("assets/image/kitchen/itemoatmealicon.png")
+
 assets["bowl"] = graphics.newImage("assets/image/kitchen/itembowl.png")
 assets["bowlicon"] = graphics.newImage("assets/image/kitchen/itembowlicon.png")
+
 assets["cookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook.png")
 
 -- Living Room

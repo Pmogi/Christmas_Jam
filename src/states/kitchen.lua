@@ -30,6 +30,7 @@ function Kitchen:init()
     itemsInRoom["sugar"]      = true
     itemsInRoom["raisins"]     = true
     itemsInRoom["oats"]       = true
+    itemsInRoom["cookbook"] = true
 
 end
 
@@ -57,6 +58,7 @@ function Kitchen:enter()
                 else
                     --change gameState to attic room
                     SpeechBox.startSpeech("Add going to attic")
+                    GameState.switch(Attic)
                 end
                 
                 return true
@@ -76,7 +78,7 @@ function Kitchen:enter()
                                 function()    
                                     SpeechBox.startSpeech("You got a jar of sugar.")
                                     -- grab sound
-                                    Inventory.addToInventory(Item("sugar", Assets.getAsset("sugar")))
+                                    Inventory.addToInventory(Item("sugaricon", Assets.getAsset("sugaricon")))
                                     itemsInRoom["sugar"] = false
                                     return false
                                 end,
@@ -100,7 +102,7 @@ function Kitchen:enter()
                                 function()    
                                     SpeechBox.startSpeech("You got a box of raisins, gross...")
                                     -- grab sound
-                                    Inventory.addToInventory(Item("raisins", Assets.getAsset("raisins")))
+                                    Inventory.addToInventory(Item("raisinsicon", Assets.getAsset("raisinsicon")))
                                     itemsInRoom["raisins"] = false
                                     return false
                                 end,
@@ -111,25 +113,43 @@ function Kitchen:enter()
                     end ),
                     false, false)
 
+    World.addEntity(Sensor(12,410,50,50,
+        function()
+                SpeechBox.startSpeech("You got some oats Mah-goats")
+                -- grab sound
+                Inventory.addToInventory(Item("oatsicon", Assets.getAsset("oatsicon")))
+                itemsInRoom["oats"] = false
+                return false
+        end,Assets.getAsset("oats"), true))
+
+    World.addEntity(Sensor(740,370,50,50,
+        function()
+                SpeechBox.startSpeech("Hmmm...I could bake something")
+                return true
+        end, Assets.getAsset("bowl"), true))
+
+
     -- Go to recipe page
     World.addEntity(Sensor(150, 425, 0, 0,
                     function()
                     -- Go to Recipe page
-                        
-
-                        return true
-                    end, Assets.getAsset("kitchenCookbook"), true))
+                    GameState.switch(Recipe) 
+                    return true
+                    end, Assets.getAsset("cookbook"), true))
     
     -- Go to living room
-    World.addEntity(Sensor(371, 680, 200,100,
+    World.addEntity(Sensor(371, 680, 200,200,
                         function()
                                 -- play door sound --
                                 GameState.switch(LivingRoom)
-                        end
-                                ))
-
+                        end))
 
     -- Go to backyard
+    World.addEntity(Sensor(1095,249,220,400,
+                        function()
+                                --play door sound--
+                                GameState.switch(Backyard)
+                        end))
     
 
 end

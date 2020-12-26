@@ -37,6 +37,11 @@ assets["atticRecordBox2"] = graphics.newImage("assets/image/attic/atticrecordbox
 -- Living Room images
 assets["livingRoomBG"] = graphics.newImage("assets/image/livingRoom/livingroombg.png")
 
+-- Backyard image
+assets["backyardBG"] = graphics.newImage("assets/image/backyard/backyardbg.png")
+assets["backyardShed1"] = graphics.newImage("assets/image/backyard/backyardshed1.png")
+assets["backyardShed2"] = graphics.newImage("assets/image/backyard/backyardshed2.png")
+
 -- Bedroom assets
 local b = "assets/image/bedroom/"
 assets["bedroomBG"]    = graphics.newImage(b .. "bedroombg.png")
@@ -64,19 +69,27 @@ local l = "assets/image/livingRoom/"
 assets["livingRoomBG"] = graphics.newImage(l .. "livingroombg.png")
 
 
+-- Recipe assets
+assets["recipeBook"] = graphics.newImage("assets/image/recipe/recipePage.png")
 
 -- Items
 
 -- Kitchen
 assets["sugar"]  = graphics.newImage("assets/image/kitchen/itemsugar.png")
+assets["sugaricon"] = graphics.newImage("assets/image/kitchen/itemsugaricon.png")
 assets["raisins"] = graphics.newImage("assets/image/kitchen/itemraisins.png")
-assets["oatmeal"] = graphics.newImage("assets/image/kitchen/itemoatmeal.png")
+assets["raisinsicon"] = graphics.newImage("assets/image/kitchen/itemraisinsicon.png")
+assets["oats"] = graphics.newImage("assets/image/kitchen/itemoatmeal.png")
+assets["oatsicon"] = graphics.newImage("assets/image/kitchen/itemoatmealicon.png")
 assets["bowl"] = graphics.newImage("assets/image/kitchen/itembowl.png")
+assets["bowlicon"] = graphics.newImage("assets/image/kitchen/itembowlicon.png")
 assets["cookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook.png")
 
 -- Living Room
-assets["dentures"] = graphics.newImage("assets/image/kitchen/itemdentures.png")
-assets["atticHook"] = graphics.newImage("assets/image/kitchen/itemattichook.png")
+assets["dentures"] = graphics.newImage("assets/image/livingRoom/itemdentures.png")
+assets["denturesicon"] = graphics.newImage("assets/image/livingRoom/itemdenturesicon.png")
+assets["atticHook"] = graphics.newImage("assets/image/livingRoom/itemattichook.png")
+assets["attickHookicon"] = graphics.newImage("assets/image/livingRoom/itemattichookicon.png")
 
 -- Attic
 assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")

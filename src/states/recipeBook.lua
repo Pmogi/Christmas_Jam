@@ -20,7 +20,11 @@ function RecipeBook:init()
 end
 
 function RecipeBook:enter()
-
+        World.addEntity(Sensor(935, 0, 200,125,
+                            function()
+                                    GameState.switch(Kitchen)
+                            end
+        ))
 end
 
 function RecipeBook:update(dt)
@@ -28,10 +32,13 @@ function RecipeBook:update(dt)
 end
 
 function RecipeBook:draw()
-
+        width = 1280
+        love.graphics.draw(Assets.getAsset("recipeBook"), width / 8, 0)
+        DrawGrid.drawGrid()
 end
 
 function RecipeBook:leave()
+        World.clearEntities()
 
 end
 

@@ -50,7 +50,7 @@ function Kitchen:enter()
             function()
                 if not roomState["atticDoor"] and Inventory.getActiveItem() == "Hook" then
                     roomState["atticDoor"] = true
-                
+                    Assets.getAsset("AtticDoor"):play()
                 elseif not roomState["atticDoor"] then
                     -- play "hmmm" sound
                     SpeechBox.startSpeech("I wonder if there's a way to get up there...")
@@ -72,7 +72,7 @@ function Kitchen:enter()
                         if not roomState["cabinet"] then
                             roomState["cabinet"] = true
                             -- play open sound
-
+                            Assets.getAsset("Cabinet"):play()
                             -- add sugar
                             World.addEntity(Sensor(610, 210, 150, 150,
                                 function()    

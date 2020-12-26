@@ -37,7 +37,13 @@ function InventoryGUI.update(dt)
     
     -- for inventory gui drawing
     if (drawItems) then
-        GUI()
+            local x = 10
+            local y = 96
+            local inventory = Inventory.getInventory()
+            for key, item in ipairs(inventory) do
+                    GUI(item.id, x, y)
+                    y = y + 104
+            end
     end
 
 end
@@ -75,7 +81,16 @@ end
 
 
 -- Maybe not hardcode this and have a stack of items
-function GUI()
+function GUI(item, x, y)
+        if Inventory.checkInventory(item) then
+                if gui:ImageButton(Assets.getAsset(item), {hovered = Assets.getAsset(item)}, x,y).hit then
+                        Assets.getAsset("Grab"):play()
+                        Inventory.setActiveItem(item)
+                end
+        end
+end
+
+--[[function GUI()
 
     if Inventory.checkInventory("sugar") then
          if gui:ImageButton(Assets.getAsset("sugar"), { hovered = Assets.getAsset("sugar")  }, 10, 96).hit then 
@@ -127,7 +142,7 @@ function GUI()
         end
     end
 end
-
+]]
 
 function checkCursorPosition()
     local xPos = love.mouse.getX()

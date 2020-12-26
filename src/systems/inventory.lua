@@ -36,6 +36,14 @@ function Inventory.addToInventory(item)
     table.insert(inv, item)
 end
 
+function Inventory.getInventory()
+        local copy = {}
+        for key, value in pairs(inv) do
+                copy[key] = value
+        end
+        return copy
+end
+
 -- Check if item is within inv by id.
 -- If in inv, then return true and it's positive, else false
 function Inventory.checkInventory(id)

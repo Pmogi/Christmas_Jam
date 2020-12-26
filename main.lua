@@ -28,9 +28,9 @@ function love.load()
 
     camera = Camera(love.graphics.getWidth()/2, love.graphics.getHeight()/2)
 
-    GameState.switch(Bedroom) -- Switching state
+    GameState.switch(Kitchen) -- Switching state
     -- love.graphics.setFont(Assets.getAsset("font"))
-    love.window.setMode(1280, 720)
+    love.window.setMode(1280, 720, {centered=true})
 
     cursorNormal = love.mouse.newCursor("assets/image/cursor/cursorNormal.png", 0, 0)
     cursorHighlighted = love.mouse.newCursor("assets/image/cursor/cursorHighlighted.png", 0, 0)

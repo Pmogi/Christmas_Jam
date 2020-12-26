@@ -22,24 +22,41 @@ end
 function RecipeBook:enter()
         World.addEntity(Sensor(935, 0, 200,125,
                             function()
-                                    GameState.switch(Kitchen)
+                                -- play paper/rustle sound sound?    
+                                GameState.switch(Kitchen)
                             end
         ))
+
+        World.addEntity(Sensor(200, 200, 800, 200, 
+                                function()
+                                        --play hmm sound
+                                        SpeechBox.startSpeech("These must be the cookies granny was talking about!")
+                                        return true
+                                end
+                        ))
+
+        World.addEntity(Sensor(400, 600, 400, 100, 
+                                function()
+                                        --play hmm sound
+                                        SpeechBox.startSpeech("Granny was definitely from a different era...")
+                                        return true
+                                end))
 end
 
 function RecipeBook:update(dt)
-
+        SpeechBox.update(dt)
+        World.update(dt)
 end
 
 function RecipeBook:draw()
         width = 1280
         love.graphics.draw(Assets.getAsset("recipeBook"), width / 8, 0)
+        SpeechBox.draw()
         DrawGrid.drawGrid()
 end
 
 function RecipeBook:leave()
         World.clearEntities()
-
 end
 
 

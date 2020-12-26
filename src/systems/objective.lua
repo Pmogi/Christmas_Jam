@@ -10,11 +10,9 @@ local Objective = {}
 local notified = false
 
 Objective.objectiveList = {
-    ["Painting"] = false,
-    ["Book"]     = false,
-    ["Bill"]     = false,
-    ["Calender"] = false,
-    ["Won"] = false
+    ["Record"] = false,
+    ["Cookies"]     = false,
+    ["Decorations"]     = false
 }
 
 function Objective.update(dt)

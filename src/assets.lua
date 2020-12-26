@@ -37,7 +37,7 @@ assets["atticRecordBox2"] = graphics.newImage("assets/image/attic/atticrecordbox
 
 
 -- Living Room images
-assets["livingRoomBG"] = graphics.newImage("assets/image/livingRoom/livingroombg.png")
+assets["livingRoom"] = graphics.newImage("assets/image/livingRoom/livingroombg.png")
 
 -- Bedroom assets
 local b = "assets/image/bedroom/"
@@ -51,7 +51,8 @@ assets["candleFrames"] = {graphics.newImage(b .. "bedroomcandleleft.png")  ,
                           graphics.newImage(b .. "bedroomcandleright.png") ,
                           graphics.newImage(b .. "bedroomcandleneutral.png") }
 
-
+-- Recipe assets
+assets["recipeBook"] = graphics.newImage("assets/image/recipe/recipePage.png")
 
 -- Items
 

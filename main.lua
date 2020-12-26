@@ -16,7 +16,7 @@ Bedroom =    require("src.states.bedroom")
 LivingRoom = require("src.states.livingRoom")
 -- Backyard = 
 -- Recipe =
-
+Recipe   =    require("src.states.recipeBook")
 local World    = require("src.systems.world")
 
 -- Test Harness

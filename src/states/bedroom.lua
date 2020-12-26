@@ -67,7 +67,7 @@ function Bedroom:update( dt )
     self.candleAnimation:update(dt) 
 end
 
-function Bedroom:draw( )
+function Bedroom:draw()
     love.graphics.draw(Assets.getAsset("bedroomBG"))
 
     self.granimation:draw()

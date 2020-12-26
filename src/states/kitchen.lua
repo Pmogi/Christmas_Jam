@@ -30,6 +30,7 @@ function Kitchen:init()
     itemsInRoom["sugar"]      = true
     itemsInRoom["raisins"]     = true
     itemsInRoom["oats"]       = true
+    itemsInRoom["cookbook"] = true
 
 end
 
@@ -57,6 +58,7 @@ function Kitchen:enter()
                 else
                     --change gameState to attic room
                     SpeechBox.startSpeech("Add going to attic")
+                    GameState.switch(Attic)
                 end
                 
                 return true
@@ -115,10 +117,12 @@ function Kitchen:enter()
     World.addEntity(Sensor(150, 425, 0, 0,
                     function()
                     -- Go to Recipe page
+                    GameState.switch(Recipe)
+
                         
 
                         return true
-                    end, Assets.getAsset("kitchenCookbook"), true))
+                    end, Assets.getAsset("cookbook"), true))
     
     -- Go to living room
     World.addEntity(Sensor(371, 680, 200,100,

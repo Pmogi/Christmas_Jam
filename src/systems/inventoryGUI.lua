@@ -38,7 +38,7 @@ function InventoryGUI.update(dt)
     -- for inventory gui drawing
     if (drawItems) then
             local x = 50
-            local y = 96
+            local y = 150
             local inventory = Inventory.getInventory()
             for key, item in ipairs(inventory) do
                     GUI(item.id, x, y)

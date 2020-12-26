@@ -42,7 +42,7 @@ function InventoryGUI.update(dt)
             local inventory = Inventory.getInventory()
             for key, item in ipairs(inventory) do
                     GUI(item.id, x, y)
-                    y = y + 104
+                    y = y + 90
             end
     end
 
@@ -90,60 +90,6 @@ function GUI(item, x, y)
         end
 end
 
---[[function GUI()
-
-    if Inventory.checkInventory("sugar") then
-         if gui:ImageButton(Assets.getAsset("sugar"), { hovered = Assets.getAsset("sugar")  }, 10, 96).hit then 
-            Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("sugar")
-         end
-    end
-    
-    if Inventory.checkInventory("raisins") then    
-        if gui:ImageButton(Assets.getAsset("raisins"), { hovered = Assets.getAsset("raisins")  }, 10, 200).hit then 
-            Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("raisins")
-        end
-    end
-
-    if Inventory.checkInventory("oatmeal") then    
-        if gui:ImageButton(Assets.getAsset("oatmeal"), { hovered = Assets.getAsset("oatmeal")  }, 10, 244).hit then 
-            Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("oatmeal")
-        end
-    end
-
-    if Inventory.checkInventory("cookbook") then    
-        if gui:ImageButton(Assets.getAsset("cookbook"), { hovered = Assets.getAsset("cookbook")  }, 10, 318).hit then 
-            Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("cookbook")
-        end
-    end
-
-    if Inventory.checkInventory("bowl") then    
-        if gui:ImageButton(Assets.getAsset("bowl"), { hovered = Assets.getAsset("bowl")  }, 96, 96).hit then 
-            Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("bowl")
-        end
-    end
-
-    if Inventory.checkInventory("dentures") then    
-        if gui:ImageButton(Assets.getAsset("dentures"), { hovered = Assets.getAsset("dentures")  }, 96, 244).hit then 
-            Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("dentures")
-        end
-    end
-
-    
-    if Inventory.checkInventory("atticHook") then    
-        if gui:ImageButton(Assets.getAsset("atticHook"), { hovered = Assets.getAsset("atticHook") }, 96, 318).hit then 
-            Assets.getAsset("Grab"):play()
-            Inventory.setActiveItem("atticHook")
-        end
-    end
-end
-]]
-
 function checkCursorPosition()
     local xPos = love.mouse.getX()
     local yPos = love.mouse.getY()
@@ -157,7 +103,7 @@ function checkCursorPosition()
         Timer.after(0.25, function() drawItems = true end)
 
     -- check if mouse is within bounds of menu
-    elseif EXPAND_MENU and not (xPos > 1 and xPos < 200 and yPos > love.graphics.getHeight()/8 and yPos < (love.graphics.getHeight()/8)+300) then
+    elseif EXPAND_MENU and not (xPos > 1 and xPos < 200 and yPos > love.graphics.getHeight()/6 and yPos < (love.graphics.getHeight()/6)+300) then
         DRAW_TAB = true
         EXPAND_MENU = false
         drawItems = false

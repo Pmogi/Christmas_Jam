@@ -14,8 +14,7 @@ Kitchen =    require("src.states.kitchen")
 Attic   =    require("src.states.attic")
 Bedroom =    require("src.states.bedroom")
 LivingRoom = require("src.states.livingRoom")
--- Backyard = 
--- Recipe =
+Backyard = require("src.states.backyard")
 Recipe   =    require("src.states.recipeBook")
 local World    = require("src.systems.world")
 

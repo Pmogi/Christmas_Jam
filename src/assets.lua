@@ -37,7 +37,7 @@ assets["atticRecordBox2"] = graphics.newImage("assets/image/attic/atticrecordbox
 
 
 -- Living Room images
-assets["livingRoom"] = graphics.newImage("assets/image/livingRoom/livingroombg.png")
+assets["livingRoomBG"] = graphics.newImage("assets/image/livingRoom/livingroombg.png")
 
 -- Bedroom assets
 local b = "assets/image/bedroom/"

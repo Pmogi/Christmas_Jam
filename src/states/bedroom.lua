@@ -20,11 +20,11 @@ local itemsInRoom = {}
  
 
 function Bedroom:init()
-    roomState["cookiesPlaced"] = false
-    roomState["wreathPlaced"]  = false
-    roomState["pillowPlaced"]  = false
-    roomState["treePlaced"]    = false
-    roomState["record"]        = false
+    roomState["cookiesPlaced"] = true
+    roomState["wreathPlaced"]  = true
+    roomState["pillowPlaced"]  = true
+    roomState["treePlaced"]    = true
+    roomState["record"]        = true
 
     itemsInRoom["prunes"] = true
 
@@ -32,8 +32,8 @@ function Bedroom:init()
 end
 
 function Bedroom:enter(  )
-    self.granimation =     Animation(400, 300, Assets.getAsset("grannyFrames"), 2, 2.5, 0.2)
-    self.candleAnimation = Animation(420, 370, Assets.getAsset("candleFrames"), 4, 1000, 0.2)  
+    self.granimation =     Animation(430, 320, Assets.getAsset("grannyFrames"), 2, 2.5, 0.2)
+    self.candleAnimation = Animation(420, 375, Assets.getAsset("candleFrames"), 4, 1000, 0.2)  
     self.candleAnimation:play()
 
     -- grandma FSM to own function
@@ -51,7 +51,7 @@ function Bedroom:enter(  )
 ))
 
     -- Record player
-    World.addEntity(Sensor(1100, 450, 100, 100,
+    World.addEntity(Sensor(1100, 475, 100, 100,
                     function()
                        if not roomState["record"] and Inventory.getActiveItem() == "Record" then
                             SpeechBox.startSpeech("Granny: Ahhh, they used to play this song when I met my husband. Did I ever tell you that Rose?")
@@ -68,6 +68,8 @@ function Bedroom:enter(  )
                             self.granimation:play()
                             SpeechBox.startSpeech("Granny: Do you remember this song Rose?")
                         end
+
+                        return true
                     end
         ))
 
@@ -75,7 +77,7 @@ function Bedroom:enter(  )
 
     -- If prunes haven't been picked up, spawn prunes
     if itemsInRoom["prunes"] then
-        World.addEntity(Sensor(1000, 400, 0, 0,
+        World.addEntity(Sensor(1000, 425, 0, 0,
                         function()
                             SpeechBox.startSpeech("You obtained a cannister of prunes.")
                             Inventory.addToInventory(Item("prune", Assets.getAsset("Prunes")))
@@ -120,13 +122,27 @@ function Bedroom:draw()
 
     -- record
     if not roomState["record"] then
-        love.graphics.draw(Assets.getAsset("recordPlayer1"), 1100, 425)
+        love.graphics.draw(Assets.getAsset("recordPlayer1"), 1100, 450)
     else
-        love.graphics.draw(Assets.getAsset("recordPlayer2"), 1100, 425)
+        love.graphics.draw(Assets.getAsset("recordPlayer2"), 1100, 450)
     end
 
     -- decorations
+    if roomState["cookiesPlaced"] then
+        love.graphics.draw(Assets.getAsset("cookies"), 555,515 )
+    end
 
+    if roomState["wreathPlaced"]  then
+        love.graphics.draw(Assets.getAsset("deco2"), 850, 220)
+    end
+    
+    if roomState["pillowPlaced"]  then
+        love.graphics.draw(Assets.getAsset("deco1"), 255, 442)
+    end
+    
+    if roomState["treePlaced"]  then
+        love.graphics.draw(Assets.getAsset("deco3"), 131, 235)
+    end
 
 
 
@@ -144,8 +160,15 @@ function Bedroom:leave( )
 end
 
 -- talks based on objectives available
-function grannyFSM()
+-- Cookies
+---- After cookies, dentures
 
+-- Hook -> attic
+
+-- Decorations
+
+function grannyFSM()
+    
 end
 
 return Bedroom

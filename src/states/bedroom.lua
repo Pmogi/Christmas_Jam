@@ -17,7 +17,7 @@ local Bedroom = {}
 local roomState = {}
 local itemsInRoom = {}
 
-local granimation = Animation(400, 300, Assets.getAsset("grannyFrames"), 2, 2.5)
+ 
 
 function Bedroom:init()
     roomState["cookiesPlaced"] = false
@@ -28,32 +28,52 @@ function Bedroom:init()
 
     itemsInRoom["prune"] = true
 
-
+    
 end
 
 function Bedroom:enter(  )
-    -- animation manager for granny
+    self.granimation =     Animation(400, 300, Assets.getAsset("grannyFrames"), 2, 2.5, 0.2)
+    self.candleAnimation = Animation(420, 370, Assets.getAsset("candleFrames"), 4, 1000, 0.2)
+    
+    self.candleAnimation:play()
     
     
     -- add entities
+
+    -- grandma FSM to own function
+
+    -- 
+    
+    
+    
+    -- Go to living room
+    World.addEntity(Sensor(0, 300, 100, 500, 
+                        function()
+                            -- play door sound -- 
+                            GameState.switch(LivingRoom)
+                        end
+))
+
 
 
 end
 
 function Bedroom:update( dt )
     if (love.keyboard.isDown('g')) then
-        granimation:play()
+        self.granimation:play()
     end
 
-    granimation:update(dt)
+    self.granimation:update(dt)
+    self.candleAnimation:update(dt) 
 end
 
 function Bedroom:draw( )
     love.graphics.draw(Assets.getAsset("bedroomBG"))
 
-    granimation:draw()
+    self.granimation:draw()
+    self.candleAnimation:draw()
 
-    -- DrawGrid.drawGrid()
+    DrawGrid.drawGrid()
 end
 
 function Bedroom:leave( )

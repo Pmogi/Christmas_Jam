@@ -18,14 +18,14 @@ local Animation = Object:extend()
 -- Animation Manager
 -- Given a position (x, y) and a table of image frames,
 -- iterate through the frames in steps of 0.2 seconds for (playtime) seconds.
-function Animation:new( x, y, imgTable, numOfFrames , playtime)
+function Animation:new( x, y, imgTable, numOfFrames, playtime, timestep)
     
     self.x = x or 0
     self.y = y or 0
     self.imgTable = imgTable
 
     self.time     = 0 -- for running timer
-    self.timeStep = 0.2
+    self.timeStep = timestep or 0.2
     self.playtime = playtime
     self.playing     = false
     
@@ -37,7 +37,6 @@ end
 function Animation:draw()
     -- 
     if self.playing then
-        print(self.frame)
         love.graphics.draw(self.imgTable[self.frame], self.x, self.y)
     else
         love.graphics.draw(self.imgTable[1], self.x, self.y)

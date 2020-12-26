@@ -41,6 +41,11 @@ assets["bedroomBG"]    = graphics.newImage(b .. "bedroombg.png")
 assets["grannyFrames"] = {graphics.newImage(b .. "bedroombedandlady1.png"),
                           graphics.newImage(b .. "bedroombedandlady2.png") }
 
+assets["candleFrames"] = {graphics.newImage(b .. "bedroomcandleleft.png")  ,
+                          graphics.newImage(b .. "bedroomcandleneutral.png"),
+                          graphics.newImage(b .. "bedroomcandleright.png") ,
+                          graphics.newImage(b .. "bedroomcandleneutral.png") }
+
 
 
 -- Items

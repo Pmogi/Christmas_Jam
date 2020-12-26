@@ -13,8 +13,27 @@ local Objective = require("src.systems.objective")
 local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
 
 
-RecipeBook = {}
+local RecipeBook = {}
 
+function RecipeBook:init()
+
+end
+
+function RecipeBook:enter()
+
+end
+
+function RecipeBook:update(dt)
+
+end
+
+function RecipeBook:draw()
+
+end
+
+function RecipeBook:leave()
+
+end
 
 
 return RecipeBook

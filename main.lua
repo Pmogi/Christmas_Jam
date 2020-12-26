@@ -8,12 +8,14 @@ local Assets = require("src.assets")
 local Objective = require("src.systems.objective")
 
 
-
 -- -- States
 -- 
-Kitchen = require("src.states.kitchen")
-Attic   = require("src.states.attic")
-Bedroom = require("src.states.bedroom")
+Kitchen =    require("src.states.kitchen")
+Attic   =    require("src.states.attic")
+Bedroom =    require("src.states.bedroom")
+LivingRoom = require("src.states.livingroom")
+-- Backyard = 
+-- Recipe =
 
 local World    = require("src.systems.world")
 

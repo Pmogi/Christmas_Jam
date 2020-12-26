@@ -56,8 +56,7 @@ function Kitchen:enter()
                     SpeechBox.startSpeech("I wonder if there's a way to get up there...")
                 
                 else
-                    --change gameState to attic room
-                    SpeechBox.startSpeech("Add going to attic")
+                    -- DOOR SOUND
                     GameState.switch(Attic)
                 end
                 
@@ -113,14 +112,19 @@ function Kitchen:enter()
                     end ),
                     false, false)
 
-    World.addEntity(Sensor(12,410,50,50,
-        function()
-                SpeechBox.startSpeech("You got some oats Mah-goats")
-                -- grab sound
-                Inventory.addToInventory(Item("oatsicon", Assets.getAsset("oatsicon")))
-                itemsInRoom["oats"] = false
-                return false
-        end,Assets.getAsset("oats"), true))
+    
+    -- Add oats if not picked up by the player
+    if not itemsInRoom["oats"] then
+        World.addEntity(Sensor(12,410,50,50,
+            function()
+                    SpeechBox.startSpeech("You got some oats Mah-goats")
+                    -- grab sound
+                    Inventory.addToInventory(Item("oatsicon", Assets.getAsset("oatsicon")))
+                    itemsInRoom["oats"] = false
+                    return false
+            end,Assets.getAsset("oats"), true))
+    end
+
 
     World.addEntity(Sensor(740,370,50,50,
         function()
@@ -188,9 +192,6 @@ function Kitchen:draw()
         love.graphics.draw(Assets.getAsset("kitchenFridge2"), 825, 200)
     end
     
-
-
-
 
     InventoryGUI.draw()
     World.draw() -- draw entities    

@@ -24,7 +24,7 @@ function LivingRoom:enter()
 
 
         -- Go to kitchen
-        World.addEntity(Sensor(601,233, 113,200, 
+        World.addEntity(Sensor(515,233, 113,200, 
                             function()
                                     -- play door sound -- 
                                     GameState.switch(Kitchen)
@@ -32,7 +32,7 @@ function LivingRoom:enter()
         ))
 
         -- Go to living room
-        World.addEntity(Sensor(824,230,100,100,
+        World.addEntity(Sensor(822,232,100,200,
                             function()
                                     -- play door sound --
                                     GameState.switch(Bedroom)
@@ -41,18 +41,23 @@ function LivingRoom:enter()
 end
 
 function LivingRoom:update(dt)
-
+    InventoryGUI.update(dt)
+    SpeechBox.update(dt)
+    World.update(dt)
 end
 
 function LivingRoom:draw()
         love.graphics.draw(Assets.getAsset("livingRoomBG"))
         
         DrawGrid.drawGrid()
+        InventoryGUI.draw()
+        World.draw() -- draw entities    
+        SpeechBox.draw()
+        --camera:detach()
 end
 
 function LivingRoom:leave()
         World.clearEntities()
-
 end
 
 

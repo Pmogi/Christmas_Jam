@@ -153,11 +153,14 @@ assets["HelpBookGlow"] = love.graphics.newImage("assets/image/iconselfhelpglow.p
 -- Living Room
 --
 -- Audio
-assets["Touch"] = love.audio.newSource("assets/audio/touch.wav", "static")
+assets["Touch"] = love.audio.newSource("assets/audio/woodClick.wav", "static")
 assets["Grab"] = love.audio.newSource("assets/audio/grab.wav", "static")
 assets["FanFare"] = love.audio.newSource("assets/audio/fanfare.wav", "static")
 assets["Open"] = love.audio.newSource("assets/audio/open.wav", "static")
 assets["Bloop"] = love.audio.newSource("assets/audio/bloop.wav", "static")
+assets["AtticDoor"] = love.audio.newSource("assets/audio/atticDoor.wav", "static")
+assets["Cabinet"] = love.audio.newSource("assets/audio/cabinet.wav", "static")
+assets["Box"] = love.audio.newSource("assets/audio/box.wav", "static")
 
 
 assets["endScreen"] = love.graphics.newImage("assets/endingscreen.png")

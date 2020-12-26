@@ -25,14 +25,14 @@ end
 function MainMenu:update(dt)
     if mainMenu:Button("Start Game", (love.graphics.getWidth()/2)-150 , 3*love.graphics.getHeight()/4).hit then
         GameState.switch(LivingRoom)
-        Assets.getAsset("Bloop"):play()
+        Assets.playAudio("Bloop")
     end
 end
 
 function MainMenu:enter()
     Timer.tween(1, textPos, {x1 = love.graphics.getWidth()/2}, 'out-in-elastic')
     Timer.tween(1, textPos, {x2 = love.graphics.getWidth()/2}, 'out-in-elastic')
-    Timer.after(1, function() Assets.getAsset("Touch"):play() end)
+    Timer.after(1, function() Assets.playAudio("Touch") end)
 end
 
 return MainMenu

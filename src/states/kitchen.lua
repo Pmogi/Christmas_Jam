@@ -40,7 +40,7 @@ function Kitchen:enter()
     World.addEntity(Sensor(230, 220 , 215, 160, 
         function()
             SpeechBox.startSpeech("It's beginning to look a lot like Christmas." )
-            Assets.getAsset("Touch"):play()
+            Assets.playAudio("Touch")
             return true
         end
     ))
@@ -70,7 +70,7 @@ function Kitchen:enter()
             if not roomState["cabinet"] then
                 roomState["cabinet"] = true
                 -- play open sound
-                Assets.getAsset("Cabinet"):play()
+                Assets.playAudio("Cabinet")
                 -- add sugar
                 World.addEntity(Sensor(610, 210, 150, 150,
                     function()    

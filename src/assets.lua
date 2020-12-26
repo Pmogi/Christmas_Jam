@@ -177,10 +177,12 @@ assets["endScreen"] = love.graphics.newImage("assets/endingscreen.png")
 
 --assets[""]
 
-
-
 function Assets.getAsset(key)
     return assets[key]
+end
+
+function Assets.playAudio(key)
+    Assets.getAsset(key):play()
 end
 
 return Assets

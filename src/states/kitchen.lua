@@ -38,7 +38,7 @@ end
 function Kitchen:enter()
     -- add sensor entities
     
-    World.addEntity(Sensor(200, 200 , 300, 200, 
+    World.addEntity(Sensor(230, 220 , 215, 160, 
         function()
             SpeechBox.startSpeech("It's beginning to look a lot like Christmas." )
             Assets.getAsset("Touch"):play()

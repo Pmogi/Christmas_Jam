@@ -26,19 +26,15 @@ function Bedroom:init()
     roomState["treePlaced"]    = false
     roomState["record"]        = false
 
-    itemsInRoom["prune"] = true
+    itemsInRoom["prunes"] = true
 
     
 end
 
 function Bedroom:enter(  )
     self.granimation =     Animation(400, 300, Assets.getAsset("grannyFrames"), 2, 2.5, 0.2)
-    self.candleAnimation = Animation(420, 370, Assets.getAsset("candleFrames"), 4, 1000, 0.2)
-    
+    self.candleAnimation = Animation(420, 370, Assets.getAsset("candleFrames"), 4, 1000, 0.2)  
     self.candleAnimation:play()
-    
-    
-    -- add entities
 
     -- grandma FSM to own function
 
@@ -55,27 +51,52 @@ function Bedroom:enter(  )
 ))
 
     -- Record player
-    World.addEntity(Sensor(1000, 420, 100, 100,
+    World.addEntity(Sensor(1100, 450, 100, 100,
                     function()
-                        -- if not and has record equiped
+                       if not roomState["record"] and Inventory.getActiveItem() == "Record" then
+                            SpeechBox.startSpeech("Granny: Ahhh, they used to play this song when I met my husband. Did I ever tell you that Rose?")
+                            -- granny talk sound
+                            self.granimation:play()
+                            -- start music in room
+                            roomState["record"] = true
                         
-                        if not roomState["record"] then
-                            love.graphics.draw()
+                        elseif not roomState["record"] then
+                            -- play hmmm sound
+                            SpeechBox.startSpeech("I wonder if there's a record I can play on this...")
+                        else
+                            -- granny talk sound
+                            self.granimation:play()
+                            SpeechBox.startSpeech("Granny: Do you remember this song Rose?")
                         end
-                    
                     end
-                    ))
+        ))
 
-    if itemsInRoom["prune"] then
-        World.addEntity(Sensor(1200, 500, 0, 0,
+    --World.addEntity(Sensor)
+
+    -- If prunes haven't been picked up, spawn prunes
+    if itemsInRoom["prunes"] then
+        World.addEntity(Sensor(1000, 400, 0, 0,
                         function()
-                        
-                            
-
+                            SpeechBox.startSpeech("You obtained a cannister of prunes.")
+                            Inventory.addToInventory(Item("prune", Assets.getAsset("Prunes")))
+                            itemsInRoom["prunes"] = false
+                            return false
                         end
-            ))
+            , Assets.getAsset("prune"), true))
     end
+
+    -- 
+    World.addEntity(Sensor(1030, 300, 200, 100, 
+        function()
+            -- hmmm sound -- 
+            SpeechBox.startSpeech("Despite everything, it's still you.")
+            return true
+        end
+    ))
+
 end
+
+
 
 function Bedroom:update( dt )
     if (love.keyboard.isDown('g')) then
@@ -84,6 +105,10 @@ function Bedroom:update( dt )
 
     self.granimation:update(dt)
     self.candleAnimation:update(dt) 
+
+    InventoryGUI.update(dt)
+    SpeechBox.update(dt)
+    World.update(dt)
 end
 
 function Bedroom:draw( )
@@ -92,11 +117,35 @@ function Bedroom:draw( )
     self.granimation:draw()
     self.candleAnimation:draw()
 
+
+    -- record
+    if not roomState["record"] then
+        love.graphics.draw(Assets.getAsset("recordPlayer1"), 1100, 425)
+    else
+        love.graphics.draw(Assets.getAsset("recordPlayer2"), 1100, 425)
+    end
+
+    -- decorations
+
+
+
+
+
+    InventoryGUI.draw()
+    World.draw() -- draw entities    
+    SpeechBox.draw()
+    
+    
     DrawGrid.drawGrid()
 end
 
 function Bedroom:leave( )
     World.clearEntities()
+end
+
+-- talks based on objectives available
+function grannyFSM()
+
 end
 
 return Bedroom

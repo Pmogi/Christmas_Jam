@@ -88,7 +88,7 @@ function GUI(item, x, y)
                         Inventory.setActiveItem(item)
                 end
         end
-end
+end 
 
 --[[function GUI()
 

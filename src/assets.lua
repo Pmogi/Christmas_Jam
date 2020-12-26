@@ -55,6 +55,9 @@ assets["candleFrames"] = {graphics.newImage(b .. "bedroomcandleleft.png")  ,
                           graphics.newImage(b .. "bedroomcandleneutral.png") }
 
 
+assets["prune"]  = graphics.newImage("assets/image/bedroom/itemprunes.png")
+
+
 -- Living Room assets
 local l = "assets/image/livingRoom/"
 
@@ -78,8 +81,6 @@ assets["atticHook"] = graphics.newImage("assets/image/kitchen/itemattichook.png"
 -- Attic
 assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")
 
--- Bedroom
-assets["prune"]  = graphics.newImage("assets/image/bedroom/itemprunes.png")
 
 
 

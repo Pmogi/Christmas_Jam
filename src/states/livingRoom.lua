@@ -28,7 +28,8 @@ function LivingRoom:update(dt)
 end
 
 function LivingRoom:draw()
-
+    love.graphics.draw(Assets.getAsset("livingRoomBG"))
+    
 end
 
 function LivingRoom:leave()

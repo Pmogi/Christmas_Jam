@@ -7,9 +7,9 @@ local Inventory    = require("src.systems.inventory")
 local InventoryGUI = require("src.systems.inventoryGUI")
 local World    = require("src.systems.world")
 local Objective = require("src.systems.objective")
-local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
 
 local Animation = require("src.systems.animation")
+local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
 
 
 local Bedroom = {}
@@ -54,8 +54,27 @@ function Bedroom:enter(  )
                         end
 ))
 
+    -- Record player
+    World.addEntity(Sensor(1000, 420, 100, 100,
+                    function()
+                        -- if not and has record equiped
+                        
+                        if not roomState["record"] then
+                            love.graphics.draw()
+                        end
+                    
+                    end
+                    ))
 
+    if itemsInRoom["prune"] then
+        World.addEntity(Sensor(1200, 500, 0, 0,
+                        function()
+                        
+                            
 
+                        end
+            ))
+    end
 end
 
 function Bedroom:update( dt )

@@ -11,8 +11,6 @@ assets["UI_backpack"] = graphics.newImage("assets/image/UI/backpack.png")
 
 
 
-
-
 -- Kitchen images
 assets["kitchenBG"] = graphics.newImage("assets/image/kitchen/kitchenbg.png")
 assets["kitchenAtticDoor1"] = graphics.newImage("assets/image/kitchen/kitchenatticdoor1.png") -- closed state
@@ -38,6 +36,11 @@ assets["atticBG"] = graphics.newImage(a .. "atticbg.png")
 local b = "assets/image/bedroom/"
 assets["bedroomBG"]    = graphics.newImage(b .. "bedroombg.png")
 
+assets["recordPlayer1"] = graphics.newImage(b .. "bedroomrecordplayer1.png")
+assets["recordPlayer2"] = graphics.newImage(b .. "bedroomrecordplayer2.png")
+
+assets["prune"] = graphics.newImage(b .. "itemprunes.png")
+
 assets["grannyFrames"] = {graphics.newImage(b .. "bedroombedandlady1.png"),
                           graphics.newImage(b .. "bedroombedandlady2.png") }
 
@@ -45,6 +48,12 @@ assets["candleFrames"] = {graphics.newImage(b .. "bedroomcandleleft.png")  ,
                           graphics.newImage(b .. "bedroomcandleneutral.png"),
                           graphics.newImage(b .. "bedroomcandleright.png") ,
                           graphics.newImage(b .. "bedroomcandleneutral.png") }
+
+
+-- Living Room assets
+local l = "assets/image/livingRoom/"
+
+assets["livingRoomBG"] = graphics.newImage(l .. "livingroombg.png")
 
 
 

@@ -16,11 +16,29 @@ local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to s
 local LivingRoom = {}
 
 function LivingRoom:init()
+        
 
 end
 
 function LivingRoom:enter()
 
+
+        -- Go to kitchen
+        World.addEntity(Sensor(601,233, 113,200, 
+                            function()
+                                    -- play door sound -- 
+                                    GameState.switch(Kitchen)
+                            end
+        ))
+
+        -- Go to living room
+
+        World.addEntity(Sensor(824,230,100,100,
+                            function()
+                                    -- play door sound --
+                                    GameState.switch(Bedroom)
+                            end
+        ))
 end
 
 function LivingRoom:update(dt)
@@ -28,11 +46,13 @@ function LivingRoom:update(dt)
 end
 
 function LivingRoom:draw()
-    love.graphics.draw(Assets.getAsset("livingRoomBG"))
-    
+        love.graphics.draw(Assets.getAsset("livingRoomBG"))
+        
+        DrawGrid.drawGrid()
 end
 
 function LivingRoom:leave()
+        World.clearEntities()
 
 end
 

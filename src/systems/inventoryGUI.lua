@@ -15,8 +15,8 @@ local gui = Suit.new()
 
 local InventoryGUI = {}
 
-InventoryGUI.w = 36
-InventoryGUI.h = 36
+InventoryGUI.w = 30
+InventoryGUI.h = 30
 InventoryGUI.alpha = 1
 
 local drawItems = false
@@ -37,7 +37,13 @@ function InventoryGUI.update(dt)
     
     -- for inventory gui drawing
     if (drawItems) then
-        GUI()
+            local x = 50
+            local y = 96
+            local inventory = Inventory.getInventory()
+            for key, item in ipairs(inventory) do
+                    GUI(item.id, x, y)
+                    y = y + 104
+            end
     end
 
 end
@@ -52,15 +58,15 @@ function InventoryGUI.draw()
 
     if DRAW_TAB then
         love.graphics.setColor(0.5, 0.5, 0.5, InventoryGUI.alpha)
-        love.graphics.rectangle("fill", 0, love.graphics.getHeight()/8, InventoryGUI.w , InventoryGUI.h)
+        love.graphics.rectangle("fill", 0, love.graphics.getHeight()/6, InventoryGUI.w , InventoryGUI.h)
         
-        love.graphics.draw(Assets.getAsset("UI_backpack"), 0, love.graphics.getHeight()/8+2) -- draw backpack thing
+        love.graphics.draw(Assets.getAsset("UI_backpack"), 0, love.graphics.getHeight()/6+2) -- draw backpack thing
         
         love.graphics.setColor(1, 1, 1)
     
     elseif EXPAND_MENU then
         love.graphics.setColor(0.5, 0.5, 0.5, InventoryGUI.alpha)
-        love.graphics.rectangle("fill", 0, love.graphics.getHeight()/8, InventoryGUI.w, InventoryGUI.h)
+        love.graphics.rectangle("fill", 0, love.graphics.getHeight()/6, InventoryGUI.w, InventoryGUI.h)
         love.graphics.setColor(1, 1, 1, 1)
 
         -- once the menu expands draw the items in the inventory
@@ -75,7 +81,16 @@ end
 
 
 -- Maybe not hardcode this and have a stack of items
-function GUI()
+function GUI(item, x, y)
+        if Inventory.checkInventory(item) then
+                if gui:ImageButton(Assets.getAsset(item), {hovered = Assets.getAsset(item)}, x,y).hit then
+                        Assets.getAsset("Grab"):play()
+                        Inventory.setActiveItem(item)
+                end
+        end
+end
+
+--[[function GUI()
 
     if Inventory.checkInventory("sugar") then
          if gui:ImageButton(Assets.getAsset("sugar"), { hovered = Assets.getAsset("sugar")  }, 10, 96).hit then 
@@ -127,13 +142,13 @@ function GUI()
         end
     end
 end
-
+]]
 
 function checkCursorPosition()
     local xPos = love.mouse.getX()
     local yPos = love.mouse.getY()
 
-    if DRAW_TAB and xPos > 1 and xPos < 25 and yPos > love.graphics.getHeight()/8 and yPos < (love.graphics.getHeight()/8)+25 then
+    if DRAW_TAB and xPos > 1 and xPos < 25 and yPos > love.graphics.getHeight()/6 and yPos < (love.graphics.getHeight()/6)+25 then
         DRAW_TAB = false
         EXPAND_MENU = true
         Timer.tween(0.25, InventoryGUI, {w = 200})

@@ -30,7 +30,12 @@ assets["kitchenCookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook
 -- Attic images
 local a = "assets/image/attic/"
 assets["atticBG"] = graphics.newImage(a .. "atticbg.png")
+assets["atticRecordBox1"] = graphics.newImage("assets/image/attic/atticrecordbox1.png")
+assets["atticRecordBox2"] = graphics.newImage("assets/image/attic/atticrecordbox2.png")
 
+
+-- Living Room images
+assets["livingRoomBG"] = graphics.newImage("assets/image/livingRoom/livingroombg.png")
 
 -- Bedroom assets
 local b = "assets/image/bedroom/"
@@ -65,10 +70,18 @@ assets["raisins"] = graphics.newImage("assets/image/kitchen/itemraisins.png")
 assets["oatmeal"] = graphics.newImage("assets/image/kitchen/itemoatmeal.png")
 assets["bowl"] = graphics.newImage("assets/image/kitchen/itembowl.png")
 assets["cookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook.png")
+
+-- Living Room
 assets["dentures"] = graphics.newImage("assets/image/kitchen/itemdentures.png")
 assets["atticHook"] = graphics.newImage("assets/image/kitchen/itemattichook.png")
 
--- assets[""]
+-- Attic
+assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")
+
+-- Bedroom
+assets["prune"]  = graphics.newImage("assets/image/bedroom/itemprunes.png")
+
+
 
 
 

@@ -13,7 +13,7 @@ local Objective = require("src.systems.objective")
 Kitchen =    require("src.states.kitchen")
 Attic   =    require("src.states.attic")
 Bedroom =    require("src.states.bedroom")
-LivingRoom = require("src.states.livingroom")
+LivingRoom = require("src.states.livingRoom")
 -- Backyard = 
 -- Recipe =
 
@@ -30,6 +30,7 @@ function love.load()
 
     GameState.switch(Bedroom) -- Switching state
     -- love.graphics.setFont(Assets.getAsset("font"))
+    love.window.setMode(1280, 720)
 
     cursorNormal = love.mouse.newCursor("assets/image/cursor/cursorNormal.png", 0, 0)
     cursorHighlighted = love.mouse.newCursor("assets/image/cursor/cursorHighlighted.png", 0, 0)

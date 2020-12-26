@@ -70,7 +70,7 @@ assets["atticHook"] = graphics.newImage("assets/image/kitchen/itemattichook.png"
 assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")
 
 -- Bedroom
-assets["prune"]  = graphics.newImage("assets/image/bedroom/itemprune.png")
+assets["prune"]  = graphics.newImage("assets/image/bedroom/itemprunes.png")
 
 
 

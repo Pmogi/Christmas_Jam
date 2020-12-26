@@ -121,6 +121,12 @@ function Kitchen:enter()
                     end, Assets.getAsset("kitchenCookbook"), true))
     
     -- Go to living room
+    World.addEntity(Sensor(371, 680, 140,100,
+                        function()
+                                -- play door sound --
+                                GameState.switch(LivingRoom)
+                        end
+                                ))
 
 
     -- Go to backyard

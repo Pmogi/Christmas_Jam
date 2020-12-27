@@ -122,7 +122,9 @@ assets["arrow"] = graphics.newImage("assets/image/kitchen/pointyarrow.png")
 assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")
 assets["recordicon"] = graphics.newImage("assets/image/attic/iconrecord1.png")
 assets["recordiconglow"] = graphics.newImage("assets/image/attic/iconrecord2.png")
-
+assets["key"] = graphics.newImage("assets/image/attic/itemkey.png")
+assets["keyicon"] = graphics.newImage("assets/image/attic/iconkey1.png")
+assets["keyiconglow"] = graphics.newImage("assets/image/attic/iconkey2.png")
 
 
 

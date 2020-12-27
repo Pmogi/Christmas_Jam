@@ -21,7 +21,8 @@ itemsInRoom = {}
 function Attic:init()
     roomState["recordBox"] = false
 
-    itemsInRoom["record"] = false
+    itemsInRoom["record"] = true
+    itemsInRoom["key"] = true
 end
 
 
@@ -43,6 +44,13 @@ function Attic:enter()
                         end 
                         return false
                 end), false,false)
+        World.addEntity(Sensor(200,580,50,50,
+            function()
+                    SpeechBox.startSpeech("You obtained the shed key")
+                    Inventory.addToInventory(Item("keyicon", Assets.getAsset("keyicon")))
+                    itemsInRoom["key"] = false
+                    return false
+            end, Assets.getAsset("key"), true))
         -- go to kitchen
         World.addEntity(Sensor(763,470,300,100,
             function()

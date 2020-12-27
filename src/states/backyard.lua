@@ -24,7 +24,7 @@ end
 
 
 
-function Attic:enter()
+function Backyard:enter()
         World.addEntity(Sensor(324,250, 400,300,
             function()
                     if not roomState["shed"] then
@@ -36,15 +36,15 @@ function Attic:enter()
 
 end
 
-function Attic:update( dt )
+function Backyard:update( dt )
 
 end
 
-function Attic:leave(  )        
+function Backyard:leave(  )        
     -- remove sensors
 end
 
-function Attic:draw(  )
+function Backyard:draw(  )
     love.graphics.draw(Assets.getAsset("backyardBG"))
     DrawGrid.drawGrid()
     if not roomState["shed"] then

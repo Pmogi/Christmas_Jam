@@ -15,14 +15,15 @@ local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to s
 
 local LivingRoom = {}
 
+local itemsInRoom = {}
+
 function LivingRoom:init()
-        
+        itemsInRoom["denture"] = true
+        itemsInRoom["hook"]    = true
 
 end
 
 function LivingRoom:enter()
-
-
         -- Go to kitchen
         World.addEntity(Sensor(515,233, 113,200, 
                             function()
@@ -38,6 +39,31 @@ function LivingRoom:enter()
                                     GameState.switch(Bedroom)
                             end
         ))
+
+        if itemsInRoom["denture"] then
+                World.addEntity(Sensor(125, 245, 0, 0,
+                        function()
+                                -- grab sound
+                                Inventory.addToInventory(Item("denture", Assets.getAsset("denture")))
+                                SpeechBox.startSpeech("You obtained some false teeth.")
+                                itemsInRoom["denture"] = false
+                                return false
+                        end
+        , Assets.getAsset("denture"), true ))
+        end
+
+        
+        if itemsInRoom["hook"] then
+                World.addEntity(Sensor(868, 600, 0, 0,
+                        function()
+                                -- grab sound
+                                Inventory.addToInventory(Item("hook", Assets.getAsset("hook")))
+                                SpeechBox.startSpeech("You obtained a pole with a hook on the end")
+                                itemsInRoom["hook"] = false
+                                return false
+                        end
+        , Assets.getAsset("hook"), true ))
+        end
 end
 
 function LivingRoom:update(dt)

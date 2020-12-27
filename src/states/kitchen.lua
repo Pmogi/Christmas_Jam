@@ -48,15 +48,15 @@ function Kitchen:enter()
     -- Attic Door sensor
     World.addEntity(Sensor(200, 0, 300, 100, 
             function()
-                if not roomState["atticDoor"] and Inventory.getActiveItem() == "Hook" then
+                if not roomState["atticDoor"] and Inventory.getActiveItem() == "hook" then
                     roomState["atticDoor"] = true
                 
                 elseif not roomState["atticDoor"] then
                     -- play "hmmm" sound
                     SpeechBox.startSpeech("I wonder if there's a way to get up there...")
-                
                 else
                     -- DOOR SOUND
+                    
                     GameState.switch(Attic)
                 end
                 
@@ -114,7 +114,7 @@ function Kitchen:enter()
 
     
     -- Add oats if not picked up by the player
-    if not itemsInRoom["oats"] then
+    if itemsInRoom["oats"] then
         World.addEntity(Sensor(12,410,50,50,
             function()
                     SpeechBox.startSpeech("You got some oats Mah-goats")
@@ -147,6 +147,8 @@ function Kitchen:enter()
                                 -- play door sound --
                                 GameState.switch(LivingRoom)
                         end))
+    
+     
 
     -- Go to backyard
     World.addEntity(Sensor(1095,249,220,400,

@@ -36,6 +36,8 @@ assets["atticRecordBox2"] = graphics.newImage("assets/image/attic/atticrecordbox
 
 -- Living Room images
 assets["livingRoomBG"] = graphics.newImage("assets/image/livingRoom/livingroombg.png")
+assets["denture"] = graphics.newImage("assets/image/livingRoom/itemdentures.png")
+assets["hook"] = graphics.newImage("assets/image/livingRoom/itemattichook.png")
 
 -- Backyard image
 assets["backyardBG"] = graphics.newImage("assets/image/backyard/backyardbg.png")

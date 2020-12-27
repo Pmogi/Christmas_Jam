@@ -88,7 +88,7 @@ function Bedroom:enter(  )
     end
 
     -- 
-    World.addEntity(Sensor(1030, 300, 200, 100, 
+    World.addEntity(Sensor(1050, 370, 200, 75, 
         function()
             -- hmmm sound -- 
             SpeechBox.startSpeech("Despite everything, it's still you.")

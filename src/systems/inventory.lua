@@ -14,7 +14,7 @@ local activeItemID = nil
 function Inventory.setActiveItem(id)
     if (Inventory.checkInventory(id)) then
         activeItemID = id
-        SpeechBox.startSpeech("You are holding the " .. id .. ".")
+        SpeechBox.startSpeech("You are holding the " .. id:sub(1,-5) .. ".")
     end
 end
 

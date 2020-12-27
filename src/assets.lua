@@ -37,7 +37,11 @@ assets["atticRecordBox2"] = graphics.newImage("assets/image/attic/atticrecordbox
 -- Living Room images
 assets["livingRoomBG"] = graphics.newImage("assets/image/livingRoom/livingroombg.png")
 assets["denture"] = graphics.newImage("assets/image/livingRoom/itemdentures.png")
+assets["dentureicon"] = graphics.newImage("assets/image/livingRoom/icondentures1.png")
+assets["dentureiconglow"] = graphics.newImage("assets/image/livingRoom/icondentures2.png")
 assets["hook"] = graphics.newImage("assets/image/livingRoom/itemattichook.png")
+assets["hookicon"] = graphics.newImage("assets/image/livingRoom/attichook1.png")
+assets["hookiconglow"] = graphics.newImage("assets/image/livingRoom/attichook2.png")
 
 -- Backyard image
 assets["backyardBG"] = graphics.newImage("assets/image/backyard/backyardbg.png")
@@ -97,11 +101,6 @@ assets["bowlicon"] = graphics.newImage("assets/image/kitchen/itembowlicon.png")
 
 assets["cookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook.png")
 
--- Living Room
-assets["dentures"] = graphics.newImage("assets/image/livingRoom/itemdentures.png")
-assets["denturesicon"] = graphics.newImage("assets/image/livingRoom/itemdenturesicon.png")
-assets["atticHook"] = graphics.newImage("assets/image/livingRoom/itemattichook.png")
-assets["attickHookicon"] = graphics.newImage("assets/image/livingRoom/itemattichookicon.png")
 
 -- Attic
 assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")

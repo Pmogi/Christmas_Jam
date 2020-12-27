@@ -40,7 +40,7 @@ function Kitchen:enter()
     World.addEntity(Sensor(230, 220 , 215, 160, 
         function()
             SpeechBox.startSpeech("It's beginning to look a lot like Christmas." )
-            Assets.playAudio("Touch")
+            Assets.playAudioRandomPitch("Touch", 0.8, 1.5)
             return true
         end
     ))

@@ -11,7 +11,6 @@ local Objective = require("src.systems.objective")
 local Animation = require("src.systems.animation")
 local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
 
-
 local Bedroom = {}
 
 local roomState = {}
@@ -28,6 +27,7 @@ function Bedroom:init()
 
     itemsInRoom["prunes"] = true
 
+    self.currentPuzzle = "Decorations"
     self.hintCount = 0
     self.decoCount = 0
 
@@ -269,7 +269,11 @@ function Bedroom:grannyFSM()
     -- grandma voice sound
     
     --- DECORATIONS ----------
-    if  not deco and self.hintCount == 0 then
+    if not rec and not cookie and deco then
+    SpeechBox.startSpeech("Thank you dearie, I love these decorations. Reminds me of my kids.")
+    self.hintCount = 0
+
+    elseif  not deco and self.hintCount == 0 then
         SpeechBox.startSpeech("Hello Deary, are you here to help me? Could you help find the decorations for my room? They should be in the shed.", 5)
         self.hintCount = self.hintCount + 1
 
@@ -288,9 +292,7 @@ function Bedroom:grannyFSM()
         Objective.completeObjective("Decorations")
 
     -- Completed objective
-    elseif not rec and not cookie and deco then
-        SpeechBox.startSpeech("Thank you dearie, I love these decorations. Reminds me of my kids.")
-        self.hintCount = 0
+
     -- END OF DECORATIONS
 
     -- RECORD -- no lot of hints cus I assume the player already has the item LOL 

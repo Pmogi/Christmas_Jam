@@ -30,10 +30,10 @@ function Kitchen:init()
     roomState["fridge"]    = false
 
     itemsInRoom["sugar"]      = true
-    itemsInRoom["raisins"]     = true
+    itemsInRoom["raisins"]    = true
     itemsInRoom["oats"]       = true
-    itemsInRoom["cookbook"] = true
-    itemsInRoom["bowl"] = true
+    itemsInRoom["cookbook"] =   true
+    itemsInRoom["bowl"] =       true
 end
 
 
@@ -76,7 +76,7 @@ function Kitchen:enter()
                 -- add sugar
                 World.addEntity(Sensor(590, 223, 150, 150,
                     function()    
-                        SpeechBox.startSpeech("You got a jar of sugar.")
+                        SpeechBox.startSpeech("You got a jar of sugar.", 1)
                         -- grab sound
                         Inventory.addToInventory(Item("sugaricon", Assets.getAsset("sugaricon")))
                         itemsInRoom["sugar"] = false
@@ -99,7 +99,7 @@ function Kitchen:enter()
 
                 World.addEntity(Sensor(930, 295 , 50, 50,
                     function()    
-                        SpeechBox.startSpeech("You got a box of raisins, gross...")
+                        SpeechBox.startSpeech("You got a box of raisins, gross...", 1.2)
                         -- grab sound
                         Inventory.addToInventory(Item("raisinsicon", Assets.getAsset("raisinsicon")))
                         itemsInRoom["raisins"] = false
@@ -116,7 +116,7 @@ function Kitchen:enter()
     if itemsInRoom["oats"] then
         World.addEntity(Sensor(14,380,50,50,
             function()
-                SpeechBox.startSpeech("You got some oats Mah-goats")
+                SpeechBox.startSpeech("You got some oats Mah-goats", 1)
                 -- grab sound
                 Inventory.addToInventory(Item("oatsicon", Assets.getAsset("oatsicon")))
                 itemsInRoom["oats"] = false
@@ -191,7 +191,7 @@ function Kitchen:enter()
                             SpeechBox.startSpeech("I've got some of the ingredients in the bowl, but I just need to put in the rest before baking.")
                     
                     else
-                            SpeechBox.startSpeech("Looks like grandma started making raisin oatmeal and prune cookies but forgot to finish adding ingredients. I wonder if I can find the recipe somewhere...")
+                            SpeechBox.startSpeech("Looks like grandma started making raisin oatmeal and prune cookies but forgot to finish adding ingredients. I wonder if I can find the recipe somewhere...", 3)
                     end
             end
             return true
@@ -200,18 +200,18 @@ function Kitchen:enter()
     World.addEntity(Sensor(540,440,200,150,
         function()
                 if Inventory.getActiveItem() == "bowlicon" then
-                        SpeechBox.startSpeech("You put the cookie batter onto a baking pan and place it in the oven.")
-                        SpeechBox.startSpeech("doot...dee...doot dooot....")
-                        SpeechBox.startSpeech("ski doobie doobie doo de bap bap...")
+                        SpeechBox.startSpeech("You put the cookie batter onto a baking pan and place it in the oven.", 1)
+                        SpeechBox.startSpeech("doot...dee...doot dooot....", 1)
+                        SpeechBox.startSpeech("ski doobie doobie doo de bap bap...", 1)
                         -- finish noise 
-                        SpeechBox.startSpeech("Cookies are done!")
+                        SpeechBox.startSpeech("Cookies are done!", 1)
                         Inventory.addToInventory(Item("cookiesicon", Assets.getAsset("cookiesicon")))
                         Inventory.removeActiveItem()
                         Inventory.removeItem("bowlicon")
                         Inventory.removeItem("bowliconglow")
-                        SpeechBox.startSpeech("You got a tray of fresh hot cookies")
+                        SpeechBox.startSpeech("You got a tray of fresh hot cookies", 1)
                 else
-                        SpeechBox.startSpeech("it's matilda, our ol' oven.")
+                        SpeechBox.startSpeech("It's matilda, our ol' oven.")
                 end
                 return true
         end

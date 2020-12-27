@@ -46,7 +46,7 @@ function Attic:enter()
                 end), false,false)
         World.addEntity(Sensor(200,580,50,50,
             function()
-                    SpeechBox.startSpeech("You obtained the shed key")
+                    SpeechBox.startSpeech("You obtained a key.", 1)
                     Inventory.addToInventory(Item("keyicon", Assets.getAsset("keyicon")))
                     itemsInRoom["key"] = false
                     return false

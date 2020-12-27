@@ -19,7 +19,7 @@ roomState = {}
 itemsInRoom = {}
 
 function Backyard:init()
-        roomState["shed"] = true
+        roomState["shed"] = false
 
         itemsInRoom["decoration"] = true
 end

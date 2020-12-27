@@ -63,6 +63,7 @@ function Bedroom:enter(  )
                             SpeechBox.startSpeech("Granny: Ahhh, they used to play this song when I met my husband. Did I ever tell you that Rose?")
                             -- granny talk sound
                             self.granimation:play()
+                            Objective.completeObjective("Record") -- completed record objective
                             -- start music in room
                             roomState["record"] = true
                         
@@ -102,6 +103,35 @@ function Bedroom:enter(  )
         end
     ))
 
+    -- deco wreath
+    World.addEntity(Sensor(805, 215, 200, 75, 
+    function()
+        -- Granny sound -- 
+        self.granimation:play()
+        SpeechBox.startSpeech("I'd love my wreath to be up here.")
+        return true
+    end
+))
+
+    -- deco pillow
+World.addEntity(Sensor(275, 439, 100, 75, 
+function()
+    -- Granny sound -- 
+    self.granimation:play()
+    SpeechBox.startSpeech("I'd love my jolly pillow to be over here...")
+    return true
+end
+))
+
+    -- deco tree
+    World.addEntity(Sensor(158, 615, 100, 200, 
+    function()
+        -- Granny sound -- 
+        self.granimation:play()
+        SpeechBox.startSpeech("Could the christmas tree be over here?")
+        return true
+    end
+))
 end
 
 
@@ -135,24 +165,44 @@ function Bedroom:draw()
         love.graphics.draw(Assets.getAsset("cookies"), 555,515 )
     end
 
+    
+
     if roomState["wreathPlaced"]  then
         love.graphics.draw(Assets.getAsset("deco2"), 850, 220)
+    else
+        love.graphics.setColor(0.50, 0.50, 0.0, 0.25)
+        love.graphics.circle("fill", 850, 220, 20)
+        love.graphics.setColor(1, 1, 1)
+
     end
     
     if roomState["pillowPlaced"]  then
+        
         love.graphics.draw(Assets.getAsset("deco1"), 255, 442)
+
+    else
+        love.graphics.setColor(0.50, 0.50, 0.0, 0.25)
+        love.graphics.circle("fill", 297, 460, 10)
+        love.graphics.setColor(1, 1, 1)
+
     end
     
     if roomState["treePlaced"]  then
         love.graphics.draw(Assets.getAsset("deco3"), 131, 235)
+    else
+        love.graphics.setColor(0.50, 0.50, 0.0, 0.25)
+        love.graphics.circle("fill", 250, 630, 10)
+        love.graphics.setColor(1, 1, 1)
+
     end
+
 
     InventoryGUI.draw()
     World.draw() -- draw entities    
     SpeechBox.draw()
     
     
-    DrawGrid.drawGrid()
+-- DrawGrid.drawGrid()
 end
 
 function Bedroom:leave( )
@@ -168,24 +218,23 @@ end
 -- Decorations
 
 function Bedroom:grannyFSM()
-    local rec =   Objective.getObjectiveState("Record")
+    local rec    = Objective.getObjectiveState("Record")
     local cookie = Objective.getObjectiveState("Cookies")
-    local deco   =Objective.getObjectiveState("Decorations")
+    local deco   = Objective.getObjectiveState("Decorations")
 
     self.granimation:play()
     -- grandma voice sound
     
     --- DECORATIONS ----------
     if  not deco and self.hintCount == 0 then
-        SpeechBox.startSpeech("Hello Deary, are you here to help me? Could you help find the decorations for my room? They should be in the shed.")
+        SpeechBox.startSpeech("Hello Deary, are you here to help me? Could you help find the decorations for my room? They should be in the shed.", 5)
         self.hintCount = self.hintCount + 1
 
     elseif Inventory.getActiveItem() == "Key" then
         SpeechBox.startSpeech("Ah! That's the key to the shed. Good eye.")
     
     elseif not deco and self.hintCount == 1 then
-        print("test")
-        SpeechBox.startSpeech("Is the shed locked? I must have lost the key, Lily must have misplaced the key somewhere.")
+        SpeechBox.startSpeech("Is the shed locked? I must have lost the key, Lily must have misplaced the key somewhere.", 4)
         self.hintCount = self.hintCount + 1
 
     elseif not deco and self.hintCount == 2 then
@@ -199,10 +248,10 @@ function Bedroom:grannyFSM()
 
     -- RECORD -- no lot of hints cus I assume the player already has the item LOL 
     elseif not rec then
-        SpeechBox.startSpeech("Is that you Lilly? Could you find grandma the record?")
+        SpeechBox.startSpeech("Is that you Lilly? Could you find grandma her favorite record?")
 
     elseif rec and not cookie then
-        SpeechBox.startSpeech("Thank you dearie, me and grandpa loved this record. We'd boogie down to the beat.")
+        SpeechBox.startSpeech("Thank you dearie, me and grandpa loved this record. We'd boogie down to the beat.", 5)
     
     -- END OF RECORD 
 
@@ -212,10 +261,10 @@ function Bedroom:grannyFSM()
         self.hintCount = self.hintCount + 1
     
     elseif not cookie and self.hintCount == 1 then
-        SpeechBox.startSpeech("The cookies recipe should be in the kitchen, I mixed some of the ingredients together, but I can't find some.")
+        SpeechBox.startSpeech("The cookies recipe should be in the kitchen, I mixed some of the ingredients together, but I can't find some.", 5)
     
     else
-        SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.")
+        SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.", 20)
     end
     
     return true

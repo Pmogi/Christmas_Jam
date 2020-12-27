@@ -95,6 +95,7 @@ function spawnDecorations()
                         -- rustle/grab sound effect
                         SpeechBox.startSpeech("You grab a bunch of christmas decorations.")
                         Inventory.addToInventory(Item("decorationicon", Assets.getAsset("decorationicon")))
+                        itemsInRoom["decoration"] = false
                     end,
                     Assets.getAsset("decoration"), true))
 end

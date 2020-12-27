@@ -42,7 +42,17 @@ function Bedroom:enter(  )
     -- grandma FSM to own function
      World.addEntity(Sensor(651, 342, 100, 100,
                             function()
-                                self:grannyFSM()
+                                if Inventory.getActiveItem() == "cookiesicon" then
+                                        SpeechBox.startSpeech("Ohhh, Raisin Oatmeal and Prune cookies! These were my favorite cookies growing up.")
+                                        self.granimation:play()
+                                        Inventory.removeItem("cookiesicon")
+                                        Inventory.removeItem("cookiesiconglow")
+                                        Inventory.removeActiveItem()
+                                        roomState["cookiesPlaced"] = true
+                                        Objective.completeObjective("Cookies")
+                                else
+                                        self:grannyFSM()
+                                end
                                 return true
                             end))
     -- 
@@ -128,6 +138,16 @@ function Bedroom:enter(  )
             self.granimation:play()
             SpeechBox.startSpeech("I'd love to hang something there.")
         end
+
+        if self.decoCount == 3 then
+                self.granimation:play()
+                SpeechBox.startSpeech("Oh my, my room looks so festive now! T-t-hank you, Rose.")
+                Inventory.removeActiveItem()
+                Inventory.removeItem("decorationicon")
+                Inventory.removeItem("decorationiconglow")
+                Objective.completeObjective("Decorations")
+                return false
+        end
         return true
     end
 ))
@@ -140,17 +160,26 @@ World.addEntity(Sensor(275, 439, 100, 75,
             roomState["pillowPlaced"] = true
             self.decoCount = self.decoCount + 1
             self.granimation:play()
-            SpeechBox.startSpeech("")
-            
+            SpeechBox.startSpeech("oh my jolly pillow! every winter, herby would take a nap on that couch hugging this pillow...")
 
         elseif roomState["pillowPlaced"] then
-        
+            self.granimation:play()
+            SpeechBox.startSpeech("oh my jolly pillow! every winter, herby would take a nap on that couch hugging this pillow...")
         else
             -- Granny sound -- 
             self.granimation:play()
             SpeechBox.startSpeech("I'd love my jolly pillow to be over there...")
         end
-
+        
+        if self.decoCount == 3 then
+                self.granimation:play()
+                SpeechBox.startSpeech("Oh my, my room looks so festive now! T-t-hank you, Rose.")
+                Inventory.removeActiveItem()
+                Inventory.removeItem("decorationicon")
+                Inventory.removeItem("decorationiconglow")
+                Objective.completeObjective("Decorations")
+                return false
+        end
         return true
     end
 ))
@@ -162,17 +191,29 @@ World.addEntity(Sensor(158, 615, 100, 200,
             roomState["treePlaced"] = true
             self.decoCount = self.decoCount + 1
             self.granimation:play()
-            SpeechBox.startSpeech("")
-            
+            SpeechBox.startSpeech("mmmm, I love the smell of pine trees...")
 
         elseif roomState["treePlaced"] then
-            
+            self.granimation:play()
+            SpeechBox.startSpeech("mmmm, I love the smell of pine trees...")
+
         else
         -- Granny sound -- 
         self.granimation:play()
         SpeechBox.startSpeech("Could the christmas tree be over here?")
         
         end
+
+        if self.decoCount == 3 then
+                self.granimation:play()
+                SpeechBox.startSpeech("Oh my, my room looks so festive now! T-t-hank you, Rose.")
+                Inventory.removeActiveItem()
+                Inventory.removeItem("decorationicon")
+                Inventory.removeItem("decorationiconglow")
+                Objective.completeObjective("Decorations")
+                return false
+        end
+        return true
     end
 ))
 end

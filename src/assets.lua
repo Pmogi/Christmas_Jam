@@ -102,10 +102,12 @@ assets["oatsicon"] = graphics.newImage("assets/image/kitchen/iconoatmeal1.png")
 assets["oatsiconglow"] = graphics.newImage("assets/image/kitchen/iconoatmeal2.png")
 
 assets["bowl"] = graphics.newImage("assets/image/kitchen/itembowl.png")
-assets["bowlicon"] = graphics.newImage("assets/image/kitchen/itembowlicon.png")
+assets["bowlicon"] = graphics.newImage("assets/image/kitchen/iconfullbowl1.png")
+assets["bowliconglow"] = graphics.newImage("assets/image/kitchen/iconfullbowl2.png")
 
 assets["cookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook.png")
-
+assets["cookiesicon"] = graphics.newImage("assets/image/kitchen/iconcookies1.png")
+assets["cookiesiconglow"] = graphics.newImage("assets/image/kitchen/iconcookies2.png")
 
 -- Attic
 assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")

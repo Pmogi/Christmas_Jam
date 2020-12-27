@@ -96,7 +96,9 @@ assets["recipeBook"] = graphics.newImage("assets/image/recipe/recipePage.png")
 -- Kitchen
 
 assets["sugar"]  = graphics.newImage("assets/image/kitchen/itemsugar.png")
-assets["sugaricon"] = graphics.newImage("assets/image/kitchen/itemsugaricon.png")
+assets["sugaricon"] = graphics.newImage("assets/image/kitchen/iconsugar1.png")
+assets["sugariconglow"] = graphics.newImage("assets/image/kitchen/iconsugar2.png")
+
 
 
 assets["raisins"] = graphics.newImage("assets/image/kitchen/itemraisins.png")
@@ -115,6 +117,7 @@ assets["cookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook.png")
 assets["cookiesicon"] = graphics.newImage("assets/image/kitchen/iconcookies1.png")
 assets["cookiesiconglow"] = graphics.newImage("assets/image/kitchen/iconcookies2.png")
 
+assets["arrow"] = graphics.newImage("assets/image/kitchen/pointyarrow.png")
 -- Attic
 assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")
 assets["recordicon"] = graphics.newImage("assets/image/attic/iconrecord1.png")

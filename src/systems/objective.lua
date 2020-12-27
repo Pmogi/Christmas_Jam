@@ -21,8 +21,12 @@ function Objective.update(dt)
     
 end
 
-function Objective.wonState() 
-    return Objective.objectiveList["Won"]
+function Objective.completeObjective(objective)
+    Objective.objectiveList[objective] = true
+end
+
+function Objective.getObjectiveState(objective)
+    return Objective.objectiveList[objective]
 end
 
 return Objective

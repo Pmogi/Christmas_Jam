@@ -103,7 +103,9 @@ function Bedroom:enter(  )
     if itemsInRoom["prunes"] then
         World.addEntity(Sensor(1000, 425, 0, 0,
                         function()
-                            SpeechBox.startSpeech("You obtained a cannister of prunes.")
+                            -- granny voice
+                            SpeechBox.startSpeech("W-Why are you taking my prunes?")
+                            self.granimation:play()
                             Inventory.addToInventory(Item("pruneicon", Assets.getAsset("pruneicon")))
                             itemsInRoom["prunes"] = false
                             return false
@@ -310,54 +312,63 @@ function Bedroom:grannyFSM()
     -- grandma voice sound
     
     --- DECORATIONS ----------
-    if not rec and not cookie and deco then
-    SpeechBox.startSpeech("Thank you dearie, I love these decorations. Reminds me of my kids.")
-    self.hintCount = 0
+    if self.currentPuzzle == "Decorations" then
+        if deco then
+            SpeechBox.startSpeech("Thank you dearie, I love these decorations. Reminds me of my kids.")
+            self.currentPuzzle = "Record"
+            self.hintCount = 0
 
-    elseif  not deco and self.hintCount == 0 then
-        SpeechBox.startSpeech("Hello Deary, are you here to help me? Could you help find the decorations for my room? They should be in the shed.", 5)
-        self.hintCount = self.hintCount + 1
+        elseif  not deco and self.hintCount == 0 then
+            SpeechBox.startSpeech("Hello Deary, are you here to help me? Could you help find the decorations for my room? They should be in the shed.", 3)
+            self.hintCount = self.hintCount + 1
 
-    elseif Inventory.getActiveItem() == "Key" then
-        SpeechBox.startSpeech("Ah! That's the key to the shed. Good eye.")
+        elseif Inventory.getActiveItem() == "Key" then
+            SpeechBox.startSpeech("Ah! That's the key to the shed. Good eye.")
     
-    elseif not deco and self.hintCount == 1 then
-        SpeechBox.startSpeech("Is the shed locked? I must have lost the key, Lily must have misplaced the key somewhere.", 4)
-        self.hintCount = self.hintCount + 1
+        elseif not deco and self.hintCount == 1 then
+            SpeechBox.startSpeech("Is the shed locked? I must have lost the key, Lily must have misplaced the key somewhere.", 4)
+            self.hintCount = self.hintCount + 1
 
-    elseif not deco and self.hintCount == 2 then
-        SpeechBox.startSpeech("My legs aren't as strong as they used to be...")
+        elseif not deco and self.hintCount == 2 then
+            SpeechBox.startSpeech("My legs aren't as strong as they used to be...")
     
-    elseif not deco and self.decoCount == 3 then
-        SpeechBox.startSpeech("L-Lilly thank you for decorating my room. It looks wonderful.")
-        Objective.completeObjective("Decorations")
-
-    -- Completed objective
-
+        elseif not deco and self.decoCount == 3 then
+            SpeechBox.startSpeech("L-Lilly thank you for decorating my room. It looks wonderful.")
+        end
+    end
     -- END OF DECORATIONS
 
     -- RECORD -- no lot of hints cus I assume the player already has the item LOL 
-    elseif not rec then
-        SpeechBox.startSpeech("Is that you Lilly? Could you find grandma her favorite record?")
-
-    elseif rec and not cookie then
-        SpeechBox.startSpeech("Thank you dearie, me and grandpa loved this record. We'd boogie down to the beat.", 5)
+    if self.currentPuzzle == "Record" then
+        if Inventory.getActiveItem() == "recordicon" then
+            SpeechBox.startSpeech("That's the record! Thank you Lily.")
     
+        elseif not rec then
+            SpeechBox.startSpeech("Is that you Lilly? Could you find grandma her favorite record?")
+
+        else
+            SpeechBox.startSpeech("Thank you dearie, me and grandpa loved this record. We'd boogie down to the beat.")
+            self.currentPuzzle = "Cookies"
+        end
+    end
     -- END OF RECORD 
 
     --  Cookies
-    elseif not cookie and self.hintCount == 0 then
-        SpeechBox.startSpeech("R-Rose? Could you make granny her favorite cookies?")
-        self.hintCount = self.hintCount + 1
+    if self.currentPuzzle == "Cookies" then
+        if not cookie and self.hintCount == 0 then
+            SpeechBox.startSpeech("R-Rose? Could you make granny her favorite cookies?")
+            self.hintCount = self.hintCount + 1
     
-    elseif not cookie and self.hintCount == 1 then
-        SpeechBox.startSpeech("The cookies recipe should be in the kitchen, I mixed some of the ingredients together, but I can't find some.", 5)
+        elseif not cookie and self.hintCount == 1 then
+            SpeechBox.startSpeech("The cookies recipe should be in the kitchen, I mixed some of the ingredients together, but I can't find some.", 5)
     
-    else
-        SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.", 20)
+        elseif cookie and not Inventory.getActiveItem() == "dentureicon" then
+            SpeechBox.startSpeech("Thanks Rose, but I can't eat these anymore without my teeth. I forgot where I put them...")
+        elseif cookie and not Inventory.getActiveItem() == "dentureicon" then
+            SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.", 20)
+        end
     end
-    
-    return true
+
 end
 
 return Bedroom

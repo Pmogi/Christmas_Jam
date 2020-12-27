@@ -56,7 +56,7 @@ function Kitchen:enter()
                 
                 elseif not roomState["atticDoor"] then
                     -- play "hmmm" sound
-                    SpeechBox.startSpeech("I wonder if there's a way to get up there...")
+                    SpeechBox.startSpeech("I wonder if there's a way to get up there...", 1.5)
                 else
                     -- DOOR SOUND
                     GameState.switch(Attic)
@@ -76,7 +76,7 @@ function Kitchen:enter()
                 -- add sugar
                 World.addEntity(Sensor(590, 223, 150, 150,
                     function()    
-                        SpeechBox.startSpeech("You got a jar of sugar.", 1)
+                        SpeechBox.startSpeech("You got a jar of sugar.", 0.75)
                         -- grab sound
                         Inventory.addToInventory(Item("sugaricon", Assets.getAsset("sugaricon")))
                         itemsInRoom["sugar"] = false
@@ -116,7 +116,7 @@ function Kitchen:enter()
     if itemsInRoom["oats"] then
         World.addEntity(Sensor(14,380,50,50,
             function()
-                SpeechBox.startSpeech("You got some oats Mah-goats", 1)
+                SpeechBox.startSpeech("You got some oats, mah-goats", 1)
                 -- grab sound
                 Inventory.addToInventory(Item("oatsicon", Assets.getAsset("oatsicon")))
                 itemsInRoom["oats"] = false
@@ -129,7 +129,7 @@ function Kitchen:enter()
         function()
                 -- checks ingredients
                 if Inventory.getActiveItem() == "oatsicon" then
-                        SpeechBox.startSpeech("You threw some oats into the bowl.")
+                        SpeechBox.startSpeech("You threw some oats into the bowl.", 0.75)
                         Inventory.removeItem("oatsicon")
                         Inventory.removeItem("oatsiconglow")
                         Inventory.removeActiveItem()
@@ -141,7 +141,7 @@ function Kitchen:enter()
                         return true
                 
                 elseif Inventory.getActiveItem() == "sugaricon" then
-                        SpeechBox.startSpeech("You threw some sugar into the bowl.")
+                        SpeechBox.startSpeech("You threw some sugar into the bowl.", 0.75)
                         Inventory.removeItem("sugaricon")
                         Inventory.removeItem("sugariconglow")
                         Inventory.removeActiveItem()
@@ -153,7 +153,7 @@ function Kitchen:enter()
                         return true
                 
                 elseif Inventory.getActiveItem() == "pruneicon" then
-                        SpeechBox.startSpeech("You threw some prunes into the bowl.")
+                        SpeechBox.startSpeech("You threw some prunes into the bowl.", 0.75)
                         Inventory.removeItem("pruneicon")
                         Inventory.removeItem("pruneiconglow")
                         Inventory.removeActiveItem()
@@ -165,7 +165,7 @@ function Kitchen:enter()
                         return true
 
                 elseif Inventory.getActiveItem() == "raisinsicon" then
-                        SpeechBox.startSpeech("You threw some raisins into the bowl.")
+                        SpeechBox.startSpeech("You threw some raisins into the bowl.", 0.75)
                         Inventory.removeItem("raisinsicon")
                         Inventory.removeItem("raisinsiconglow")
                         Inventory.removeActiveItem()
@@ -200,18 +200,18 @@ function Kitchen:enter()
     World.addEntity(Sensor(540,440,200,150,
         function()
                 if Inventory.getActiveItem() == "bowlicon" then
-                        SpeechBox.startSpeech("You put the cookie batter onto a baking pan and place it in the oven.", 1)
-                        SpeechBox.startSpeech("doot...dee...doot dooot....", 1)
-                        SpeechBox.startSpeech("ski doobie doobie doo de bap bap...", 1)
+                        SpeechBox.startSpeech("You put the cookie batter onto a baking pan and place it in the oven.")
+                        SpeechBox.startSpeech("doot...dee...doot dooot....")
+                        SpeechBox.startSpeech("ski doobie doobie doo de bap bap...")
                         -- finish noise 
-                        SpeechBox.startSpeech("Cookies are done!", 1)
+                        SpeechBox.startSpeech("Cookies are done!")
                         Inventory.addToInventory(Item("cookiesicon", Assets.getAsset("cookiesicon")))
                         Inventory.removeActiveItem()
                         Inventory.removeItem("bowlicon")
                         Inventory.removeItem("bowliconglow")
-                        SpeechBox.startSpeech("You got a tray of fresh hot cookies", 1)
+                        SpeechBox.startSpeech("You got a tray of fresh hot cookies", 0.75)
                 else
-                        SpeechBox.startSpeech("It's matilda, our ol' oven.")
+                        SpeechBox.startSpeech("It's matilda, our ol' oven.", 1)
                 end
                 return true
         end

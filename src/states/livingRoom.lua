@@ -32,11 +32,22 @@ function LivingRoom:enter()
                             end
         ))
 
+
+        -- Go to kitchen
+        World.addEntity(Sensor(213, 350, 100,100, 
+                            function()
+                                    -- hmm-- 
+                                    SpeechBox.startSpeech('Near the photos it says, "My dear daughters, Lilly and Rose."')
+                                    return true
+                            end
+        ))
+
         -- Go to bedroom
         World.addEntity(Sensor(822,232,100,200,
                             function()
                                     -- play door sound --
                                     GameState.switch(Bedroom)
+                                    
                             end
         ))
 

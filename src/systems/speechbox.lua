@@ -43,7 +43,7 @@ function SpeechBox.draw()
         -- draw the text
         love.graphics.setColor(0, 0, 0, 1)
         -- Finds the amount of wrappings there are in the text given 600 pixels of width
-        local width, wrappedText = Assets.getAsset("font"):getWrap(speechText, 1200)
+        local width, wrappedText = Assets.getAsset("font"):getWrap(speechText, 900)
         
         for i, str in ipairs(wrappedText) do
             -- iterates down by 12 pixels every wrapping (i*12)

@@ -99,7 +99,7 @@ function Kitchen:enter()
                 -- play open sound
 
                 -- add sugar
-                World.addEntity(Sensor(925, 275 , 50, 50,
+                World.addEntity(Sensor(930, 290 , 50, 50,
                     function()    
                         SpeechBox.startSpeech("You got a box of raisins, gross...")
                         -- grab sound
@@ -116,7 +116,7 @@ function Kitchen:enter()
     
     -- Add oats if not picked up by the player
     if itemsInRoom["oats"] then
-        World.addEntity(Sensor(12,410,50,50,
+        World.addEntity(Sensor(14,380,50,50,
             function()
                 SpeechBox.startSpeech("You got some oats Mah-goats")
                 -- grab sound
@@ -127,7 +127,7 @@ function Kitchen:enter()
     end
 
 
-    World.addEntity(Sensor(740,370,50,50,
+    World.addEntity(Sensor(720,390,50,50,
         function()
                 -- checks ingredients
                 if Inventory.getActiveItem() == "oatsicon" then
@@ -193,7 +193,7 @@ function Kitchen:enter()
                             SpeechBox.startSpeech("I've got some of the ingredients in the bowl, but I just need to put in the rest before baking.")
                     
                     else
-                            SpeechBox.startSpeech("Looks like grandma started making raisin oatmeal and prune cookies but forgot to finish adding ingredients. I just need to add some sugar, oatmeal, raisins, and prunes to this mix...")
+                            SpeechBox.startSpeech("Looks like grandma started making raisin oatmeal and prune cookies but forgot to finish adding ingredients. I wonder if I can find the recipe somewhere...")
                     end
             end
             return true
@@ -282,7 +282,7 @@ function Kitchen:draw()
     SpeechBox.draw()
     camera:detach()
 
-    --DrawGrid.drawGrid()
+    DrawGrid.drawGrid()
 
 end
 

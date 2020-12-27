@@ -79,7 +79,8 @@ function Bedroom:enter(  )
                         return true
                     end
         ))
-
+    
+    World.addEntity(Sensor())
     --World.addEntity(Sensor)
 
     -- If prunes haven't been picked up, spawn prunes
@@ -202,7 +203,7 @@ function Bedroom:draw()
     SpeechBox.draw()
     
     
--- DrawGrid.drawGrid()
+    DrawGrid.drawGrid()
 end
 
 function Bedroom:leave( )

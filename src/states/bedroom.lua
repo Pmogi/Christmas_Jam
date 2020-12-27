@@ -44,6 +44,7 @@ function Bedroom:enter(  )
                             function()
                                 if Inventory.getActiveItem() == "cookiesicon" then
                                         SpeechBox.startSpeech("Ohhh, Raisin Oatmeal and Prune cookies! These were my favorite cookies growing up.")
+                                        Assets.playAudio("GrannyLaugh")
                                         self.granimation:play()
                                         Inventory.removeItem("cookiesicon")
                                         Inventory.removeItem("cookiesiconglow")
@@ -73,6 +74,7 @@ function Bedroom:enter(  )
                        if not roomState["record"] and Inventory.getActiveItem() == "recordicon" then
                             SpeechBox.startSpeech("Ahhh, they used to play this song when I met my husband. Did I ever tell you that Rose?", 4)
                             -- granny talk sound
+                            Assets.playAudio("GrannyRelief")
                             self.granimation:play()
                             Objective.completeObjective("Record") -- completed record objective
                             -- use up the item
@@ -85,9 +87,11 @@ function Bedroom:enter(  )
                         
                         elseif not roomState["record"] then
                             -- play hmmm sound
+                            Assets.playAudioRandomPitch("Hmm", 0.9, 1.1)
                             SpeechBox.startSpeech("I wonder if there's a record I can play on this...")
                         else
                             -- granny talk sound
+                            Assets.playAudioRandomPitch("GrannyRelief", 0.9, 1.1)
                             self.granimation:play()
                             SpeechBox.startSpeech("Do you remember this song Rose?")
                         end
@@ -104,6 +108,8 @@ function Bedroom:enter(  )
         World.addEntity(Sensor(1000, 425, 0, 0,
                         function()
                             -- granny voice
+                            Assets.playAudio("GrannyStartled")
+                            Assets.playAudioRandomPitch("Grab", 0.9, 1.1)
                             SpeechBox.startSpeech("W-Why are you taking my prunes?")
                             self.granimation:play()
                             Inventory.addToInventory(Item("pruneicon", Assets.getAsset("pruneicon")))
@@ -116,7 +122,8 @@ function Bedroom:enter(  )
     -- 
     World.addEntity(Sensor(1050, 370, 200, 75, 
         function()
-            -- hmmm sound -- 
+            -- hmmm sound --
+            Assets.playAudioRandomPitch("Hmm", 0.9, 1.1)
             SpeechBox.startSpeech("Despite everything, it's still you.")
             return true
         end
@@ -133,16 +140,19 @@ function Bedroom:enter(  )
             
         elseif roomState["wreathPlaced"] then
             -- grannnoise
+            Assets.playAudio("GrannyRelief")
             self.granimation:play()
             SpeechBox.startSpeech("What a lovely wreath, we'd put this out on the front porch.")
         else
             -- Granny sound -- 
             self.granimation:play()
+            Assets.playAudio("GrannySurprise")
             SpeechBox.startSpeech("I'd love to hang something there.")
         end
 
         if self.decoCount == 3 then
                 self.granimation:play()
+                Assets.playAudio("GrannyRelief")
                 SpeechBox.startSpeech("Oh my, my room looks so festive now! T-t-hank you, Rose.")
                 Inventory.removeActiveItem()
                 Inventory.removeItem("decorationicon")
@@ -208,6 +218,7 @@ World.addEntity(Sensor(158, 615, 100, 200,
 
         if self.decoCount == 3 then
                 self.granimation:play()
+                Assets.playAudio("GrannyRelief")
                 SpeechBox.startSpeech("Oh my, my room looks so festive now! T-t-hank you, Rose.")
                 Inventory.removeActiveItem()
                 Inventory.removeItem("decorationicon")
@@ -310,6 +321,7 @@ function Bedroom:grannyFSM()
 
     self.granimation:play()
     -- grandma voice sound
+    Assets.playAudio("GrannyRelief")
     
     --- DECORATIONS ----------
     if self.currentPuzzle == "Decorations" then

@@ -72,7 +72,7 @@ function SpeechBox.update(dt)
 
     -- print the queued messages until empty queue
     if not drawBox and not textBoxCooldown and not (next(messageQueue) == nil) then
-        queuedText = table.remove(messageQueue)
+        queuedText = table.remove(messageQueue,1)
         SpeechBox.startSpeech(queuedText)
     end
 end

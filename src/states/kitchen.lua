@@ -59,7 +59,6 @@ function Kitchen:enter()
                     SpeechBox.startSpeech("I wonder if there's a way to get up there...")
                 else
                     -- DOOR SOUND
-                    
                     GameState.switch(Attic)
                 end
                 

@@ -47,7 +47,12 @@ assets["hookiconglow"] = graphics.newImage("assets/image/livingRoom/attichook2.p
 assets["backyardBG"] = graphics.newImage("assets/image/backyard/backyardbg.png")
 assets["backyardShed1"] = graphics.newImage("assets/image/backyard/backyardshed1.png")
 assets["backyardShed2"] = graphics.newImage("assets/image/backyard/backyardshed2.png")
--- backyard item
+
+assets["decoration"]    = graphics.newImage("assets/image/backyard/itemdecorations.png")
+assets["decorationicon"] = graphics.newImage("assets/image/backyard/icondecorations1.png")
+assets["decorationiconglow"] = graphics.newImage("assets/image/backyard/icondecorations2.png")
+
+
 
 -- Bedroom assets
 local b = "assets/image/bedroom/"

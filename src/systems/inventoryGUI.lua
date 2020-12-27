@@ -21,6 +21,8 @@ InventoryGUI.alpha = 1
 
 local drawItems = false
 
+
+-- Uses suite to draw the GUI and update the position of the expanding GUI
 function InventoryGUI.update(dt) 
     -- check for activity on the inventory GUI
     checkCursorPosition()
@@ -67,6 +69,7 @@ function InventoryGUI.update(dt)
 
 end
 
+
 function InventoryGUI.draw()
     -- active item box
     love.graphics.rectangle("fill", 10, 10, 74, 74)
@@ -98,7 +101,7 @@ function InventoryGUI.draw()
 end
 
 
--- Maybe not hardcode this and have a stack of items
+-- Draws an image button with the given position and image
 function GUI(item, x, y)
         if Inventory.checkInventory(item) then
                 itemGlow = item .. "glow"

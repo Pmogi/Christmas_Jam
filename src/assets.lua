@@ -177,12 +177,28 @@ assets["endScreen"] = love.graphics.newImage("assets/endingscreen.png")
 
 --assets[""]
 
+Assets["rand"] = love.math.newRandomGenerator()
+
 function Assets.getAsset(key)
     return assets[key]
 end
 
 function Assets.playAudio(key)
-    Assets.getAsset(key):play()
+    local source = Assets.getAsset(key)
+    source:setPitch(1.0)
+    source:play()
+end
+
+function Assets.playAudioRandomPitch(key, lowMult, highMult)
+    local source = Assets.getAsset(key)
+    source:setPitch(Assets["rand"]:random() * (highMult - lowMult) + lowMult)
+    source:play()
+end
+
+function Assets.playAudioPitch(key, mult)
+    local source = Assets.getAsset(key)
+    source:setPitch(mult)
+    source:play()
 end
 
 return Assets

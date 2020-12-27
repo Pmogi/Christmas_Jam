@@ -90,7 +90,6 @@ function Backyard:draw( )
 end
 
 function spawnDecorations()
-    print("hello")
     World.addEntity(Sensor(401, 425, 0, 0, 
                     function()
                         Inventory.addToInventory(Item("decorationicon", Assets.getAsset("decorationicon")))

@@ -15,7 +15,7 @@ local itemEquipped = false
 function Inventory.setActiveItem(id)
     if (Inventory.checkInventory(id)) then
         activeItemID = id
-        SpeechBox.startSpeech("You are holding the " .. id:sub(1,-5) .. ".")
+        SpeechBox.startSpeech("You are holding the " .. id:sub(1,-5) .. ".", 1)
         itemEquipped = true
     end
 end
@@ -26,7 +26,7 @@ function Inventory.removeActiveItem(id)
 end
 
 function Inventory.resetActiveItem()
-    SpeechBox.startSpeech("You put away the " .. activeItemID:sub(1,-5) .. ".")
+    SpeechBox.startSpeech("You put away the " .. activeItemID:sub(1,-5) .. ".", 1)
     activeItemID = nil
     itemEquipped = false
 end

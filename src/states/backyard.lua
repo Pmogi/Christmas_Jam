@@ -90,9 +90,10 @@ function Backyard:draw( )
 end
 
 function spawnDecorations()
-    print("hello")
     World.addEntity(Sensor(401, 425, 0, 0, 
                     function()
+                        -- rustle/grab sound effect
+                        SpeechBox.startSpeech("You grab a bunch of christmas decorations.")
                         Inventory.addToInventory(Item("decorationicon", Assets.getAsset("decorationicon")))
                     end,
                     Assets.getAsset("decoration"), true))

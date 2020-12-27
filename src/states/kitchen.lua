@@ -74,7 +74,7 @@ function Kitchen:enter()
                 -- play open sound
                 Assets.getAsset("Cabinet"):play()
                 -- add sugar
-                World.addEntity(Sensor(610, 210, 150, 150,
+                World.addEntity(Sensor(590, 223, 150, 150,
                     function()    
                         SpeechBox.startSpeech("You got a jar of sugar.")
                         -- grab sound
@@ -97,8 +97,7 @@ function Kitchen:enter()
                 roomState["fridge"] = true
                 -- play open sound
 
-                -- add sugar
-                World.addEntity(Sensor(930, 290 , 50, 50,
+                World.addEntity(Sensor(930, 295 , 50, 50,
                     function()    
                         SpeechBox.startSpeech("You got a box of raisins, gross...")
                         -- grab sound
@@ -212,13 +211,13 @@ function Kitchen:enter()
                         Inventory.removeItem("bowliconglow")
                         SpeechBox.startSpeech("You got a tray of fresh hot cookies")
                 else
-                        SpeechBox.startSpeech("it's a stove.")
+                        SpeechBox.startSpeech("it's matilda, our ol' oven.")
                 end
                 return true
         end
                         ))
     -- Go to recipe page
-    World.addEntity(Sensor(150, 425, 0, 0,
+    World.addEntity(Sensor(110, 420, 0, 0,
         function()
             -- Go to Recipe page
             GameState.switch(Recipe) 
@@ -226,11 +225,11 @@ function Kitchen:enter()
         end, Assets.getAsset("cookbook"), true))
     
     -- Go to living room
-    World.addEntity(Sensor(371, 680, 200,200,
+    World.addEntity(Sensor(371, 650, 200,200,
                         function()
                                 -- play door sound --
                                 GameState.switch(LivingRoom)
-                        end))
+                        end, Assets.getAsset("arrow"), true))
     
      
 
@@ -264,18 +263,18 @@ function Kitchen:draw()
         love.graphics.draw(Assets.getAsset("kitchenAtticDoor2"), 200, 0)
     end
 
-    if not roomState["cabinet"] then
-        love.graphics.draw(Assets.getAsset("kitchencabinet1"), 450, 175)
-    else
-        love.graphics.draw(Assets.getAsset("kitchencabinet2"), 450, 175)
-    end
-
+    
     if not roomState["fridge"] then
-        love.graphics.draw(Assets.getAsset("kitchenFridge1"), 825, 200)
+        love.graphics.draw(Assets.getAsset("kitchenFridge1"), 815, 204)
     else
-        love.graphics.draw(Assets.getAsset("kitchenFridge2"), 825, 200)
+        love.graphics.draw(Assets.getAsset("kitchenFridge2"), 815, 204)
     end
-
+    if not roomState["cabinet"] then
+        love.graphics.draw(Assets.getAsset("kitchencabinet1"), 450, 178)
+    else
+        love.graphics.draw(Assets.getAsset("kitchencabinet2"), 450, 178)
+    end
+    
     InventoryGUI.draw()
     World.draw() -- draw entities    
     SpeechBox.draw()

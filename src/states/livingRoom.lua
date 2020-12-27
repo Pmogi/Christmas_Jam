@@ -32,7 +32,7 @@ function LivingRoom:enter()
                             end
         ))
 
-        -- Go to living room
+        -- Go to bedroom
         World.addEntity(Sensor(822,232,100,200,
                             function()
                                     -- play door sound --

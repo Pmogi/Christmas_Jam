@@ -59,7 +59,7 @@ function Bedroom:enter(  )
     -- Record player
     World.addEntity(Sensor(1100, 475, 100, 100,
                     function()
-                       if not roomState["record"] and Inventory.getActiveItem() == "Record" then
+                       if not roomState["record"] and Inventory.getActiveItem() == "recordicon" then
                             SpeechBox.startSpeech("Granny: Ahhh, they used to play this song when I met my husband. Did I ever tell you that Rose?")
                             -- granny talk sound
                             self.granimation:play()
@@ -86,7 +86,7 @@ function Bedroom:enter(  )
         World.addEntity(Sensor(1000, 425, 0, 0,
                         function()
                             SpeechBox.startSpeech("You obtained a cannister of prunes.")
-                            Inventory.addToInventory(Item("prune", Assets.getAsset("Prunes")))
+                            Inventory.addToInventory(Item("pruneicon", Assets.getAsset("pruneicon")))
                             itemsInRoom["prunes"] = false
                             return false
                         end

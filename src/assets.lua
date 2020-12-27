@@ -56,6 +56,8 @@ assets["recordPlayer1"] = graphics.newImage(b .. "bedroomrecordplayer1.png")
 assets["recordPlayer2"] = graphics.newImage(b .. "bedroomrecordplayer2.png")
 
 assets["prune"] = graphics.newImage(b .. "itemprunes.png")
+assets["pruneicon"] = graphics.newImage(b .. "iconprune1.png")
+assets["pruneiconglow"] = graphics.newImage(b .. "iconprune2.png")
 
 assets["grannyFrames"] = {graphics.newImage(b .. "bedroombedandlady1.png"),
                           graphics.newImage(b .. "bedroombedandlady2.png") }
@@ -90,11 +92,14 @@ assets["recipeBook"] = graphics.newImage("assets/image/recipe/recipePage.png")
 assets["sugar"]  = graphics.newImage("assets/image/kitchen/itemsugar.png")
 assets["sugaricon"] = graphics.newImage("assets/image/kitchen/itemsugaricon.png")
 
+
 assets["raisins"] = graphics.newImage("assets/image/kitchen/itemraisins.png")
-assets["raisinsicon"] = graphics.newImage("assets/image/kitchen/itemraisinsicon.png")
+assets["raisinsicon"] = graphics.newImage("assets/image/kitchen/iconraisin1.png")
+assets["raisinsiconglow"] = graphics.newImage("assets/image/kitchen/iconraisin2.png")
 
 assets["oats"] = graphics.newImage("assets/image/kitchen/itemoatmeal.png")
-assets["oatsicon"] = graphics.newImage("assets/image/kitchen/itemoatmealicon.png")
+assets["oatsicon"] = graphics.newImage("assets/image/kitchen/iconoatmeal1.png")
+assets["oatsiconglow"] = graphics.newImage("assets/image/kitchen/iconoatmeal2.png")
 
 assets["bowl"] = graphics.newImage("assets/image/kitchen/itembowl.png")
 assets["bowlicon"] = graphics.newImage("assets/image/kitchen/itembowlicon.png")
@@ -104,6 +109,8 @@ assets["cookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook.png")
 
 -- Attic
 assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")
+assets["recordicon"] = graphics.newImage("assets/image/attic/iconrecord1.png")
+assets["recordiconglow"] = graphics.newImage("assets/image/attic/iconrecord2.png")
 
 
 

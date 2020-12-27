@@ -27,24 +27,36 @@ end
 function Backyard:enter()
         World.addEntity(Sensor(324,250, 400,300,
             function()
-                    if not roomState["shed"] then
+                    if not roomState["shed"] and Inventory.getActiveItem() == "keyicon" then
                             roomState["shed"] = true
                             -- play open sound
+                    else
+                            -- play "hmm" sound
+                            SpeechBox.startSpeech("Darn, it's locked. There's gotta be a key somewhere...")      
                     end
-                            return false
-                    end ), false, false)
-
+                            return true
+                    end))
+        
+        World.addEntity(Sensor(417,680,150,100,
+            function()
+                    GameState.switch(Kitchen)
+            end))
 end
 
 function Backyard:update( dt )
+        InventoryGUI.update(dt)
+        SpeechBox.update(dt)
+        World.update(dt)
 
 end
 
-function Backyard:leave(  )        
+function Backyard:leave()        
     -- remove sensors
+    World.clearEntities()
 end
 
-function Backyard:draw(  )
+function Backyard:draw( )
+    camera:attach()
     love.graphics.draw(Assets.getAsset("backyardBG"))
     DrawGrid.drawGrid()
     if not roomState["shed"] then
@@ -52,6 +64,10 @@ function Backyard:draw(  )
     else
         love.graphics.draw(Assets.getAsset("backyardShed2"), 270, 250)
     end
+    InventoryGUI.draw()
+    World.draw() -- draw entities
+    SpeechBox.draw()
+    camera:detach()
 end
 
-return Attic
+return Backyard

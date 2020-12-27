@@ -215,7 +215,7 @@ function Bedroom:grannyFSM()
         SpeechBox.startSpeech("The cookies recipe should be in the kitchen, I mixed some of the ingredients together, but I can't find some.")
     
     else
-        SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wondeful. I don't have a lot of time left, so it means a lot to me.")
+        SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.")
     end
     
     return true

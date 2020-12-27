@@ -197,8 +197,7 @@ function Bedroom:grannyFSM()
         self.hintCount = 0
     -- END OF DECORATIONS
 
-    -- RECORD
-
+    -- RECORD -- no lot of hints cus I assume the player already has the item LOL 
     elseif not rec then
         SpeechBox.startSpeech("Is that you Lilly? Could you find grandma the record?")
 
@@ -207,7 +206,16 @@ function Bedroom:grannyFSM()
     
     -- END OF RECORD 
 
-    --  
+    --  Cookies
+    elseif not cookie and self.hintCount == 0 then
+        SpeechBox.startSpeech("R-Rose? Could you make granny her favorite cookies?")
+        self.hintCount = self.hintCount + 1
+    
+    elseif not cookie and self.hintCount == 1 then
+        SpeechBox.startSpeech("The cookies recipe should be in the kitchen, I mixed some of the ingredients together, but I can't find some.")
+    
+    else
+        SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wondeful. I don't have a lot of time left, so it means a lot to me.")
     end
     
     return true

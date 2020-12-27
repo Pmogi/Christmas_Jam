@@ -19,7 +19,7 @@ function Inventory.setActiveItem(id)
 end
 
 function Inventory.resetActiveItem()
-    SpeechBox.startSpeech("You put away the " .. activeItemID .. ".")
+    SpeechBox.startSpeech("You put away the " .. activeItemID:sub(1,-5) .. ".")
     activeItemID = nil
 end
 

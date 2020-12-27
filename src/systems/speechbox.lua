@@ -10,16 +10,18 @@ local drawSpeech = false
 local drawBox    = false
 local textBoxCooldown = false -- to prevent textboxes being made too quickly, reset with timer
 
-local speechBoxLength = 2
+local speechBoxLength = 2.5
 
 local messageQueue = {}
 
 SpeechBox.speechBoxHeightMax = 75
 SpeechBox.speechBoxHeight     = 0
 
-function SpeechBox.startSpeech(text)
+
+function SpeechBox.startSpeech(text, messageTime)
     if not textBoxCooldown  then
         speechText = text
+        speechBoxLength = messageTime or 2.5 -- if not given explict time, will pop up message for 2.5 seconds
         drawBox = true
     else
         table.insert( messageQueue, text)
@@ -41,7 +43,7 @@ function SpeechBox.draw()
         -- draw the text
         love.graphics.setColor(0, 0, 0, 1)
         -- Finds the amount of wrappings there are in the text given 600 pixels of width
-        local width, wrappedText = Assets.getAsset("font"):getWrap(speechText, 725)
+        local width, wrappedText = Assets.getAsset("font"):getWrap(speechText, 1200)
         
         for i, str in ipairs(wrappedText) do
             -- iterates down by 12 pixels every wrapping (i*12)

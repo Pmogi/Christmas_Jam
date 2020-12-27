@@ -30,7 +30,7 @@ function RecipeBook:enter()
         World.addEntity(Sensor(200, 200, 800, 200, 
                                 function()
                                         --play hmm sound
-                                        SpeechBox.startSpeech("These must be the cookies granny was talking about!")
+                                        SpeechBox.startSpeech("These are the most grandma sounding cookies I've ever heard of.")
                                         return true
                                 end
                         ))

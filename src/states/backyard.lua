@@ -19,7 +19,7 @@ roomState = {}
 itemsInRoom = {}
 
 function Backyard:init()
-        roomState["shed"] = true
+        roomState["shed"] = false
 
         itemsInRoom["decoration"] = true
 end
@@ -93,6 +93,7 @@ function spawnDecorations()
     World.addEntity(Sensor(401, 425, 0, 0, 
                     function()
                         Inventory.addToInventory(Item("decorationicon", Assets.getAsset("decorationicon")))
+                        itemsInRoom["decoration"] = false
                     end,
                     Assets.getAsset("decoration"), true))
 end

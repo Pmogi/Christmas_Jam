@@ -192,7 +192,9 @@ assets["Bloop"] = love.audio.newSource("assets/audio/bloop.wav", "static")
 assets["AtticDoor"] = love.audio.newSource("assets/audio/atticDoor.wav", "static")
 assets["Cabinet"] = love.audio.newSource("assets/audio/cabinet.wav", "static")
 assets["Box"] = love.audio.newSource("assets/audio/box.wav", "static")
-
+assets["ShedDoor"] = love.audio.newSource("assets/audio/shedDoor.wav", "static")
+assets["Hmm"] = love.audio.newSource("assets/audio/hmm.wav", "static")
+assets["GlassKnock"] = love.audio.newSource("assets/audio/glassKnock.wav", "static")
 
 assets["endScreen"] = love.graphics.newImage("assets/endingscreen.png")
 

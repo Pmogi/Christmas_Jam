@@ -37,12 +37,31 @@ function InventoryGUI.update(dt)
     
     -- for inventory gui drawing
     if (drawItems) then
-            local x = 50
-            local y = 150
+            local x = 5
+            local y = 71
+
+            local horizontalCount = 0
             local inventory = Inventory.getInventory()
+            
             for key, item in ipairs(inventory) do
-                    GUI(item.id, x, y)
-                    y = y + 90
+                
+                if horizontalCount == 1 then
+                    x = 69
+                    
+                elseif horizontalCount == 2 then
+                    x = x + 64
+
+                else
+                    horizontalCount = 0
+                    x = 5
+                    y = y + 64
+                end
+
+                GUI(item.id, x, y)
+                
+                horizontalCount = horizontalCount + 1
+                
+                
             end
     end
 
@@ -50,11 +69,10 @@ end
 
 function InventoryGUI.draw()
     -- active item box
-    love.graphics.rectangle("fill", 10, 10, 74, 74) -- CHANGE needs to be based on the on the window width/height
+    love.graphics.rectangle("fill", 10, 10, 74, 74)
     if  (Inventory.getActiveItem()) then
         love.graphics.draw(Assets.getAsset(Inventory.getActiveItem()), 10, 10)
     end
-
 
     if DRAW_TAB then
         love.graphics.setColor(0.5, 0.5, 0.5, InventoryGUI.alpha)

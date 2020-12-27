@@ -2,7 +2,7 @@
 GameState       = require("lib.gamestate")
 
 local Timer     = require("lib.timer")
-local Camera    = require("lib.camera")
+
 
 -- Module
 local Assets = require("src.assets")
@@ -17,6 +17,7 @@ Bedroom =    require("src.states.bedroom")
 LivingRoom = require("src.states.livingRoom")
 Backyard = require("src.states.backyard")
 MainMenu = require("src.states.menu")
+Intro    = require("src.states.intro")
 
 Recipe   =    require("src.states.recipeBook")
 local World    = require("src.systems.world")
@@ -33,9 +34,7 @@ function love.load()
     GameState.registerEvents{'draw', 'update', 'init', 'enter', 'exit'}
     cursor = love.mouse.setCursor(cursorNormal)
 
-    camera = Camera(love.graphics.getWidth()/2, love.graphics.getHeight()/2)
-
-    GameState.switch(MainMenu) -- Switching state
+    GameState.switch(MainMenu) -- Initial State
 
 
     -- love.graphics.setFont(Assets.getAsset("font"))

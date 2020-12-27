@@ -134,55 +134,11 @@ assets["keyiconglow"] = graphics.newImage("assets/image/attic/iconkey2.png")
 -------- Images
 --- Living Room
 
+-- Cutscene images
+assets["introScreen"] = graphics.newImage("assets/image/cutsceneImages/intro.png")
+assets["endScreen"]   = love.graphics.newImage("assets/image/cutsceneImages/endingscreen.png")
 
 
-assets["endScreen"] = love.graphics.newImage("assets/endingscreen.png")
-
---[[
--- inv items
-assets["EraserItem"]   =    love.graphics.newImage("assets/image/itemeraser.png")
-assets["BlanketItem"]  =    love.graphics.newImage("assets/image/itemblanket.png")
-assets["ScissorsItem"]     = love.graphics.newImage("assets/image/itemscissors.png")
-assets["DuckItem"]         = love.graphics.newImage("assets/image/itemducky.png")
-
-assets["ToothbrushItem"] =  love.graphics.newImage("assets/image/itemtoothbrush.png")
-
-assets["GlueItem"]         = graphics.newImage("assets/image/itemglue.png")
-assets["MustacheItem"]     = graphics.newImage("assets/image/itemstache.png")
-
-assets["SelfHelpItem1"]    = graphics.newImage("assets/image/itemselfhelpbook1.png")
-assets["SelfHelpItem2"]    = graphics.newImage("assets/image/itemselfhelpbook2.png")
-
--- assets[""]
-
--- Icons for inventory
-assets["Eraser"]       = love.graphics.newImage("assets/image/iconeraser.png")
-assets["EraserGlow"]   = love.graphics.newImage("assets/image/iconeraserglow.png")
-
-assets["Duck"]         = love.graphics.newImage("assets/image/iconducky.png")
-assets["DuckGlow"]     = love.graphics.newImage("assets/image/iconduckyglow.png")
-
-assets["Scissors"]       = love.graphics.newImage("assets/image/iconscissors.png")
-assets["ScissorsGlow"]   = love.graphics.newImage("assets/image/iconscissorsglow.png")
-
-assets["Blanket"]       = love.graphics.newImage("assets/image/iconblanket.png")
-assets["BlanketGlow"]   = love.graphics.newImage("assets/image/iconblanketglow.png")
-
-assets["Toothbrush"] = love.graphics.newImage("assets/image/icontoothbrush.png")
-assets["ToothbrushGlow"] = love.graphics.newImage("assets/image/icontoothbrushglow.png")
-
-assets["Mustache"] = love.graphics.newImage("assets/image/iconstache.png")
-assets["MustacheGlow"] = love.graphics.newImage("assets/image/iconstacheglow.png")
-
-assets["Mustache"] = love.graphics.newImage("assets/image/iconstache.png")
-assets["MustacheGlow"] = love.graphics.newImage("assets/image/iconstacheglow.png")
-
-assets["HelpBook"] = love.graphics.newImage("assets/image/iconselfhelp.png")
-assets["HelpBookGlow"] = love.graphics.newImage("assets/image/iconselfhelpglow.png")
--- HelpBook, one left
-]]
--- Living Room
---
 -- Audio
 assets["Touch"] = love.audio.newSource("assets/audio/woodClick.wav", "static")
 assets["Grab"] = love.audio.newSource("assets/audio/grab.wav", "static")

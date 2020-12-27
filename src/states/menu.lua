@@ -12,15 +12,15 @@ local textPos = {x1 = -100, x2 = 1000}
 
 function MainMenu:draw()
     -- love.graphics.draw(Assets.getAsset("LivingRoomBG"), 0 , 0, 0,  5, 5)
-    love.graphics.print("Gifts For", textPos.x1, 300, 0, 2)
-    love.graphics.print("Granny"   , textPos.x2, 350, 0, 2)
+    love.graphics.print("Gifts For", textPos.x1, 300, 0, 1.2)
+    love.graphics.print("Granny"   , textPos.x2, 350, 0, 1.2)
     
     mainMenu:draw()
 end
 
 function MainMenu:update(dt)
     if mainMenu:Button("Start Game", (love.graphics.getWidth()/2)-150 , 3*love.graphics.getHeight()/4).hit then
-        GameState.switch(LivingRoom)
+        GameState.switch(Intro)
         --Assets.getAsset("Bloop"):play()
     end
 end

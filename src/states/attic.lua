@@ -72,7 +72,7 @@ function Attic:leave()
 end
 
 function Attic:draw(  )
-        camera:attach()
+       
     love.graphics.draw(Assets.getAsset("atticBG"))
 
     if not roomState["recordBox"] then
@@ -84,7 +84,7 @@ function Attic:draw(  )
     InventoryGUI.draw()
     World.draw() -- draw entities
     SpeechBox.draw()
-    camera:detach()
+    
 
     DrawGrid.drawGrid()
 end

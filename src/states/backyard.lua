@@ -71,7 +71,7 @@ function Backyard:leave()
 end
 
 function Backyard:draw( )
-    camera:attach()
+   -- camera:attach()
     love.graphics.draw(Assets.getAsset("backyardBG"))
     
     
@@ -86,7 +86,7 @@ function Backyard:draw( )
     InventoryGUI.draw()
     World.draw() -- draw entities
     SpeechBox.draw()
-    camera:detach()
+   -- camera:detach()
     DrawGrid.drawGrid()
 
 end

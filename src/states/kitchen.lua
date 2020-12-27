@@ -19,6 +19,8 @@ local roomState = {}
 
 local itemsInRoom  = {}
 
+local ingredientsInBowl = 0
+
 function Kitchen:init()
     -- set initial state from Kitchen to world
     self.background = Assets.getAsset("kitchenBG")
@@ -28,9 +30,10 @@ function Kitchen:init()
     roomState["fridge"]    = false
 
     itemsInRoom["sugar"]      = true
-    itemsInRoom["raisins"]     = true
+    itemsInRoom["raisins"]    = true
     itemsInRoom["oats"]       = true
-    itemsInRoom["cookbook"] = true
+    itemsInRoom["cookbook"] =   true
+    itemsInRoom["bowl"] =       true
 end
 
 
@@ -47,18 +50,17 @@ function Kitchen:enter()
 
     -- Attic Door sensor
     World.addEntity(Sensor(200, 0, 300, 100, 
-        function()
-            if not roomState["atticDoor"] and Inventory.getActiveItem() == "Hook" then
-                roomState["atticDoor"] = true
+            function()
+                if not roomState["atticDoor"] and Inventory.getActiveItem() == "hookicon" then
+                    roomState["atticDoor"] = true
                 
-            elseif not roomState["atticDoor"] then
-                -- play "hmmm" sound
-                SpeechBox.startSpeech("I wonder if there's a way to get up there...")
-                
-            else
-                -- DOOR SOUND
-                GameState.switch(Attic)
-            end
+                elseif not roomState["atticDoor"] then
+                    -- play "hmmm" sound
+                    SpeechBox.startSpeech("I wonder if there's a way to get up there...", 1.5)
+                else
+                    -- DOOR SOUND
+                    GameState.switch(Attic)
+                end
                 
             return true
         end))
@@ -72,9 +74,9 @@ function Kitchen:enter()
                 -- play open sound
                 Assets.playAudio("Cabinet")
                 -- add sugar
-                World.addEntity(Sensor(610, 210, 150, 150,
+                World.addEntity(Sensor(590, 223, 150, 150,
                     function()    
-                        SpeechBox.startSpeech("You got a jar of sugar.")
+                        SpeechBox.startSpeech("You got a jar of sugar.", 0.75)
                         -- grab sound
                         Inventory.addToInventory(Item("sugaricon", Assets.getAsset("sugaricon")))
                         itemsInRoom["sugar"] = false
@@ -95,10 +97,9 @@ function Kitchen:enter()
                 roomState["fridge"] = true
                 -- play open sound
 
-                -- add sugar
-                World.addEntity(Sensor(925, 275 , 50, 50,
+                World.addEntity(Sensor(930, 295 , 50, 50,
                     function()    
-                        SpeechBox.startSpeech("You got a box of raisins, gross...")
+                        SpeechBox.startSpeech("You got a box of raisins, gross...", 1.2)
                         -- grab sound
                         Inventory.addToInventory(Item("raisinsicon", Assets.getAsset("raisinsicon")))
                         itemsInRoom["raisins"] = false
@@ -112,10 +113,10 @@ function Kitchen:enter()
 
     
     -- Add oats if not picked up by the player
-    if not itemsInRoom["oats"] then
-        World.addEntity(Sensor(12,410,50,50,
+    if itemsInRoom["oats"] then
+        World.addEntity(Sensor(14,380,50,50,
             function()
-                SpeechBox.startSpeech("You got some oats Mah-goats")
+                SpeechBox.startSpeech("You got some oats, mah-goats", 1)
                 -- grab sound
                 Inventory.addToInventory(Item("oatsicon", Assets.getAsset("oatsicon")))
                 itemsInRoom["oats"] = false
@@ -124,15 +125,99 @@ function Kitchen:enter()
     end
 
 
-    World.addEntity(Sensor(740,370,50,50,
+    World.addEntity(Sensor(720,390,50,50,
         function()
-            SpeechBox.startSpeech("Hmmm...I could bake something")
+                -- checks ingredients
+                if Inventory.getActiveItem() == "oatsicon" then
+                        SpeechBox.startSpeech("You threw some oats into the bowl.", 0.75)
+                        Inventory.removeItem("oatsicon")
+                        Inventory.removeItem("oatsiconglow")
+                        Inventory.removeActiveItem()
+                        ingredientsInBowl = ingredientsInBowl + 1
+                        
+                        if ingredientsInBowl == 4 then
+                                SpeechBox.startSpeech("I got all the ingredients ready! Now it's time to put this in the oven!")
+                        end
+                        return true
+                
+                elseif Inventory.getActiveItem() == "sugaricon" then
+                        SpeechBox.startSpeech("You threw some sugar into the bowl.", 0.75)
+                        Inventory.removeItem("sugaricon")
+                        Inventory.removeItem("sugariconglow")
+                        Inventory.removeActiveItem()
+                        ingredientsInBowl = ingredientsInBowl + 1
+
+                        if ingredientsInBowl == 4 then
+                                SpeechBox.startSpeech("I got all the ingredients ready! Now it's time to put this in the oven!")
+                        end
+                        return true
+                
+                elseif Inventory.getActiveItem() == "pruneicon" then
+                        SpeechBox.startSpeech("You threw some prunes into the bowl.", 0.75)
+                        Inventory.removeItem("pruneicon")
+                        Inventory.removeItem("pruneiconglow")
+                        Inventory.removeActiveItem()
+                        ingredientsInBowl = ingredientsInBowl + 1
+
+                        if ingredientsInBowl == 4 then
+                                SpeechBox.startSpeech("I got all the ingredients ready! Now it's time to throw this in the oven!")
+                        end
+                        return true
+
+                elseif Inventory.getActiveItem() == "raisinsicon" then
+                        SpeechBox.startSpeech("You threw some raisins into the bowl.", 0.75)
+                        Inventory.removeItem("raisinsicon")
+                        Inventory.removeItem("raisinsiconglow")
+                        Inventory.removeActiveItem()
+                        ingredientsInBowl = ingredientsInBowl + 1
+                        if ingredientsInBowl == 4 then
+                                SpeechBox.startSpeech("I got all the ingredients ready! Now it's time to throw this in the oven!")
+                        end
+                        return true
+
+                elseif Inventory.isActiveItem() then
+                        SpeechBox.startSpeech("No, I don't think that's in the recipe...")
+                
+                else
+                -- Checks to see if all ingredients are in the bowl.
+
+                    if ingredientsInBowl == 4 then
+                            SpeechBox.startSpeech("You got a bowl of raisin oatmeal and prune batter")
+                            Inventory.addToInventory(Item("bowlicon", Assets.getAsset("bowlicon")))
+                            itemsInRoom["bowl"] = false
+                            return false
+                    
+                    elseif ingredientsInBowl > 0 and ingredientsInBowl < 4 then
+                            SpeechBox.startSpeech("I've got some of the ingredients in the bowl, but I just need to put in the rest before baking.")
+                    
+                    else
+                            SpeechBox.startSpeech("Looks like grandma started making raisin oatmeal and prune cookies but forgot to finish adding ingredients. I wonder if I can find the recipe somewhere...", 3)
+                    end
+            end
             return true
         end, Assets.getAsset("bowl"), true))
 
-
+    World.addEntity(Sensor(540,440,200,150,
+        function()
+                if Inventory.getActiveItem() == "bowlicon" then
+                        SpeechBox.startSpeech("You put the cookie batter onto a baking pan and place it in the oven.")
+                        SpeechBox.startSpeech("doot...dee...doot dooot....")
+                        SpeechBox.startSpeech("ski doobie doobie doo de bap bap...")
+                        -- finish noise 
+                        SpeechBox.startSpeech("Cookies are done!")
+                        Inventory.addToInventory(Item("cookiesicon", Assets.getAsset("cookiesicon")))
+                        Inventory.removeActiveItem()
+                        Inventory.removeItem("bowlicon")
+                        Inventory.removeItem("bowliconglow")
+                        SpeechBox.startSpeech("You got a tray of fresh hot cookies", 0.75)
+                else
+                        SpeechBox.startSpeech("It's matilda, our ol' oven.", 1)
+                end
+                return true
+        end
+                        ))
     -- Go to recipe page
-    World.addEntity(Sensor(150, 425, 0, 0,
+    World.addEntity(Sensor(110, 420, 0, 0,
         function()
             -- Go to Recipe page
             GameState.switch(Recipe) 
@@ -140,11 +225,13 @@ function Kitchen:enter()
         end, Assets.getAsset("cookbook"), true))
     
     -- Go to living room
-    World.addEntity(Sensor(371, 680, 200,200,
-        function()
-            -- play door sound --
-            GameState.switch(LivingRoom)
-        end))
+    World.addEntity(Sensor(570, 650, 200,200,
+                        function()
+                                -- play door sound --
+                                GameState.switch(LivingRoom)
+                        end, Assets.getAsset("arrow"), true))
+    
+     
 
     -- Go to backyard
     World.addEntity(Sensor(1095,249,220,400,
@@ -176,24 +263,25 @@ function Kitchen:draw()
         love.graphics.draw(Assets.getAsset("kitchenAtticDoor2"), 200, 0)
     end
 
-    if not roomState["cabinet"] then
-        love.graphics.draw(Assets.getAsset("kitchencabinet1"), 450, 175)
-    else
-        love.graphics.draw(Assets.getAsset("kitchencabinet2"), 450, 175)
-    end
-
+    
     if not roomState["fridge"] then
-        love.graphics.draw(Assets.getAsset("kitchenFridge1"), 825, 200)
+        love.graphics.draw(Assets.getAsset("kitchenFridge1"), 815, 204)
     else
-        love.graphics.draw(Assets.getAsset("kitchenFridge2"), 825, 200)
+        love.graphics.draw(Assets.getAsset("kitchenFridge2"), 815, 204)
     end
-
+    if not roomState["cabinet"] then
+        love.graphics.draw(Assets.getAsset("kitchencabinet1"), 450, 178)
+    else
+        love.graphics.draw(Assets.getAsset("kitchencabinet2"), 450, 178)
+    end
+    
     InventoryGUI.draw()
     World.draw() -- draw entities    
     SpeechBox.draw()
     camera:detach()
 
     DrawGrid.drawGrid()
+
 end
 
 return Kitchen

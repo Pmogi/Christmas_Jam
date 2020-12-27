@@ -20,38 +20,84 @@ itemsInRoom = {}
 
 function Backyard:init()
         roomState["shed"] = false
+
+        itemsInRoom["decoration"] = true
 end
 
 
 
-function Attic:enter()
+function Backyard:enter()
+    -- if the shed hasn't been opened yet, spawn shed puzzle
+    if not roomState["shed"] then
         World.addEntity(Sensor(324,250, 400,300,
-            function()
-                    if not roomState["shed"] then
-                            roomState["shed"] = true
-                            -- play open sound
+                function()
+                    if not roomState["shed"] and Inventory.getActiveItem() == "keyicon" then
+                        -- play open sound    
+                        roomState["shed"] = true
+                        spawnDecorations()
+                        return false      
+                    else
+                        -- play "hmm" sound
+                        SpeechBox.startSpeech("Darn, it's locked. There's gotta be a key somewhere...")      
                     end
-                            return false
-                    end ), false, false)
+                    return true
+                end))
+    end
+
+    
+    -- just in case the player missed the decorations
+    if itemsInRoom["decoration"] and roomState["shed"] then
+        spawnDecorations()
+    end
+        
+        World.addEntity(Sensor(417,680,150,100,
+            function()
+                    GameState.switch(Kitchen)
+            end))
+end
+
+function Backyard:update( dt )
+        InventoryGUI.update(dt)
+        SpeechBox.update(dt)
+        World.update(dt)
 
 end
 
-function Attic:update( dt )
-
-end
-
-function Attic:leave(  )        
+function Backyard:leave()        
     -- remove sensors
+    World.clearEntities()
 end
 
-function Attic:draw(  )
+function Backyard:draw( )
+    camera:attach()
     love.graphics.draw(Assets.getAsset("backyardBG"))
-    DrawGrid.drawGrid()
+    
+    
     if not roomState["shed"] then
         love.graphics.draw(Assets.getAsset("backyardShed1"), 270, 250)
     else
         love.graphics.draw(Assets.getAsset("backyardShed2"), 270, 250)
     end
+
+    
+    
+    InventoryGUI.draw()
+    World.draw() -- draw entities
+    SpeechBox.draw()
+    camera:detach()
+    DrawGrid.drawGrid()
+
 end
 
-return Attic
+function spawnDecorations()
+    World.addEntity(Sensor(401, 425, 0, 0, 
+                    function()
+                        -- rustle/grab sound effect
+                        SpeechBox.startSpeech("You grab a bunch of christmas decorations.")
+                        Inventory.addToInventory(Item("decorationicon", Assets.getAsset("decorationicon")))
+                        itemsInRoom["decoration"] = false
+                    end,
+                    Assets.getAsset("decoration"), true))
+end
+
+return Backyard

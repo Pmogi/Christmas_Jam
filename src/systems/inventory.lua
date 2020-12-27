@@ -10,21 +10,33 @@ local inv = {}
 
 -- Used when using an item on something
 local activeItemID = nil
+local itemEquipped = false
 
 function Inventory.setActiveItem(id)
     if (Inventory.checkInventory(id)) then
         activeItemID = id
-        SpeechBox.startSpeech("You are holding the " .. id .. ".")
+        SpeechBox.startSpeech("You are holding the " .. id:sub(1,-5) .. ".", .75)
+        itemEquipped = true
     end
 end
 
+function Inventory.removeActiveItem(id)
+        activeItemID = nil
+        itemEquipped = false
+end
+
 function Inventory.resetActiveItem()
-    SpeechBox.startSpeech("You put away the " .. activeItemID .. ".")
+    SpeechBox.startSpeech("You put away the " .. activeItemID:sub(1,-5) .. ".", 0.75)
     activeItemID = nil
+    itemEquipped = false
 end
 
 function Inventory.getActiveItem()
     return activeItemID
+end
+
+function Inventory.isActiveItem()
+        return itemEquipped
 end
 
 function Inventory.expendActiveItem(id)

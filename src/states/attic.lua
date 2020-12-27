@@ -19,30 +19,74 @@ roomState = {}
 itemsInRoom = {}
 
 function Attic:init()
-    roomState["box"] = false
+    roomState["recordBox"] = false
 
-    itemsInRoom["record"] = false
+    itemsInRoom["record"] = true
+    itemsInRoom["key"] = true
 end
 
 
 
 function Attic:enter()
-    if not roomState["box"] then
-        -- World.addEntity(Sensor())
+        World.addEntity(Sensor(490,535,300,200,
+            function()
+                    if not roomState["recordBox"] then
+                            roomState["recordBox"] = true
+                            -- play open sound
+
+                            World.addEntity(Sensor(550,490,50,50,
+                                function()
+                                        SpeechBox.startSpeech("You obtained a record of 'Barry White Sings For Someone You Love'. There's also a note scribbled onto the back of the case that says, 'Merry Christmas my Magnolia, I will love you forever'.", 5)
+                                        Inventory.addToInventory(Item("recordicon", Assets.getAsset("recordicon")))
+                                        itemsInRoom["record"] = false
+                                        return false
+                                end, Assets.getAsset("record"), true))
+                        end 
+                        return false
+                end), false,false)
+        World.addEntity(Sensor(200,580,50,50,
+            function()
+                    SpeechBox.startSpeech("You obtained a key.", 1)
+                    Inventory.addToInventory(Item("keyicon", Assets.getAsset("keyicon")))
+                    itemsInRoom["key"] = false
+                    return false
+            end, Assets.getAsset("key"), true))
+        -- go to kitchen
+        World.addEntity(Sensor(763,470,300,100,
+            function()
+                    GameState.switch(Kitchen)
+            end))
     end
+
+
+function Attic:update(dt)
+        InventoryGUI.update(dt)
+        SpeechBox.update(dt)
+        World.update(dt)
+
 end
 
-function Attic:update( dt )
-
-end
-
-function Attic:leave(  )        
+function Attic:leave()        
     -- remove sensors
+    World.clearEntities()
 end
 
 function Attic:draw(  )
+        camera:attach()
     love.graphics.draw(Assets.getAsset("atticBG"))
 
+    if not roomState["recordBox"] then
+            love.graphics.draw(Assets.getAsset("atticRecordBox1"),460,460)
+    else
+            love.graphics.draw(Assets.getAsset("atticRecordBox2"),460,460)
+    end
+
+    InventoryGUI.draw()
+    World.draw() -- draw entities
+    SpeechBox.draw()
+    camera:detach()
+
+    DrawGrid.drawGrid()
 end
 
 return Attic

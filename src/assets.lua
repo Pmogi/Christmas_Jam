@@ -36,11 +36,23 @@ assets["atticRecordBox2"] = graphics.newImage("assets/image/attic/atticrecordbox
 
 -- Living Room images
 assets["livingRoomBG"] = graphics.newImage("assets/image/livingRoom/livingroombg.png")
+assets["denture"] = graphics.newImage("assets/image/livingRoom/itemdentures.png")
+assets["dentureicon"] = graphics.newImage("assets/image/livingRoom/icondentures1.png")
+assets["dentureiconglow"] = graphics.newImage("assets/image/livingRoom/icondentures2.png")
+assets["hook"] = graphics.newImage("assets/image/livingRoom/itemattichook.png")
+assets["hookicon"] = graphics.newImage("assets/image/livingRoom/attichook1.png")
+assets["hookiconglow"] = graphics.newImage("assets/image/livingRoom/attichook2.png")
 
 -- Backyard image
 assets["backyardBG"] = graphics.newImage("assets/image/backyard/backyardbg.png")
 assets["backyardShed1"] = graphics.newImage("assets/image/backyard/backyardshed1.png")
 assets["backyardShed2"] = graphics.newImage("assets/image/backyard/backyardshed2.png")
+
+assets["decoration"]    = graphics.newImage("assets/image/backyard/itemdecorations.png")
+assets["decorationicon"] = graphics.newImage("assets/image/backyard/icondecorations1.png")
+assets["decorationiconglow"] = graphics.newImage("assets/image/backyard/icondecorations2.png")
+
+
 
 -- Bedroom assets
 local b = "assets/image/bedroom/"
@@ -50,6 +62,8 @@ assets["recordPlayer1"] = graphics.newImage(b .. "bedroomrecordplayer1.png")
 assets["recordPlayer2"] = graphics.newImage(b .. "bedroomrecordplayer2.png")
 
 assets["prune"] = graphics.newImage(b .. "itemprunes.png")
+assets["pruneicon"] = graphics.newImage(b .. "iconprune1.png")
+assets["pruneiconglow"] = graphics.newImage(b .. "iconprune2.png")
 
 assets["grannyFrames"] = {graphics.newImage(b .. "bedroombedandlady1.png"),
                           graphics.newImage(b .. "bedroombedandlady2.png") }
@@ -82,28 +96,35 @@ assets["recipeBook"] = graphics.newImage("assets/image/recipe/recipePage.png")
 -- Kitchen
 
 assets["sugar"]  = graphics.newImage("assets/image/kitchen/itemsugar.png")
-assets["sugaricon"] = graphics.newImage("assets/image/kitchen/itemsugaricon.png")
+assets["sugaricon"] = graphics.newImage("assets/image/kitchen/iconsugar1.png")
+assets["sugariconglow"] = graphics.newImage("assets/image/kitchen/iconsugar2.png")
+
+
 
 assets["raisins"] = graphics.newImage("assets/image/kitchen/itemraisins.png")
-assets["raisinsicon"] = graphics.newImage("assets/image/kitchen/itemraisinsicon.png")
+assets["raisinsicon"] = graphics.newImage("assets/image/kitchen/iconraisin1.png")
+assets["raisinsiconglow"] = graphics.newImage("assets/image/kitchen/iconraisin2.png")
 
 assets["oats"] = graphics.newImage("assets/image/kitchen/itemoatmeal.png")
-assets["oatsicon"] = graphics.newImage("assets/image/kitchen/itemoatmealicon.png")
+assets["oatsicon"] = graphics.newImage("assets/image/kitchen/iconoatmeal1.png")
+assets["oatsiconglow"] = graphics.newImage("assets/image/kitchen/iconoatmeal2.png")
 
 assets["bowl"] = graphics.newImage("assets/image/kitchen/itembowl.png")
-assets["bowlicon"] = graphics.newImage("assets/image/kitchen/itembowlicon.png")
+assets["bowlicon"] = graphics.newImage("assets/image/kitchen/iconfullbowl1.png")
+assets["bowliconglow"] = graphics.newImage("assets/image/kitchen/iconfullbowl2.png")
 
 assets["cookbook"] = graphics.newImage("assets/image/kitchen/itemcookbook.png")
+assets["cookiesicon"] = graphics.newImage("assets/image/kitchen/iconcookies1.png")
+assets["cookiesiconglow"] = graphics.newImage("assets/image/kitchen/iconcookies2.png")
 
--- Living Room
-assets["dentures"] = graphics.newImage("assets/image/livingRoom/itemdentures.png")
-assets["denturesicon"] = graphics.newImage("assets/image/livingRoom/itemdenturesicon.png")
-assets["atticHook"] = graphics.newImage("assets/image/livingRoom/itemattichook.png")
-assets["attickHookicon"] = graphics.newImage("assets/image/livingRoom/itemattichookicon.png")
-
+assets["arrow"] = graphics.newImage("assets/image/kitchen/pointyarrow.png")
 -- Attic
 assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")
-
+assets["recordicon"] = graphics.newImage("assets/image/attic/iconrecord1.png")
+assets["recordiconglow"] = graphics.newImage("assets/image/attic/iconrecord2.png")
+assets["key"] = graphics.newImage("assets/image/attic/itemkey.png")
+assets["keyicon"] = graphics.newImage("assets/image/attic/iconkey1.png")
+assets["keyiconglow"] = graphics.newImage("assets/image/attic/iconkey2.png")
 
 
 

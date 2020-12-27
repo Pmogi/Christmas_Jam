@@ -43,7 +43,7 @@ function Kitchen:enter()
     World.addEntity(Sensor(230, 220 , 215, 160, 
         function()
             SpeechBox.startSpeech("It's beginning to look a lot like Christmas." )
-            Assets.playAudioRandomPitch("Touch", 0.8, 1.5)
+            Assets.playAudioRandomPitch("GlassKnock", 0.9, 1.2)
             return true
         end
     ))
@@ -53,9 +53,11 @@ function Kitchen:enter()
             function()
                 if not roomState["atticDoor"] and Inventory.getActiveItem() == "hookicon" then
                     roomState["atticDoor"] = true
+                    Assets.playAudio("AtticDoor")
                 
                 elseif not roomState["atticDoor"] then
                     -- play "hmmm" sound
+                    Assets.playAudioRandomPitch("Hmm", 0.9, 1.1)
                     SpeechBox.startSpeech("I wonder if there's a way to get up there...", 1.5)
                 else
                     -- DOOR SOUND

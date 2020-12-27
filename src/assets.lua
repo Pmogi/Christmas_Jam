@@ -194,7 +194,9 @@ assets["Cabinet"] = love.audio.newSource("assets/audio/cabinet.wav", "static")
 assets["Box"] = love.audio.newSource("assets/audio/box.wav", "static")
 assets["ShedDoor"] = love.audio.newSource("assets/audio/shedDoor.wav", "static")
 assets["Hmm"] = love.audio.newSource("assets/audio/hmm.wav", "static")
+assets["Hmm"]:setVolume(0.5)
 assets["GlassKnock"] = love.audio.newSource("assets/audio/glassKnock.wav", "static")
+assets["GlassKnock"]:setVolume(0.7)
 
 assets["endScreen"] = love.graphics.newImage("assets/endingscreen.png")
 

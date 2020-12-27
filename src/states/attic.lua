@@ -33,7 +33,7 @@ function Attic:enter()
                     if not roomState["recordBox"] then
                             roomState["recordBox"] = true
                             -- play open sound
-
+                            Assets.playAudio("Box")
                             World.addEntity(Sensor(550,490,50,50,
                                 function()
                                         SpeechBox.startSpeech("You obtained a record of 'Barry White Sings For Someone You Love'. There's also a note scribbled onto the back of the case that says, 'Merry Christmas my Magnolia, I will love you forever'.", 5)

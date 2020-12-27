@@ -33,11 +33,13 @@ function Backyard:enter()
                 function()
                     if not roomState["shed"] and Inventory.getActiveItem() == "keyicon" then
                         -- play open sound    
+                        Assets.playAudio("ShedDoor")
                         roomState["shed"] = true
                         spawnDecorations()
                         return false      
                     else
                         -- play "hmm" sound
+                        Assets.playAudioRandomPitch("Hmm", 0.9, 1.1)
                         SpeechBox.startSpeech("Darn, it's locked. There's gotta be a key somewhere...")      
                     end
                     return true

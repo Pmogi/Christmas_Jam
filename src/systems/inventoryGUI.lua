@@ -56,7 +56,7 @@ function InventoryGUI.update(dt)
                 else
                     horizontalCount = 0
                     x = 5
-                    y = y + 64
+                    y = y + 74
                 end
 
                 GUI(item.id, x, y)

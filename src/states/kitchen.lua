@@ -48,7 +48,7 @@ function Kitchen:enter()
     -- Attic Door sensor
     World.addEntity(Sensor(200, 0, 300, 100, 
             function()
-                if not roomState["atticDoor"] and Inventory.getActiveItem() == "hook" then
+                if not roomState["atticDoor"] and Inventory.getActiveItem() == "hookicon" then
                     roomState["atticDoor"] = true
                 
                 elseif not roomState["atticDoor"] then

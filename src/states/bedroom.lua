@@ -59,7 +59,7 @@ function Bedroom:enter(  )
     -- Record player
     World.addEntity(Sensor(1100, 475, 100, 100,
                     function()
-                       if not roomState["record"] and Inventory.getActiveItem() == "Record" then
+                       if not roomState["record"] and Inventory.getActiveItem() == "recordicon" then
                             SpeechBox.startSpeech("Granny: Ahhh, they used to play this song when I met my husband. Did I ever tell you that Rose?")
                             -- granny talk sound
                             self.granimation:play()
@@ -86,7 +86,7 @@ function Bedroom:enter(  )
         World.addEntity(Sensor(1000, 425, 0, 0,
                         function()
                             SpeechBox.startSpeech("You obtained a cannister of prunes.")
-                            Inventory.addToInventory(Item("prune", Assets.getAsset("Prunes")))
+                            Inventory.addToInventory(Item("pruneicon", Assets.getAsset("pruneicon")))
                             itemsInRoom["prunes"] = false
                             return false
                         end
@@ -215,7 +215,7 @@ function Bedroom:grannyFSM()
         SpeechBox.startSpeech("The cookies recipe should be in the kitchen, I mixed some of the ingredients together, but I can't find some.")
     
     else
-        SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wondeful. I don't have a lot of time left, so it means a lot to me.")
+        SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.")
     end
     
     return true

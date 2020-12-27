@@ -282,6 +282,10 @@ function Bedroom:grannyFSM()
 
     elseif not deco and self.hintCount == 2 then
         SpeechBox.startSpeech("My legs aren't as strong as they used to be...")
+    
+    elseif not deco and self.decoCount == 3 then
+        SpeechBox.startSpeech("L-Lilly thank you for decorating my room. It looks wonderful.")
+        Objective.completeObjective("Decorations")
 
     -- Completed objective
     elseif not rec and not cookie and deco then

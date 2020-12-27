@@ -44,7 +44,7 @@ function LivingRoom:enter()
                 World.addEntity(Sensor(125, 245, 0, 0,
                         function()
                                 -- grab sound
-                                Inventory.addToInventory(Item("denture", Assets.getAsset("denture")))
+                                Inventory.addToInventory(Item("dentureicon", Assets.getAsset("dentureicon")))
                                 SpeechBox.startSpeech("You obtained some false teeth.")
                                 itemsInRoom["denture"] = false
                                 return false
@@ -57,7 +57,7 @@ function LivingRoom:enter()
                 World.addEntity(Sensor(868, 600, 0, 0,
                         function()
                                 -- grab sound
-                                Inventory.addToInventory(Item("hook", Assets.getAsset("hook")))
+                                Inventory.addToInventory(Item("hookicon", Assets.getAsset("hookicon")))
                                 SpeechBox.startSpeech("You obtained a pole with a hook on the end")
                                 itemsInRoom["hook"] = false
                                 return false

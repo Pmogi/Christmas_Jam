@@ -83,7 +83,8 @@ end
 -- Maybe not hardcode this and have a stack of items
 function GUI(item, x, y)
         if Inventory.checkInventory(item) then
-                if gui:ImageButton(Assets.getAsset(item), {hovered = Assets.getAsset(item)}, x,y).hit then
+                itemGlow = item .. "glow"
+                if gui:ImageButton(Assets.getAsset(item), {hovered = Assets.getAsset(itemGlow)}, x,y).hit then
                         Assets.getAsset("Grab"):play()
                         Inventory.setActiveItem(item)
                 end

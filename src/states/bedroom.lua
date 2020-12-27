@@ -29,6 +29,7 @@ function Bedroom:init()
     itemsInRoom["prunes"] = true
 
     self.hintCount = 0
+    self.decoCount = 0
 
     
 end
@@ -60,10 +61,15 @@ function Bedroom:enter(  )
     World.addEntity(Sensor(1100, 475, 100, 100,
                     function()
                        if not roomState["record"] and Inventory.getActiveItem() == "recordicon" then
-                            SpeechBox.startSpeech("Granny: Ahhh, they used to play this song when I met my husband. Did I ever tell you that Rose?")
+                            SpeechBox.startSpeech("Ahhh, they used to play this song when I met my husband. Did I ever tell you that Rose?", 4)
                             -- granny talk sound
                             self.granimation:play()
                             Objective.completeObjective("Record") -- completed record objective
+                            -- use up the item
+                            Inventory.removeItem("recordicon")
+                            Inventory.removeItem("recordiconglow")
+                            Inventory.removeActiveItem("recordicon")
+
                             -- start music in room
                             roomState["record"] = true
                         
@@ -73,14 +79,14 @@ function Bedroom:enter(  )
                         else
                             -- granny talk sound
                             self.granimation:play()
-                            SpeechBox.startSpeech("Granny: Do you remember this song Rose?")
+                            SpeechBox.startSpeech("Do you remember this song Rose?")
                         end
 
                         return true
                     end
         ))
     
-    World.addEntity(Sensor())
+    -- World.addEntity(Sensor())
     --World.addEntity(Sensor)
 
     -- If prunes haven't been picked up, spawn prunes
@@ -107,30 +113,66 @@ function Bedroom:enter(  )
     -- deco wreath
     World.addEntity(Sensor(805, 215, 200, 75, 
     function()
-        -- Granny sound -- 
-        self.granimation:play()
-        SpeechBox.startSpeech("I'd love my wreath to be up here.")
+        if not roomState["wreathPlaced"] and Inventory.getActiveItem() == "decorationicon" then
+            roomState["wreathPlaced"] = true
+            self.decoCount = self.decoCount + 1
+            self.granimation:play()
+            SpeechBox.startSpeech("What a lovely wreath, we'd put this out on the front porch.")
+            
+        elseif roomState["wreathPlaced"] then
+            -- grannnoise
+            self.granimation:play()
+            SpeechBox.startSpeech("What a lovely wreath, we'd put this out on the front porch.")
+        else
+            -- Granny sound -- 
+            self.granimation:play()
+            SpeechBox.startSpeech("I'd love to hang something there.")
+        end
         return true
     end
 ))
 
     -- deco pillow
 World.addEntity(Sensor(275, 439, 100, 75, 
-function()
-    -- Granny sound -- 
-    self.granimation:play()
-    SpeechBox.startSpeech("I'd love my jolly pillow to be over here...")
-    return true
-end
+    function()
+        
+        if not roomState["pillowPlaced"] and Inventory.getActiveItem() == "decorationicon" then
+            roomState["pillowPlaced"] = true
+            self.decoCount = self.decoCount + 1
+            self.granimation:play()
+            SpeechBox.startSpeech("")
+            
+
+        elseif roomState["pillowPlaced"] then
+        
+        else
+            -- Granny sound -- 
+            self.granimation:play()
+            SpeechBox.startSpeech("I'd love my jolly pillow to be over there...")
+        end
+
+        return true
+    end
 ))
 
     -- deco tree
-    World.addEntity(Sensor(158, 615, 100, 200, 
+World.addEntity(Sensor(158, 615, 100, 200, 
     function()
+        if not roomState["treePlaced"] and Inventory.getActiveItem() == "decorationicon" then
+            roomState["treePlaced"] = true
+            self.decoCount = self.decoCount + 1
+            self.granimation:play()
+            SpeechBox.startSpeech("")
+            
+
+        elseif roomState["treePlaced"] then
+            
+        else
         -- Granny sound -- 
         self.granimation:play()
         SpeechBox.startSpeech("Could the christmas tree be over here?")
-        return true
+        
+        end
     end
 ))
 end

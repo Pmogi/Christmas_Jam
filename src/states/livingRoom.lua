@@ -34,7 +34,7 @@ function LivingRoom:enter()
         ))
 
 
-        -- Go to kitchen
+        -- Go to kitchen --
         World.addEntity(Sensor(213, 350, 100,100, 
                             function()
                                     -- hmm-- 
@@ -43,14 +43,23 @@ function LivingRoom:enter()
                             end
         ))
 
-        -- Go to bedroom
+        -- Go to bedroom --
         World.addEntity(Sensor(822,232,100,200,
                             function()
                                     -- play door sound --
                                     GameState.switch(Bedroom)
-                                    
+
                             end
         ))
+
+        -- FOR TRANSITION TO FINAL SCENE --
+        if Objective.hasWon() then
+                World.addEntity(Sensor(600, 600, 0, 0,
+                                function()
+                                        GameState.switch(Ending)
+                                end, Assets.getAsset("arrow"), true))
+        end
+
 
         if itemsInRoom["denture"] then
                 World.addEntity(Sensor(125, 245, 0, 0,

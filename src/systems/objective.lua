@@ -17,8 +17,6 @@ Objective.objectiveList = {
 
 function Objective.update(dt)
         -- Notifiy the player they won
-
-    
 end
 
 function Objective.completeObjective(objective)
@@ -28,5 +26,10 @@ end
 function Objective.getObjectiveState(objective)
     return Objective.objectiveList[objective]
 end
+
+function Objective.hasWon()
+    return Objective.objectiveList["Record"] and Objective.objectiveList["Cookies"]  and Objective.objectiveList["Decorations"] 
+end
+
 
 return Objective

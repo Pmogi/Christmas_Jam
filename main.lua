@@ -7,20 +7,21 @@ local Timer     = require("lib.timer")
 -- Module
 local Assets = require("src.assets")
 local Objective = require("src.systems.objective")
+local World    = require("src.systems.world")
 
 
 -- -- States
--- 
 Kitchen =    require("src.states.kitchen")
 Attic   =    require("src.states.attic")
 Bedroom =    require("src.states.bedroom")
 LivingRoom = require("src.states.livingRoom")
-Backyard = require("src.states.backyard")
-MainMenu = require("src.states.menu")
-Intro    = require("src.states.intro")
+Backyard =   require("src.states.backyard")
+MainMenu =   require("src.states.menu")
+Intro    =   require("src.states.intro")
+Ending   =   require("src.states.ending")
+Recipe   =   require("src.states.recipeBook")
 
-Recipe   =    require("src.states.recipeBook")
-local World    = require("src.systems.world")
+
 
 -- Test Harness
 -- 

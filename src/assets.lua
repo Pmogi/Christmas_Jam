@@ -10,7 +10,6 @@ assets["font"] = love.graphics.newFont("assets/fontstuck.ttf")
 assets["UI_backpack"] = graphics.newImage("assets/image/UI/backpack.png")
 
 
-
 -- Kitchen images
 assets["kitchenBG"] = graphics.newImage("assets/image/kitchen/kitchenbg.png")
 assets["kitchenAtticDoor1"] = graphics.newImage("assets/image/kitchen/kitchenatticdoor1.png") -- closed state
@@ -99,8 +98,6 @@ assets["sugar"]  = graphics.newImage("assets/image/kitchen/itemsugar.png")
 assets["sugaricon"] = graphics.newImage("assets/image/kitchen/iconsugar1.png")
 assets["sugariconglow"] = graphics.newImage("assets/image/kitchen/iconsugar2.png")
 
-
-
 assets["raisins"] = graphics.newImage("assets/image/kitchen/itemraisins.png")
 assets["raisinsicon"] = graphics.newImage("assets/image/kitchen/iconraisin1.png")
 assets["raisinsiconglow"] = graphics.newImage("assets/image/kitchen/iconraisin2.png")
@@ -118,6 +115,8 @@ assets["cookiesicon"] = graphics.newImage("assets/image/kitchen/iconcookies1.png
 assets["cookiesiconglow"] = graphics.newImage("assets/image/kitchen/iconcookies2.png")
 
 assets["arrow"] = graphics.newImage("assets/image/kitchen/pointyarrow.png")
+
+
 -- Attic
 assets["record"] = graphics.newImage("assets/image/attic/itemrecord.png")
 assets["recordicon"] = graphics.newImage("assets/image/attic/iconrecord1.png")
@@ -127,16 +126,21 @@ assets["keyicon"] = graphics.newImage("assets/image/attic/iconkey1.png")
 assets["keyiconglow"] = graphics.newImage("assets/image/attic/iconkey2.png")
 
 
-
-
-
-
 -------- Images
 --- Living Room
 
 -- Cutscene images
 assets["introScreen"] = graphics.newImage("assets/image/cutsceneImages/intro.png")
 assets["endScreen"]   = love.graphics.newImage("assets/image/cutsceneImages/endingscreen.png")
+
+
+
+
+
+
+
+
+
 
 
 -- Audio

@@ -3,14 +3,6 @@ local Timer     = require("lib.timer")
 local Object = require("lib.classic")
 
 -- Modules
-local Assets = require("src/assets")
-local Sensor = require("src.entities.sensor")
-local SpeechBox = require("src.systems.speechbox")
-local Item      = require("src.entities.item")
-local Inventory    = require("src.systems.inventory")
-local InventoryGUI = require("src.systems.inventoryGUI")
-local World    = require("src.systems.world")
-local Objective = require("src.systems.objective")
 -- local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
 
 local Animation = Object:extend()
@@ -30,16 +22,16 @@ function Animation:new( x, y, imgTable, numOfFrames, playtime, timestep)
     self.playing     = false
     
 
-    self.frame       = 1
+    self.frame       = 0
     self.numOfFrames = numOfFrames
 end
 
 function Animation:draw()
     -- 
     if self.playing then
-        love.graphics.draw(self.imgTable[self.frame], self.x, self.y)
+        love.graphics.draw(self.imgTable[self.frame+1], self.x, self.y)
     else
-        love.graphics.draw(self.imgTable[1], self.x, self.y)
+        love.graphics.draw(self.imgTable[#self.imgTable], self.x, self.y)
     end
 end
 
@@ -54,8 +46,9 @@ function Animation:update(dt)
 
     if self.time > self.timeStep and self.playing then
         self.frame = self.frame + 1
-        self.frame = math.fmod(self.frame+1, self.numOfFrames) + 1
+        self.frame = math.fmod(self.frame, self.numOfFrames)
         self.time = 0
+        print(self.frame)
     end
 end
 

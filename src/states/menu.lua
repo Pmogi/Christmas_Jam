@@ -12,8 +12,8 @@ local textPos = {x1 = -100, x2 = 1000}
 
 function MainMenu:draw()
     love.graphics.draw(Assets.getAsset("kitchenBG"), 0 , 0, 0,  1.5, 1.5)
-    love.graphics.print("Gifts For", textPos.x1, 350, 0, 1.2)
-    love.graphics.print("Granny"   , textPos.x2, 400, 0, 1.2)
+    love.graphics.print("Magonlia's", textPos.x1, 350, 0, 1.2)
+    love.graphics.print("Wish"   , textPos.x2, 400, 0, 1.2)
     
     mainMenu:draw()
 end

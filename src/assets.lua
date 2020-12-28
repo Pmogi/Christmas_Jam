@@ -133,13 +133,21 @@ assets["keyiconglow"] = graphics.newImage("assets/image/attic/iconkey2.png")
 assets["introScreen"] = graphics.newImage("assets/image/cutsceneImages/intro.png")
 assets["endScreen"]   = love.graphics.newImage("assets/image/cutsceneImages/endingscreen.png")
 
+local e = "assets/image/cutsceneImages/"
 
+assets["endingAnim1"] = {graphics.newImage(e.."endingcandle1.png"), 
+                         graphics.newImage(e.."endingcandle2.png")}
 
+    
 
-
-
-
-
+assets["endingAnim2"] = {graphics.newImage(e.."endingcandle1.png"),
+                         graphics.newImage(e.."endingcandle2.png"),
+                         graphics.newImage(e.."endingcandle3.png"),
+                         graphics.newImage(e.."endingcandle4.png"),
+                         graphics.newImage(e.."endingcandle5.png"),
+                         graphics.newImage(e.."endingcandle6.png"),
+                         graphics.newImage(e.."endingcandle7.png"),
+                         graphics.newImage(e.."endingcandle7.png")}
 
 
 

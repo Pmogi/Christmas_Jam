@@ -68,6 +68,19 @@ function Kitchen:enter()
             return true
         end))
     
+    local addSugar = function()
+            World.addEntity(Sensor(590, 223, 150, 150,
+            function()    
+                SpeechBox.startSpeech("You got a jar of sugar.", 0.75)
+                -- grab sound
+                Assets.playAudioRandomPitch("Grab", 0.9, 1.1)
+                Inventory.addToInventory(Item("sugaricon", Assets.getAsset("sugaricon")))
+                itemsInRoom["sugar"] = false
+                return false
+            end,
+            Assets.getAsset("sugar"), true))
+        end
+
     -- Cabinet and Sugar
     World.addEntity(Sensor(550, 200, 100, 100,
         function() 
@@ -77,22 +90,30 @@ function Kitchen:enter()
                 -- play open sound
                 Assets.playAudio("Cabinet")
                 -- add sugar
-                World.addEntity(Sensor(590, 223, 150, 150,
-                    function()    
-                        SpeechBox.startSpeech("You got a jar of sugar.", 0.75)
-                        -- grab sound
-                        Assets.playAudioRandomPitch("Grab", 0.9, 1.1)
-                        Inventory.addToInventory(Item("sugaricon", Assets.getAsset("sugaricon")))
-                        itemsInRoom["sugar"] = false
-                        return false
-                    end,
-                Assets.getAsset("sugar"), true))
+                addSugar()
             end
         
             return false
         end),
         false, false)
-    
+
+    if roomState["cabinet"] and itemsInRoom["sugar"] then
+        addSugar()
+    end
+
+    local addRaisins = function()
+        World.addEntity(Sensor(930, 295 , 50, 50,
+            function()    
+                SpeechBox.startSpeech("You got a box of raisins, gross...", 1.2)
+                -- grab sound
+                Assets.playAudioRandomPitch("Grab", 0.9, 1.1)
+                Inventory.addToInventory(Item("raisinsicon", Assets.getAsset("raisinsicon")))
+                itemsInRoom["raisins"] = false
+                return false
+            end,
+            Assets.getAsset("raisins"), true))
+    end
+
     -- Fridge and thing inside it
     World.addEntity(Sensor(850, 300, 800, 100,
         function() 
@@ -101,20 +122,15 @@ function Kitchen:enter()
                 roomState["fridge"] = true
                 -- play open sound
                 Assets.playAudio("FridgeDoor")
-                World.addEntity(Sensor(930, 295 , 50, 50,
-                    function()    
-                        SpeechBox.startSpeech("You got a box of raisins, gross...", 1.2)
-                        -- grab sound
-                        Assets.playAudioRandomPitch("Grab", 0.9, 1.1)
-                        Inventory.addToInventory(Item("raisinsicon", Assets.getAsset("raisinsicon")))
-                        itemsInRoom["raisins"] = false
-                        return false
-                    end,
-                Assets.getAsset("raisins"), true))
+                addRaisins()
             end
             return false
         end),
         false, false)
+    
+    if roomState["fridge"] and itemsInRoom["raisins"] then
+        addRaisins()
+    end
 
     
     -- Add oats if not picked up by the player
@@ -135,6 +151,7 @@ function Kitchen:enter()
         function()
                 -- checks ingredients
                 if Inventory.getActiveItem() == "oatsicon" then
+                        Assets.playAudio("Grab")
                         SpeechBox.startSpeech("You threw some oats into the bowl.", 0.75)
                         Inventory.removeItem("oatsicon")
                         Inventory.removeItem("oatsiconglow")
@@ -147,6 +164,7 @@ function Kitchen:enter()
                         return true
                 
                 elseif Inventory.getActiveItem() == "sugaricon" then
+                        Assets.playAudio("Grab")
                         SpeechBox.startSpeech("You threw some sugar into the bowl.", 0.75)
                         Inventory.removeItem("sugaricon")
                         Inventory.removeItem("sugariconglow")
@@ -159,6 +177,7 @@ function Kitchen:enter()
                         return true
                 
                 elseif Inventory.getActiveItem() == "pruneicon" then
+                        Assets.playAudio("Grab")
                         SpeechBox.startSpeech("You threw some prunes into the bowl.", 0.75)
                         Inventory.removeItem("pruneicon")
                         Inventory.removeItem("pruneiconglow")
@@ -171,6 +190,7 @@ function Kitchen:enter()
                         return true
 
                 elseif Inventory.getActiveItem() == "raisinsicon" then
+                        Assets.playAudio("Grab")
                         SpeechBox.startSpeech("You threw some raisins into the bowl.", 0.75)
                         Inventory.removeItem("raisinsicon")
                         Inventory.removeItem("raisinsiconglow")
@@ -234,6 +254,8 @@ function Kitchen:enter()
     World.addEntity(Sensor(570, 650, 200,200,
                         function()
                                 -- play door sound --
+                                
+                                Assets.playAudio("Cabinet")
                                 GameState.switch(LivingRoom)
                         end, Assets.getAsset("arrow"), true))
     
@@ -243,6 +265,8 @@ function Kitchen:enter()
     World.addEntity(Sensor(1095,249,220,400,
         function()
             --play door sound--
+            
+            Assets.playAudio("Cabinet")
             GameState.switch(Backyard)
         end))
 end

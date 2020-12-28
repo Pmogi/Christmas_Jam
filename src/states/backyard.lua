@@ -27,6 +27,7 @@ end
 
 
 function Backyard:enter()
+    Assets.getAsset("recordBGM"):pause()
     -- if the shed hasn't been opened yet, spawn shed puzzle
     if not roomState["shed"] then
         World.addEntity(Sensor(380,260, 200,300,
@@ -92,7 +93,7 @@ function Backyard:draw( )
 end
 
 function spawnDecorations()
-    World.addEntity(Sensor(401, 425, 0, 0, 
+    World.addEntity(Sensor(401, 520, 0, 0, 
                     function()
                         -- rustle/grab sound effect
                         Assets.playAudioRandomPitch("Grab", 0.9, 1.1)

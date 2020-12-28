@@ -38,6 +38,7 @@ end
 
 
 function Kitchen:enter()
+        Assets.getAsset("recordBGM"):pause()
     -- add sensor entities
     
     World.addEntity(Sensor(230, 220 , 215, 160, 

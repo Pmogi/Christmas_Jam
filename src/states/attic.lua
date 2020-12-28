@@ -28,6 +28,7 @@ end
 
 
 function Attic:enter()
+        Assets.getAsset("recordBGM"):pause()
         World.addEntity(Sensor(490,535,300,200,
             function()
                     if not roomState["recordBox"] then
@@ -44,6 +45,8 @@ function Attic:enter()
                         end 
                         return false
                 end), false,false)
+
+    if itemsInRoom["key"] then
         World.addEntity(Sensor(200,580,50,50,
             function()
                     SpeechBox.startSpeech("You obtained a key.", 1)
@@ -51,6 +54,8 @@ function Attic:enter()
                     itemsInRoom["key"] = false
                     return false
             end, Assets.getAsset("key"), true))
+    end
+
         -- go to kitchen
         World.addEntity(Sensor(763,470,300,100,
             function()

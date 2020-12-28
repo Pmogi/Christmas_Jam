@@ -1,7 +1,7 @@
 function love.conf(t)
     t.identity = nil
     t.console = false
-    t.window.title = "Christmas Game"
+    t.window.title = "Magnolia's Wish"
     t.window.icon = nil
     t.window.width = 1280    
     t.window.height = 720

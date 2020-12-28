@@ -187,6 +187,7 @@ assets["mainBGM"]:setLooping(true)
 
 assets["recordBGM"]   = love.audio.newSource("assets/audio/bgm/record.ogg", "static")
 
+assets["endingBGM"]   = love.audio.newSource("assets/audio/bgm/Ending.ogg", "static")
 
 --assets[""]
 

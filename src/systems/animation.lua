@@ -1,6 +1,6 @@
 -- Libaries
 local Timer     = require("lib.timer")
-local Object = require("lib.classic")
+local Object    = require("lib.classic")
 
 -- Modules
 -- local DrawGrid = require("src.test.drawGrid") -- for drawing grid on screen to see where to place sensors
@@ -48,7 +48,6 @@ function Animation:update(dt)
         self.frame = self.frame + 1
         self.frame = math.fmod(self.frame, self.numOfFrames)
         self.time = 0
-        print(self.frame)
     end
 end
 

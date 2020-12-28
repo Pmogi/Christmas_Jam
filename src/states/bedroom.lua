@@ -36,6 +36,7 @@ function Bedroom:init()
 end
 
 function Bedroom:enter()
+    self.won = false
     if roomState["record"] then
             Assets.getAsset("mainBGM"):pause()
             Assets.getAsset("recordBGM"):play()
@@ -46,12 +47,6 @@ function Bedroom:enter()
     self.granimation =     Animation(430, 320, Assets.getAsset("grannyFrames"), 2, 2.5, 0.2)
     self.candleAnimation = Animation(420, 375, Assets.getAsset("candleFrames"), 4, 1000, 0.2)  
     self.candleAnimation:play()
-
-    if Objective.allObjectivesCompleted() then
-            self.granimation:play()
-            SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.", 20)
-            Assets.playAudio("GrannyLaugh")
-    end
 
     -- grandma FSM to own function
      World.addEntity(Sensor(651, 342, 100, 100,
@@ -274,6 +269,14 @@ end
 
 
 function Bedroom:update( dt )
+
+    if Objective.allObjectivesCompleted() then
+        self.won = true
+        self.granimation:play()
+        SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.", 20)
+        Assets.playAudio("GrannyLaugh")
+    end
+
 
     self.granimation:update(dt)
     self.candleAnimation:update(dt) 

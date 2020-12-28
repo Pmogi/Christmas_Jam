@@ -35,7 +35,7 @@ function love.load()
     GameState.registerEvents{'draw', 'update', 'init', 'enter', 'exit'}
     cursor = love.mouse.setCursor(cursorNormal)
 
-    GameState.switch(MainMenu) -- Initial State
+    GameState.switch(Ending) -- Initial State
 
 
     -- love.graphics.setFont(Assets.getAsset("font"))

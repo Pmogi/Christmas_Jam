@@ -31,7 +31,7 @@ function Attic:enter()
         Assets.getAsset("recordBGM"):pause()
 
         local addRecord = function()
-                World.addEntity(Sensor(550,490,50,50,
+                World.addEntity(Sensor(550,461,50,50,
                         function()
                                 Assets.playAudio("Grab")
                                 SpeechBox.startSpeech("You obtained a record of 'Barry White Sings For Someone You Love'. There's also a note scribbled onto the back of the case that says, 'Merry Christmas my Magnolia, I will love you forever'.", 4)
@@ -40,7 +40,7 @@ function Attic:enter()
                                 return false
                         end, Assets.getAsset("record"), true))
         end
-        World.addEntity(Sensor(490,535,300,200,
+        World.addEntity(Sensor(490,480,200,100,
             function()
                     if not roomState["recordBox"] then
                             roomState["recordBox"] = true
@@ -55,7 +55,7 @@ function Attic:enter()
         end
         
     if itemsInRoom["key"] then
-        World.addEntity(Sensor(200,580,50,50,
+        World.addEntity(Sensor(220,580,50,50,
             function()
                     Assets.playAudio("Grab")
                     SpeechBox.startSpeech("You obtained a key.", 1)

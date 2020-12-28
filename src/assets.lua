@@ -154,7 +154,16 @@ assets["Hmm"]:setVolume(0.5)
 assets["GlassKnock"] = love.audio.newSource("assets/audio/glassKnock.wav", "static")
 assets["GlassKnock"]:setVolume(0.7)
 
-assets["endScreen"] = love.graphics.newImage("assets/endingscreen.png")
+---- MUSIC ----
+assets["menuMusic"] = love.audio.newSource("assets/audio/bgm/MenuAndIntro.ogg", "static")
+assets["menuMusic"]:setLooping(true)
+assets["menuMusic"]:setVolume(1.5)
+
+assets["mainBGM"]   = love.audio.newSource("assets/audio/bgm/mainBGM.ogg", "static")
+assets["mainBGM"]:setLooping(true)
+
+assets["recordBGM"]   = love.audio.newSource("assets/audio/bgm/mainBGM.ogg", "static")
+
 
 --assets[""]
 

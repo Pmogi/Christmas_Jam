@@ -26,4 +26,9 @@ function Intro:enter()
 
 end
 
+function Intro:leave()
+    Assets.getAsset("menuMusic"):stop()
+    Assets.getAsset("mainBGM"):play()
+end
+
 return Intro

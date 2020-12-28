@@ -24,6 +24,7 @@ function LivingRoom:init()
 end
 
 function LivingRoom:enter()
+        Assets.getAsset("recordBGM"):pause()
         -- Go to kitchen
         World.addEntity(Sensor(515,233, 113,200, 
                             function()

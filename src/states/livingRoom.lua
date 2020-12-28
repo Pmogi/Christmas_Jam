@@ -53,7 +53,7 @@ function LivingRoom:enter()
         ))
 
         -- FOR TRANSITION TO FINAL SCENE --
-        if Objective.hasWon() then
+        if Objective.allObjectivesCompleted() then
                 World.addEntity(Sensor(600, 600, 0, 0,
                                 function()
                                         GameState.switch(Ending)

@@ -102,7 +102,7 @@ function Attic:draw(  )
     SpeechBox.draw()
     
 
-    DrawGrid.drawGrid()
+   -- DrawGrid.drawGrid()
 end
 
 return Attic

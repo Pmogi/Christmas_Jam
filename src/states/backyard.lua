@@ -89,7 +89,7 @@ function Backyard:draw( )
     World.draw() -- draw entities
     SpeechBox.draw()
    -- camera:detach()
-    DrawGrid.drawGrid()
+    -- DrawGrid.drawGrid()
 
 end
 

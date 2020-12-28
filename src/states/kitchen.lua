@@ -309,7 +309,7 @@ function Kitchen:draw()
     World.draw() -- draw entities    
     SpeechBox.draw()
 
-    DrawGrid.drawGrid()
+    -- DrawGrid.drawGrid()
 
 end
 

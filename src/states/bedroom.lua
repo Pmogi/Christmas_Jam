@@ -270,7 +270,7 @@ end
 
 function Bedroom:update( dt )
 
-    if Objective.allObjectivesCompleted() then
+    if Objective.allObjectivesCompleted() and not self.won then
         self.won = true
         self.granimation:play()
         SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.", 20)
@@ -342,7 +342,7 @@ function Bedroom:draw()
     SpeechBox.draw()
     
     
-    DrawGrid.drawGrid()
+    -- DrawGrid.drawGrid()
 end
 
 function Bedroom:leave( )

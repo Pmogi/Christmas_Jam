@@ -100,7 +100,7 @@ end
 function LivingRoom:draw()
         love.graphics.draw(Assets.getAsset("livingRoomBG"))
         
-        DrawGrid.drawGrid()
+        -- DrawGrid.drawGrid()
         InventoryGUI.draw()
         World.draw() -- draw entities    
         SpeechBox.draw()

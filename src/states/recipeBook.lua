@@ -52,7 +52,7 @@ function RecipeBook:draw()
         width = 1280
         love.graphics.draw(Assets.getAsset("recipeBook"), width / 8, 0)
         SpeechBox.draw()
-        DrawGrid.drawGrid()
+        -- DrawGrid.drawGrid()
 end
 
 function RecipeBook:leave()

@@ -17,8 +17,6 @@ Objective.objectiveList = {
 
 function Objective.update(dt)
         -- Notifiy the player they won
-
-    
 end
 
 function Objective.completeObjective(objective)
@@ -28,5 +26,15 @@ end
 function Objective.getObjectiveState(objective)
     return Objective.objectiveList[objective]
 end
+
+function Objective.allObjectivesCompleted()
+        
+        if Objective.objectiveList["Record"] and Objective.objectiveList["Cookies"] and Objective.objectiveList["Decorations"] then
+                print("objectives completed!")
+                return true
+        end
+        return false
+end
+
 
 return Objective

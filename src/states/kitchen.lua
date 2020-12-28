@@ -80,6 +80,7 @@ function Kitchen:enter()
                     function()    
                         SpeechBox.startSpeech("You got a jar of sugar.", 0.75)
                         -- grab sound
+                        Assets.playAudioRandomPitch("Grab", 0.9, 1.1)
                         Inventory.addToInventory(Item("sugaricon", Assets.getAsset("sugaricon")))
                         itemsInRoom["sugar"] = false
                         return false
@@ -98,11 +99,12 @@ function Kitchen:enter()
             if not roomState["fridge"] then
                 roomState["fridge"] = true
                 -- play open sound
-
+                Assets.playAudio("FridgeDoor")
                 World.addEntity(Sensor(930, 295 , 50, 50,
                     function()    
                         SpeechBox.startSpeech("You got a box of raisins, gross...", 1.2)
                         -- grab sound
+                        Assets.playAudioRandomPitch("Grab", 0.9, 1.1)
                         Inventory.addToInventory(Item("raisinsicon", Assets.getAsset("raisinsicon")))
                         itemsInRoom["raisins"] = false
                         return false
@@ -120,6 +122,7 @@ function Kitchen:enter()
             function()
                 SpeechBox.startSpeech("You got some oats, mah-goats", 1)
                 -- grab sound
+                Assets.playAudioRandomPitch("Grab", 0.9, 1.1)
                 Inventory.addToInventory(Item("oatsicon", Assets.getAsset("oatsicon")))
                 itemsInRoom["oats"] = false
                 return false

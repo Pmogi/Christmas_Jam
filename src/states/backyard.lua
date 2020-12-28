@@ -95,6 +95,7 @@ function spawnDecorations()
     World.addEntity(Sensor(401, 425, 0, 0, 
                     function()
                         -- rustle/grab sound effect
+                        Assets.playAudioRandomPitch("Grab", 0.9, 1.1)
                         SpeechBox.startSpeech("You grab a bunch of christmas decorations.")
                         Inventory.addToInventory(Item("decorationicon", Assets.getAsset("decorationicon")))
                         itemsInRoom["decoration"] = false

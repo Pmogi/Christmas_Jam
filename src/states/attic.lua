@@ -40,6 +40,11 @@ function Attic:enter()
                                 return false
                         end, Assets.getAsset("record"), true))
         end
+
+        if roomState["recordBox"] and itemsInRoom["record"] then
+                addRecord()
+        end
+
         World.addEntity(Sensor(490,480,200,100,
             function()
                     if not roomState["recordBox"] then
@@ -50,10 +55,7 @@ function Attic:enter()
                         end 
                         return false
                 end), false,false)
-        if roomState["recordBox"] and itemsInRoom["record"] then
-                addRecord()
-        end
-        
+
     if itemsInRoom["key"] then
         World.addEntity(Sensor(220,580,50,50,
             function()

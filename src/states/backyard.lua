@@ -29,7 +29,7 @@ end
 function Backyard:enter()
     -- if the shed hasn't been opened yet, spawn shed puzzle
     if not roomState["shed"] then
-        World.addEntity(Sensor(324,250, 400,300,
+        World.addEntity(Sensor(380,260, 200,300,
                 function()
                     if not roomState["shed"] and Inventory.getActiveItem() == "keyicon" then
                         -- play open sound    
@@ -52,10 +52,10 @@ function Backyard:enter()
         spawnDecorations()
     end
         
-        World.addEntity(Sensor(417,680,150,100,
+        World.addEntity(Sensor(417,650,150,100,
             function()
                     GameState.switch(Kitchen)
-            end))
+            end, Assets.getAsset("arrow"), true))
 end
 
 function Backyard:update( dt )
@@ -76,9 +76,9 @@ function Backyard:draw( )
     
     
     if not roomState["shed"] then
-        love.graphics.draw(Assets.getAsset("backyardShed1"), 270, 250)
+        love.graphics.draw(Assets.getAsset("backyardShed1"), 310, 300)
     else
-        love.graphics.draw(Assets.getAsset("backyardShed2"), 270, 250)
+        love.graphics.draw(Assets.getAsset("backyardShed2"), 310, 300)
     end
 
     

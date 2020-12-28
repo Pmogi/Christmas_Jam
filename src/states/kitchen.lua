@@ -40,6 +40,7 @@ end
 function Kitchen:enter()
         Assets.getAsset("recordBGM"):pause()
     -- add sensor entities
+    print(itemsInRoom["bowl"])
     
     World.addEntity(Sensor(230, 220 , 215, 160, 
         function()
@@ -147,7 +148,7 @@ function Kitchen:enter()
             end,Assets.getAsset("oats"), true))
     end
 
-
+    if itemsInRoom["bowl"] then
     World.addEntity(Sensor(720,390,50,50,
         function()
                 -- checks ingredients
@@ -223,6 +224,7 @@ function Kitchen:enter()
             end
             return true
         end, Assets.getAsset("bowl"), true))
+end
 
     World.addEntity(Sensor(540,440,200,150,
         function()

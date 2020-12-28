@@ -27,8 +27,13 @@ function Objective.getObjectiveState(objective)
     return Objective.objectiveList[objective]
 end
 
-function Objective.hasWon()
-    return Objective.objectiveList["Record"] and Objective.objectiveList["Cookies"]  and Objective.objectiveList["Decorations"] 
+function Objective.allObjectivesCompleted()
+        
+        if Objective.objectiveList["Record"] and Objective.objectiveList["Cookies"] and Objective.objectiveList["Decorations"] then
+                print("objectives completed!")
+                return true
+        end
+        return false
 end
 
 

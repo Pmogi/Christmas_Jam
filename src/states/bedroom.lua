@@ -40,9 +40,18 @@ function Bedroom:enter()
             Assets.getAsset("mainBGM"):pause()
             Assets.getAsset("recordBGM"):play()
     end
+
+
+
     self.granimation =     Animation(430, 320, Assets.getAsset("grannyFrames"), 2, 2.5, 0.2)
     self.candleAnimation = Animation(420, 375, Assets.getAsset("candleFrames"), 4, 1000, 0.2)  
     self.candleAnimation:play()
+
+    if Objective.allObjectivesCompleted() then
+            self.granimation:play()
+            SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.", 20)
+            Assets.playAudio("GrannyLaugh")
+    end
 
     -- grandma FSM to own function
      World.addEntity(Sensor(651, 342, 100, 100,
@@ -57,7 +66,7 @@ function Bedroom:enter()
                                         roomState["cookiesPlaced"] = true
                                         Objective.completeObjective("Cookies")
                                 elseif Inventory.getActiveItem() == "cookiesicon" and not roomState["dentures"] then
-                                        SpeechBox.startSpeech("Oh my, I need my teeth to eat that dearie.")
+                                        SpeechBox.startSpeech("Thanks Rose,but I can't eat these anymore without my teeth. I forgot where I put them...")
                                         self.granimation:play()
 
                                 elseif Inventory.getActiveItem() == "dentureicon" then
@@ -259,6 +268,7 @@ World.addEntity(Sensor(158, 615, 100, 200,
         return true
     end
 ))
+
 end
 
 
@@ -404,15 +414,9 @@ function Bedroom:grannyFSM()
             self.hintCount = self.hintCount + 1
     
         elseif not cookie and self.hintCount == 1 then
-            SpeechBox.startSpeech("The cookies recipe should be in the kitchen, I mixed some of the ingredients together, but I can't find some.", 5)
-    
-        elseif cookie and not Inventory.getActiveItem() == "dentureicon" then
-            SpeechBox.startSpeech("Thanks Rose, but I can't eat these anymore without my teeth. I forgot where I put them...")
-        elseif cookie and not Inventory.getActiveItem() == "dentureicon" then
-            SpeechBox.startSpeech("Thank you so much dearie, you made an old lady's Christmas wonderful. I don't have a lot of time left, so it means a lot to me.", 20)
-        end
+            SpeechBox.startSpeech("The cookies recipe should be in the kitchen, I mixed some of the ingredients together, but I can't find some.", 5) 
     end
-
+    end
 end
 
 return Bedroom

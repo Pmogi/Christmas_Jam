@@ -29,24 +29,31 @@ end
 
 function Attic:enter()
         Assets.getAsset("recordBGM"):pause()
+
+        local addRecord = function()
+                World.addEntity(Sensor(550,490,50,50,
+                        function()
+                                Assets.playAudio("Grab")
+                                SpeechBox.startSpeech("You obtained a record of 'Barry White Sings For Someone You Love'. There's also a note scribbled onto the back of the case that says, 'Merry Christmas my Magnolia, I will love you forever'.", 4)
+                                Inventory.addToInventory(Item("recordicon", Assets.getAsset("recordicon")))
+                                itemsInRoom["record"] = false
+                                return false
+                        end, Assets.getAsset("record"), true))
+        end
         World.addEntity(Sensor(490,535,300,200,
             function()
                     if not roomState["recordBox"] then
                             roomState["recordBox"] = true
                             -- play open sound
                             Assets.playAudio("Box")
-                            World.addEntity(Sensor(550,490,50,50,
-                                function()
-                                        Assets.playAudio("Grab")
-                                        SpeechBox.startSpeech("You obtained a record of 'Barry White Sings For Someone You Love'. There's also a note scribbled onto the back of the case that says, 'Merry Christmas my Magnolia, I will love you forever'.", 4)
-                                        Inventory.addToInventory(Item("recordicon", Assets.getAsset("recordicon")))
-                                        itemsInRoom["record"] = false
-                                        return false
-                                end, Assets.getAsset("record"), true))
+                            addRecord()
                         end 
                         return false
                 end), false,false)
-
+        if roomState["recordBox"] and itemsInRoom["record"] then
+                addRecord()
+        end
+        
     if itemsInRoom["key"] then
         World.addEntity(Sensor(200,580,50,50,
             function()

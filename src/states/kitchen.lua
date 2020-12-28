@@ -205,18 +205,18 @@ function Kitchen:enter()
     World.addEntity(Sensor(540,440,200,150,
         function()
                 if Inventory.getActiveItem() == "bowlicon" then
-                        SpeechBox.startSpeech("You put the cookie batter onto a baking pan and place it in the oven.")
-                        SpeechBox.startSpeech("doot...dee...doot dooot....")
-                        SpeechBox.startSpeech("ski doobie doobie doo de bap bap...")
+                        SpeechBox.startSpeech("You put the cookie batter onto a baking pan and place it in the oven.", 2)
+                        SpeechBox.startSpeech("doot...dee...doot dooot....", 2)
+                        SpeechBox.startSpeech("ski doobie doobie doo de bap bap...", 2)
                         -- finish noise 
-                        SpeechBox.startSpeech("Cookies are done!")
+                        SpeechBox.startSpeech("Cookies are done!", 1)
                         Inventory.addToInventory(Item("cookiesicon", Assets.getAsset("cookiesicon")))
                         Inventory.removeActiveItem()
                         Inventory.removeItem("bowlicon")
                         Inventory.removeItem("bowliconglow")
                         SpeechBox.startSpeech("You got a tray of fresh hot cookies", 0.75)
                 else
-                        SpeechBox.startSpeech("It's matilda, our ol' oven.", 1)
+                        SpeechBox.startSpeech("It's matilda the ol' oven.", 1)
                 end
                 return true
         end

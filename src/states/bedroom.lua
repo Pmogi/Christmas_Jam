@@ -316,6 +316,7 @@ end
 
 function Bedroom:leave( )
     Assets.getAsset("mainBGM"):play()
+    Assets.getAsset("recordBGM"):stop()
     World.clearEntities()
 end
 

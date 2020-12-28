@@ -29,7 +29,7 @@ function InventoryGUI.update(dt)
     
     -- for the player to remove the active item
     if (Inventory.getActiveItem()) then
-        if gui:Button("Unequip Item", 84, 10, 100, 50).hit then -- CHANGE, scale x,y by the window 
+        if gui:Button("Unequip Item", 90, 10, 85, 65).hit then -- CHANGE, scale x,y by the window 
             
             -- reset active item to nil
             Inventory.resetActiveItem()

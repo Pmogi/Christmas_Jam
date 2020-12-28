@@ -29,6 +29,10 @@ end
 function Backyard:enter()
     Assets.getAsset("recordBGM"):pause()
     -- if the shed hasn't been opened yet, spawn shed puzzle
+    if roomState["shed"] and itemsInRoom["decoration"] then
+            spawnDecorations()
+    end
+
     if not roomState["shed"] then
         World.addEntity(Sensor(380,260, 200,300,
                 function()
@@ -49,9 +53,6 @@ function Backyard:enter()
 
     
     -- just in case the player missed the decorations
-    if itemsInRoom["decoration"] and roomState["shed"] then
-        spawnDecorations()
-    end
         
         World.addEntity(Sensor(417,650,150,100,
             function()

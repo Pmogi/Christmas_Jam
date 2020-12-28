@@ -81,6 +81,11 @@ function Kitchen:enter()
             Assets.getAsset("sugar"), true))
         end
 
+    if roomState["cabinet"] and itemsInRoom["sugar"] then
+            addSugar()
+    end
+
+
     -- Cabinet and Sugar
     World.addEntity(Sensor(550, 200, 100, 100,
         function() 
@@ -97,9 +102,6 @@ function Kitchen:enter()
         end),
         false, false)
 
-    if roomState["cabinet"] and itemsInRoom["sugar"] then
-        addSugar()
-    end
 
     local addRaisins = function()
         World.addEntity(Sensor(930, 295 , 50, 50,
@@ -114,6 +116,9 @@ function Kitchen:enter()
             Assets.getAsset("raisins"), true))
     end
 
+    if roomState["fridge"] and itemsInRoom["raisins"] then
+            addRaisins()
+    end
     -- Fridge and thing inside it
     World.addEntity(Sensor(850, 300, 800, 100,
         function() 
@@ -126,11 +131,7 @@ function Kitchen:enter()
             end
             return false
         end),
-        false, false)
-    
-    if roomState["fridge"] and itemsInRoom["raisins"] then
-        addRaisins()
-    end
+        false, false) 
 
     
     -- Add oats if not picked up by the player

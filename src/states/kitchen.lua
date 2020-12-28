@@ -40,7 +40,6 @@ end
 function Kitchen:enter()
         Assets.getAsset("recordBGM"):pause()
     -- add sensor entities
-    print(itemsInRoom["bowl"])
     
     World.addEntity(Sensor(230, 220 , 215, 160, 
         function()

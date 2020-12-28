@@ -173,7 +173,7 @@ assets["menuMusic"]:setVolume(1.5)
 assets["mainBGM"]   = love.audio.newSource("assets/audio/bgm/mainBGM.ogg", "static")
 assets["mainBGM"]:setLooping(true)
 
-assets["recordBGM"]   = love.audio.newSource("assets/audio/bgm/mainBGM.ogg", "static")
+assets["recordBGM"]   = love.audio.newSource("assets/audio/bgm/record.ogg", "static")
 
 
 --assets[""]

@@ -77,6 +77,10 @@ function Bedroom:enter(  )
                             Assets.playAudio("GrannyRelief")
                             self.granimation:play()
                             Objective.completeObjective("Record") -- completed record objective
+                            
+                            Assets.getAsset("mainBGM"):pause()
+                            Assets.getAsset("recordBGM"):play()
+                            
                             -- use up the item
                             Inventory.removeItem("recordicon")
                             Inventory.removeItem("recordiconglow")
@@ -135,6 +139,7 @@ function Bedroom:enter(  )
         if not roomState["wreathPlaced"] and Inventory.getActiveItem() == "decorationicon" then
             roomState["wreathPlaced"] = true
             self.decoCount = self.decoCount + 1
+            Assets.playAudio("GrannySurprise")
             self.granimation:play()
             SpeechBox.startSpeech("What a lovely wreath, we'd put this out on the front porch.")
             
@@ -171,20 +176,24 @@ World.addEntity(Sensor(275, 439, 100, 75,
         if not roomState["pillowPlaced"] and Inventory.getActiveItem() == "decorationicon" then
             roomState["pillowPlaced"] = true
             self.decoCount = self.decoCount + 1
+            Assets.playAudio("GrannySurprise")
             self.granimation:play()
             SpeechBox.startSpeech("oh my jolly pillow! every winter, herby would take a nap on that couch hugging this pillow...")
 
         elseif roomState["pillowPlaced"] then
             self.granimation:play()
+            Assets.playAudio("GrannyRelief")
             SpeechBox.startSpeech("oh my jolly pillow! every winter, herby would take a nap on that couch hugging this pillow...")
         else
             -- Granny sound -- 
             self.granimation:play()
+            Assets.playAudio("GrannySurprise")
             SpeechBox.startSpeech("I'd love my jolly pillow to be over there...")
         end
         
         if self.decoCount == 3 then
                 self.granimation:play()
+                Assets.playAudio("GrannyRelief")
                 SpeechBox.startSpeech("Oh my, my room looks so festive now! T-t-hank you, Rose.")
                 Inventory.removeActiveItem()
                 Inventory.removeItem("decorationicon")
@@ -203,15 +212,18 @@ World.addEntity(Sensor(158, 615, 100, 200,
             roomState["treePlaced"] = true
             self.decoCount = self.decoCount + 1
             self.granimation:play()
+            Assets.playAudio("GrannyRelief")
             SpeechBox.startSpeech("mmmm, I love the smell of pine trees...")
 
         elseif roomState["treePlaced"] then
             self.granimation:play()
+            Assets.playAudio("GrannyRelief")
             SpeechBox.startSpeech("mmmm, I love the smell of pine trees...")
 
         else
         -- Granny sound -- 
         self.granimation:play()
+        Assets.playAudio("GrannySurprise")
         SpeechBox.startSpeech("Could the christmas tree be over here?")
         
         end
@@ -303,6 +315,7 @@ function Bedroom:draw()
 end
 
 function Bedroom:leave( )
+    Assets.getAsset("mainBGM"):play()
     World.clearEntities()
 end
 

@@ -258,7 +258,6 @@ function Kitchen:leave()
 end
 
 function Kitchen:draw()
-    --camera:attach()
     love.graphics.draw(self.background, 0 , 0)
 
     -- Draw base on room state
@@ -283,7 +282,6 @@ function Kitchen:draw()
     InventoryGUI.draw()
     World.draw() -- draw entities    
     SpeechBox.draw()
-    -- camera:detach()
 
     DrawGrid.drawGrid()
 

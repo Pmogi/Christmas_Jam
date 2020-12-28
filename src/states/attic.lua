@@ -37,6 +37,7 @@ function Attic:enter()
                             Assets.playAudio("Box")
                             World.addEntity(Sensor(550,490,50,50,
                                 function()
+                                        Assets.playAudio("Grab")
                                         SpeechBox.startSpeech("You obtained a record of 'Barry White Sings For Someone You Love'. There's also a note scribbled onto the back of the case that says, 'Merry Christmas my Magnolia, I will love you forever'.", 4)
                                         Inventory.addToInventory(Item("recordicon", Assets.getAsset("recordicon")))
                                         itemsInRoom["record"] = false
@@ -49,6 +50,7 @@ function Attic:enter()
     if itemsInRoom["key"] then
         World.addEntity(Sensor(200,580,50,50,
             function()
+                    Assets.playAudio("Grab")
                     SpeechBox.startSpeech("You obtained a key.", 1)
                     Inventory.addToInventory(Item("keyicon", Assets.getAsset("keyicon")))
                     itemsInRoom["key"] = false

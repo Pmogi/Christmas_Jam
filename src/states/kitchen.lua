@@ -135,6 +135,7 @@ function Kitchen:enter()
         function()
                 -- checks ingredients
                 if Inventory.getActiveItem() == "oatsicon" then
+                        Assets.playAudio("Grab")
                         SpeechBox.startSpeech("You threw some oats into the bowl.", 0.75)
                         Inventory.removeItem("oatsicon")
                         Inventory.removeItem("oatsiconglow")
@@ -147,6 +148,7 @@ function Kitchen:enter()
                         return true
                 
                 elseif Inventory.getActiveItem() == "sugaricon" then
+                        Assets.playAudio("Grab")
                         SpeechBox.startSpeech("You threw some sugar into the bowl.", 0.75)
                         Inventory.removeItem("sugaricon")
                         Inventory.removeItem("sugariconglow")
@@ -159,6 +161,7 @@ function Kitchen:enter()
                         return true
                 
                 elseif Inventory.getActiveItem() == "pruneicon" then
+                        Assets.playAudio("Grab")
                         SpeechBox.startSpeech("You threw some prunes into the bowl.", 0.75)
                         Inventory.removeItem("pruneicon")
                         Inventory.removeItem("pruneiconglow")
@@ -171,6 +174,7 @@ function Kitchen:enter()
                         return true
 
                 elseif Inventory.getActiveItem() == "raisinsicon" then
+                        Assets.playAudio("Grab")
                         SpeechBox.startSpeech("You threw some raisins into the bowl.", 0.75)
                         Inventory.removeItem("raisinsicon")
                         Inventory.removeItem("raisinsiconglow")
@@ -234,6 +238,8 @@ function Kitchen:enter()
     World.addEntity(Sensor(570, 650, 200,200,
                         function()
                                 -- play door sound --
+                                
+                                Assets.playAudio("Cabinet")
                                 GameState.switch(LivingRoom)
                         end, Assets.getAsset("arrow"), true))
     
@@ -243,6 +249,8 @@ function Kitchen:enter()
     World.addEntity(Sensor(1095,249,220,400,
         function()
             --play door sound--
+            
+            Assets.playAudio("Cabinet")
             GameState.switch(Backyard)
         end))
 end
